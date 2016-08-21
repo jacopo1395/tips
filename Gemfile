@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-#devise
-gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use Puma as the app server
@@ -28,6 +27,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Gemified version of Material Design Lite (https://github.com/cllns/material_design_lite-rails)
+gem 'material_design_lite-rails', '~> 1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
