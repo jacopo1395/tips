@@ -1,1 +1,19 @@
 @import "material";
+
+/* Home page main card */
+.home-main-card {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .mdl-card__title {
+    height: 200px;
+  }
+
+  h1.mdl-card__title-text {
+    width: 100%;
+    text-align: center;
+  }
+}
