@@ -7,10 +7,10 @@
   margin-right: 5%;
   margin-top: 20px;
   margin-bottom: 20px;
-  background: url('rome.jpg') center / cover;
+  background: url('Roma.jpg') center / cover;
 
   .mdl-card__title {
-    height: 230px;
+    height: 180px;
 
     h1.mdl-card__title-text {
       width: 100%;
@@ -22,27 +22,37 @@
   }
 
   .mdl-card__supporting-text {
-    width: 100%;
     background-color: rgba(0.0, 0.0, 0.0, 0.4);
+
     color: white;
     text-align: center;
-    padding-top: 32px;
-    padding-bottom: 0px;
 
-    .big {
-      font-size: 2.0em;
-      margin-bottom: 4px;
-    }
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 0px;
+    margin-bottom: 32px;
 
-    .small {
-      margin-bottom: 0px;
-    }
+    border-radius: 12px;
   }
 
   .mdl-card__actions {
     text-align: center;
     background-color: rgba(0.0, 0.0, 0.0, 0.4);
     color: white;
+
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    p {
+      display: inline;
+      font-size: 0.8em;
+      margin-right: 40px;
+      margin-left: 40px;
+    }
 
     .mdl-button {
       padding-left: 22px;
