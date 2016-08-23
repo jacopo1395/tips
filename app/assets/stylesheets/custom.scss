@@ -17,10 +17,15 @@
     text-align: center;
   }
 
-  .mdl-card__actions > .mdl-button {
-    padding-left: 22px;
-    padding-right: 22px;
-    font-size: 1.4em;
-    font-weight: 400;
+  .mdl-card__actions {
+    text-align: center;
+
+    .mdl-button {
+      padding-left: 22px;
+      padding-right: 22px;
+      text-transform: none;
+      font-size: 1.2em;
+      font-weight: 400;
+    }
   }
 }
