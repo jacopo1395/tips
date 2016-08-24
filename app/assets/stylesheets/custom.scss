@@ -1,10 +1,15 @@
 @import "material";
 
-/* Home page main card */
-.home-main-card {
+/* Universal */
+.page-content {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
+}
+
+/* Home page main card */
+.home-main-card {
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
   background: url('Roma.jpg') center / cover;
@@ -66,5 +71,16 @@
       font-size: 1.3em;
       font-weight: 400;
     }
+  }
+}
+
+/* Home page recent card */
+.home-recent-card {
+  width: auto;
+  min-width: 300px;
+  margin-bottom: 40px;
+
+  .mdl-card__title {
+    height: 150px;
   }
 }
