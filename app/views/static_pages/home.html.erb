@@ -28,15 +28,17 @@
   <% (1..3).each do |i| %>
     <div class="home-recent-card mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Welcome</h2>
+        <h2 class="mdl-card__title-text">Nome Suggerimento <%= i %></h2>
       </div>
       <div class="mdl-card__supporting-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Mauris sagittis pellentesque lacus eleifend lacinia...
+        <strong>Ristorante</strong> - Via del Colosseo, 123, Roma.
       </div>
       <div class="mdl-card__actions mdl-card--border">
+        <!-- <% (1..5).each do |j| %>
+          <i class="material-icons">star_rate</i>
+        <% end %> -->
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Get Started
+          Maggiori info
         </a>
       </div>
       <div class="mdl-card__menu">

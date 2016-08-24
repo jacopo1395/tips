@@ -76,13 +76,32 @@
 
 /* Home page recent card */
 .home-recent-card {
-  width: auto;
-  min-width: 300px;
-  max-width: 400px;
+  width: 300px;
   margin-bottom: 40px;
+  background: url('Ristorante.jpg') center / cover;
 
   .mdl-card__title {
     height: 150px;
+    color: white;
+    font-weight: 400;
+  }
+
+  .mdl-card__supporting-text {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
   }
 }
 
