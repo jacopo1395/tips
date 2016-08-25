@@ -112,8 +112,57 @@
   }
 }
 
+/* Home page popular card */
+.home-popular-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+  margin-right: 10px;
+
+  .mdl-card__title {
+    height: 220px;
+    color: white;
+    background: url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+  }
+}
+
 /* Home page recent hints */
 .home-recent-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Home page popular hints */
+.home-popular-hints {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
