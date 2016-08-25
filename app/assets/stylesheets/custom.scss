@@ -79,24 +79,28 @@
   flex: 0 0 auto;
   width: auto;
   min-width: 280px;
+  max-width: 400px;
   margin-bottom: 16px;
-  margin-right: 12px;
-  background: url('Ristorante.jpg') center / cover;
+  margin-left: 2px;
+  margin-right: 10px;
 
   .mdl-card__title {
-    height: 150px;
+    height: 220px;
     color: white;
-    font-weight: 400;
+    background: url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
   }
 
   .mdl-card__supporting-text {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.75);
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .mdl-card__actions {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.75);
 
     .mdl-button {
       float: right;
