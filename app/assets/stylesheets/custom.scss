@@ -25,15 +25,17 @@
     color: white;
     text-align: center;
 
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
+    // width: auto;
+    // margin-left: auto;
+    // margin-right: auto;
     margin-top: 0px;
     margin-bottom: 32px;
 
     padding: 0px;
 
-    border-radius: 12px;
+    // border-radius: 12px;
+
+    width: 100%;
 
     h1 {
       margin-left: 32px;
@@ -65,10 +67,10 @@
     }
 
     .mdl-button {
-      padding-left: 26px;
-      padding-right: 26px;
+      padding-left: 32px;
+      padding-right: 32px;
       text-transform: none;
-      font-size: 1.3em;
+      font-size: 1.6em;
       font-weight: 400;
     }
   }
