@@ -12,7 +12,7 @@
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
-  background: url('Roma.jpg') center / cover;
+  background: image-url('Roma.jpg') center / cover;
   text-align: center;
 
   .mdl-card__title {
@@ -87,7 +87,7 @@
   .mdl-card__title {
     height: 220px;
     color: white;
-    background: url('Ristorante.jpg') center / cover;
+    background: image-url('Ristorante.jpg') center / cover;
 
     h2.mdl-card__title-text {
       font-weight: 400;
@@ -125,7 +125,7 @@
   .mdl-card__title {
     height: 220px;
     color: white;
-    background: url('Ristorante.jpg') center / cover;
+    background: image-url('Ristorante.jpg') center / cover;
 
     h2.mdl-card__title-text {
       font-weight: 400;
