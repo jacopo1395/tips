@@ -10,6 +10,36 @@
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <%= link_to "Registrati", "#", class: "mdl-navigation__link" %>
         <%= link_to "Entra", "#", class: "mdl-navigation__link" %>
+        
+          
+        <% if !user_signed_in? %>
+		[
+		<%= link_to 'Sign up',  new_user_registration_path, :method => :get%>
+		]
+		<% end %>
+        
+        <% if !user_signed_in? %>
+		[
+		<%= link_to 'Login', new_user_session_path, :method => :get%>
+		]
+		<% end %>
+		
+		<% if user_signed_in? %>
+		[
+		<%= link_to 'Visualizza Profilo', profile_path, :method => :get%>
+		]
+		<% end %>
+		
+		<% if user_signed_in? %>
+		[<%= link_to 'Modifica Profilo',
+		edit_user_registration_path, :method => :get%>]
+		<% end %>
+		
+		<% if user_signed_in? %>
+		Logged in as <%= current_user.username %> [<%= link_to 'Logout',
+		destroy_user_session_path, :method => :delete%>]
+		<% end %>
+		
       </nav>
     </div>
   </header>
