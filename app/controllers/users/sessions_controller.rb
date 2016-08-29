@@ -5,20 +5,22 @@ class Users::SessionsController < Devise::SessionsController
    def new
      super
    end
-
+   
   # POST /resource/sign_in
    def create
-	super
-	if !user_signed_in?
-	  render "retry"
-    end
+    super
    end
 
+  # GET /retry
+   def retry
+	new
+   end
 
   # DELETE /resource/sign_out
   # def destroy
   #   super
   # end
+  
 
   # protected
 
