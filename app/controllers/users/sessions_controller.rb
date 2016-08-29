@@ -10,7 +10,7 @@ class Users::SessionsController < Devise::SessionsController
    def create
 	super
 	if !user_signed_in?
-	  render html: "retry"
+	  render "retry"
     end
    end
 
