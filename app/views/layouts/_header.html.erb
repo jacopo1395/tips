@@ -12,28 +12,23 @@
         <%= link_to "Entra", "#", class: "mdl-navigation__link" %>
         
         <% if current_user.try(:admin?) %>
-		[
-		<%= link_to 'aggiungi/rimuovi admin',  new_admin_path, :method => :get%>
-		]
+		[<%= link_to 'aggiungi/rimuovi admin',  new_admin_path, :method => :get%>]
+		<% end %>	
+		
+        <% if !user_signed_in? %>
+		[<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>]
 		<% end %>
 		
-          
         <% if !user_signed_in? %>
-		[
-		<%= link_to 'Sign up',  new_user_registration_path, :method => :get%>
-		]
+		[<%= link_to 'Sign up',  new_user_registration_path, :method => :get%>]
 		<% end %>
         
         <% if !user_signed_in? %>
-		[
-		<%= link_to 'Login', new_user_session_path, :method => :get%>
-		]
+		[<%= link_to 'Login', new_user_session_path, :method => :get%>]
 		<% end %>
 		
 		<% if user_signed_in? %>
-		[
-		<%= link_to 'Visualizza Profilo', profile_path, :method => :get%>
-		]
+		[<%= link_to 'Visualizza Profilo', profile_path, :method => :get%>]
 		<% end %>
 		
 		<% if user_signed_in? %>
