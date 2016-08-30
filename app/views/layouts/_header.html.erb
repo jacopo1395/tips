@@ -26,6 +26,13 @@
               <i class="material-icons">edit</i>
               <%= link_to 'Modifica Profilo', edit_user_registration_path, method: :get, class: "mdl-navigation__link" %>
             </li>
+            <% if current_user.try(:admin?) %>
+              <hr>
+              <li class="mdl-menu__item">
+                <i class="material-icons">supervisor_account</i>
+                <%= link_to 'aggiungi/rimuovi admin',  new_admin_path, method: :get, class: "mdl-navigation__link" %>
+              </li>
+        		<% end %>
             <hr>
             <li class="mdl-menu__item">
               <i class="material-icons">exit_to_app</i>

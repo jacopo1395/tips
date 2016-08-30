@@ -15,6 +15,7 @@ class Users::SessionsController < Devise::SessionsController
    def retry
 	new
    end
+  
 
   # DELETE /resource/sign_out
   # def destroy
