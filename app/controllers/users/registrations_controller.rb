@@ -26,6 +26,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+  
+  # GET /retry
+   def retry
+	new
+   end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

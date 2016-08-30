@@ -8,10 +8,10 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. Hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-
         <% if !user_signed_in? %>
           <%= link_to "Registrati", new_user_registration_path, method: :get, class: "mdl-navigation__link" %>
           <%= link_to "Entra", new_user_session_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
         <% elsif %>
           <button id="profile-menu-button" class="mdl-button mdl-js-button">
             <%= current_user.username %> &nbsp;&nbsp;
