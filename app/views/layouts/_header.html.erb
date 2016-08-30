@@ -8,9 +8,18 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. Hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <%= link_to ("Home &nbsp;&nbsp;<i class='material-icons'>home</i>").html_safe,
+                    root_path,
+                    method: :get, class: "mdl-button mdl-js-button" %>
+        <div style="width: 32px;"></div>
         <% if !user_signed_in? %>
-          <%= link_to "Registrati", new_user_registration_path, method: :get, class: "mdl-navigation__link" %>
-          <%= link_to "Entra", new_user_session_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to ("Registrati &nbsp;&nbsp;<i class='material-icons'>person_add</i>").html_safe,
+                      new_user_registration_path,
+                      method: :get, class: "mdl-button mdl-js-button" %>
+          <div style="width: 32px;"></div>
+          <%= link_to ("Entra &nbsp;&nbsp;<i class='material-icons'>exit_to_app</i>").html_safe,
+                      new_user_session_path,
+                      method: :get, class: "mdl-button mdl-js-button" %>
           <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
         <% elsif %>
           <button id="profile-menu-button" class="mdl-button mdl-js-button">
@@ -21,7 +30,7 @@
           <ul class="profile-menu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="profile-menu-button">
             <li class="mdl-menu__item">
               <i class="material-icons">person</i>
-              <%= link_to 'Il Mio Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+              <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
             </li>
             <li class="mdl-menu__item">
               <i class="material-icons">edit</i>
@@ -50,6 +59,10 @@
     <nav class="mdl-navigation">
       <% if !user_signed_in? %>
         <div class="drawer-item">
+          <i class="material-icons">home</i>
+          <%= link_to "Home", root_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+        <div class="drawer-item">
           <i class="material-icons">person</i>
           <%= link_to "Entra", new_user_session_path, method: :get, class: "mdl-navigation__link" %>
         </div>
@@ -60,8 +73,12 @@
       <% elsif %>
         <p class="drawer-welcome-message">Benvenuto <%= current_user.username %>!</p>
         <div class="drawer-item">
+          <i class="material-icons">home</i>
+          <%= link_to "Home", root_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+        <div class="drawer-item">
           <i class="material-icons">person</i>
-          <%= link_to 'Il Mio Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
         </div>
         <div class="drawer-item">
           <i class="material-icons">edit</i>
