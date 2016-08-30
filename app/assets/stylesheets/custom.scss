@@ -7,6 +7,35 @@
   margin-right: 5%;
 }
 
+nav {
+  .mdl-button {
+    color: white;
+    text-transform: capitalize;
+  }
+
+  .mdl-menu__container {
+    margin-right: 4%;
+    margin-top: 8px;
+    width: auto;
+
+    .mdl-menu__item {
+      width: auto;
+      height: auto;
+
+      .material-icons {
+        vertical-align: middle;
+      }
+
+      .mdl-navigation__link {
+        display: inline;
+        color: black;
+        height: 50px;
+        padding-left: 4px;
+      }
+    }
+  }
+}
+
 /* Home page main card */
 .home-main-card {
   width: 100%;

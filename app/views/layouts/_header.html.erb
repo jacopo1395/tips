@@ -8,38 +8,63 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. Hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <%= link_to "Registrati", "#", class: "mdl-navigation__link" %>
-        <%= link_to "Entra", "#", class: "mdl-navigation__link" %>
-        
-          
+        <% if !user_signed_in? %>
+          <%= link_to "Registrati", new_user_registration_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to "Entra", new_user_session_path, method: :get, class: "mdl-navigation__link" %>
+        <% elsif %>
+          <button id="profile-menu-button" class="mdl-button mdl-js-button">
+            <%= current_user.username %> &nbsp;&nbsp;
+            <i class="material-icons">person_pin</i>
+          </button>
+
+          <ul class="profile-menu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="profile-menu-button">
+            <li class="mdl-menu__item">
+              <i class="material-icons">person</i>
+              <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+            </li>
+            <li class="mdl-menu__item">
+              <i class="material-icons">edit</i>
+              <%= link_to 'Modifica Profilo', edit_user_registration_path, method: :get, class: "mdl-navigation__link" %>
+            </li>
+            <hr>
+            <li class="mdl-menu__item">
+              <i class="material-icons">exit_to_app</i>
+              <%= link_to 'Esci', destroy_user_session_path, method: :delete, class: "mdl-navigation__link" %>
+            </li>
+          </ul>
+        <% end %>
+
+        <!--
         <% if !user_signed_in? %>
 		[
 		<%= link_to 'Sign up',  new_user_registration_path, :method => :get%>
 		]
 		<% end %>
-        
+
         <% if !user_signed_in? %>
 		[
 		<%= link_to 'Login', new_user_session_path, :method => :get%>
 		]
 		<% end %>
-		
+
 		<% if user_signed_in? %>
 		[
 		<%= link_to 'Visualizza Profilo', profile_path, :method => :get%>
 		]
 		<% end %>
-		
+
 		<% if user_signed_in? %>
 		[<%= link_to 'Modifica Profilo',
 		edit_user_registration_path, :method => :get%>]
 		<% end %>
-		
+
 		<% if user_signed_in? %>
 		Logged in as <%= current_user.username %> [<%= link_to 'Logout',
 		destroy_user_session_path, :method => :delete%>]
 		<% end %>
-		
+
+  -->
+
       </nav>
     </div>
   </header>
