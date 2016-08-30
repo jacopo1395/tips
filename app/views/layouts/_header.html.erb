@@ -66,6 +66,10 @@
           <%= link_to 'Modifica Profilo', edit_user_registration_path, method: :get, class: "mdl-navigation__link" %>
         </div>
         <div class="drawer-item">
+          <i class="material-icons">supervisor_account</i>
+          <%= link_to 'Sezione Admin', new_admin_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+        <div class="drawer-item">
           <i class="material-icons">exit_to_app</i>
           <%= link_to 'Esci', destroy_user_session_path, method: :delete, class: "mdl-navigation__link" %>
         </div>
