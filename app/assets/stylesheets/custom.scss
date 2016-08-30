@@ -1,13 +1,81 @@
 @import "material";
 
-/* Home page main card */
-.home-main-card {
+/* Universal */
+.page-content {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
+}
+
+nav {
+  .mdl-button {
+    color: white;
+    text-transform: capitalize;
+  }
+
+  .mdl-menu__container {
+    margin-right: 4%;
+    margin-top: 8px;
+    width: auto;
+
+    .mdl-menu__item {
+      width: auto;
+      height: auto;
+
+      .material-icons {
+        vertical-align: middle;
+      }
+
+      .mdl-navigation__link {
+        display: inline;
+        color: black;
+        height: 50px;
+        padding-left: 6px;
+      }
+    }
+  }
+}
+
+.mdl-layout__drawer {
+  p.drawer-welcome-message {
+    padding-left: 38px;
+    padding-right: 30px;
+    padding-top: 12px;
+    padding-bottom: 4px;
+    font-size: 1.15em;
+  }
+
+  .drawer-item {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    .material-icons {
+      vertical-align: middle;
+    }
+
+    .mdl-navigation__link {
+      display: inline;
+      padding-left: 6px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* Home page main card */
+.home-main-card {
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
-  background: url('Roma.jpg') center / cover;
+  background: image-url('Roma.jpg') center / cover;
   text-align: center;
 
   .mdl-card__title {
@@ -20,15 +88,17 @@
     color: white;
     text-align: center;
 
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
+    // width: auto;
+    // margin-left: auto;
+    // margin-right: auto;
     margin-top: 0px;
     margin-bottom: 32px;
 
     padding: 0px;
 
-    border-radius: 12px;
+    // border-radius: 12px;
+
+    width: 100%;
 
     h1 {
       margin-left: 32px;
@@ -60,11 +130,239 @@
     }
 
     .mdl-button {
-      padding-left: 26px;
-      padding-right: 26px;
+      padding-left: 32px;
+      padding-right: 32px;
       text-transform: none;
-      font-size: 1.3em;
+      font-size: 1.6em;
       font-weight: 400;
     }
   }
+}
+
+/* Home page recent card */
+.home-recent-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+  margin-right: 10px;
+
+  .mdl-card__title {
+    height: 220px;
+    color: white;
+    background: image-url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+  }
+}
+
+/* Home page 'More' card for recent hints */
+.home-recent-more-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+
+  .mdl-card__actions {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+
+    .mdl-chip {
+      margin-bottom: 8px;
+    }
+
+    .mdl-button--fab {
+      margin: auto;
+      background-color: white;
+    }
+  }
+}
+
+/* Home page popular card */
+.home-popular-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+  margin-right: 10px;
+
+  .mdl-card__title {
+    height: 220px;
+    color: white;
+    background: image-url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+  }
+}
+
+/* Home page 'More' card for popular hints */
+.home-popular-more-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+
+  .mdl-card__actions {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+
+    .mdl-chip {
+      margin-bottom: 8px;
+    }
+
+    .mdl-button--fab {
+      margin: auto;
+      background-color: white;
+    }
+  }
+}
+
+/* Home page nearby card */
+.home-nearby-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+  margin-right: 10px;
+
+  .mdl-card__title {
+    height: 220px;
+    color: white;
+    background: image-url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+  }
+}
+
+/* Home page 'More' card for nearby hints */
+.home-nearby-more-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+
+  .mdl-card__actions {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+
+    .mdl-chip {
+      margin-bottom: 8px;
+    }
+
+    .mdl-button--fab {
+      margin: auto;
+      background-color: white;
+    }
+  }
+}
+
+/* Home page recent hints */
+.home-recent-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Home page popular hints */
+.home-popular-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Home page nearby hints */
+.home-nearby-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
 }

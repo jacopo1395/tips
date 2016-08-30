@@ -21,3 +21,224 @@
     </button>
   </div>
 </div>
+
+<hr>
+
+<h3>Suggerimenti Recenti</h3>
+<div class="home-recent-hints">
+  <% (1..5).each do |i| %>
+    <div class="home-recent-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Nome Suggerimento <%= i %></h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">place</i>
+          </span>
+          <span class="mdl-chip__text">Ristorante</span>
+        </span>
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">star</i>
+          </span>
+          <span class="mdl-chip__text">4,3</span>
+        </span>
+        <br>
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">map</i>
+          </span>
+          <span class="mdl-chip__text">Via del Colosseo, 123, Roma, RM</span>
+        </span>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Maggiori info
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+          <i class="material-icons">share</i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <div class="home-recent-more-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__actions">
+      <span class="mdl-chip mdl-color--red mdl-color-text--white">
+        <span class="mdl-chip__text">Ristoranti</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--blue mdl-color-text--white">
+        <span class="mdl-chip__text">Caffetterie</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--orange mdl-color-text--white">
+        <span class="mdl-chip__text">Musei</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--green mdl-color-text--white">
+        <span class="mdl-chip__text">Parchi</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--purple mdl-color-text--white">
+        <span class="mdl-chip__text">Eventi</span>
+      </span>
+      <br>
+      <span class="mdl-chip">
+        <span class="mdl-chip__text">Altro</span>
+      </span>
+      <br>
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-button mdl-js-ripple-effect">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<h3>Suggerimenti Popolari</h3>
+<div class="home-popular-hints">
+  <% (1..5).each do |i| %>
+    <div class="home-popular-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Nome Suggerimento <%= i %></h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">place</i>
+          </span>
+          <span class="mdl-chip__text">Ristorante</span>
+        </span>
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">star</i>
+          </span>
+          <span class="mdl-chip__text">4,3</span>
+        </span>
+        <br>
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">map</i>
+          </span>
+          <span class="mdl-chip__text">Via del Colosseo, 123, Roma, RM</span>
+        </span>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Maggiori info
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+          <i class="material-icons">share</i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <div class="home-popular-more-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__actions">
+      <span class="mdl-chip mdl-color--red mdl-color-text--white">
+        <span class="mdl-chip__text">Ristoranti</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--blue mdl-color-text--white">
+        <span class="mdl-chip__text">Caffetterie</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--orange mdl-color-text--white">
+        <span class="mdl-chip__text">Musei</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--green mdl-color-text--white">
+        <span class="mdl-chip__text">Parchi</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--purple mdl-color-text--white">
+        <span class="mdl-chip__text">Eventi</span>
+      </span>
+      <br>
+      <span class="mdl-chip">
+        <span class="mdl-chip__text">Altro</span>
+      </span>
+      <br>
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-button mdl-js-ripple-effect">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<h3>Suggerimenti nella tua zona</h3>
+<div class="home-nearby-hints">
+  <% (1..5).each do |i| %>
+    <div class="home-nearby-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Nome Suggerimento <%= i %></h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">place</i>
+          </span>
+          <span class="mdl-chip__text">Ristorante</span>
+        </span>
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">star</i>
+          </span>
+          <span class="mdl-chip__text">4,3</span>
+        </span>
+        <br>
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
+            <i class="material-icons" style="vertical-align: middle;">map</i>
+          </span>
+          <span class="mdl-chip__text">Via del Colosseo, 123, Roma, RM</span>
+        </span>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Maggiori info
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+          <i class="material-icons">share</i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <div class="home-nearby-more-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__actions">
+      <span class="mdl-chip mdl-color--red mdl-color-text--white">
+        <span class="mdl-chip__text">Ristoranti</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--blue mdl-color-text--white">
+        <span class="mdl-chip__text">Caffetterie</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--orange mdl-color-text--white">
+        <span class="mdl-chip__text">Musei</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--green mdl-color-text--white">
+        <span class="mdl-chip__text">Parchi</span>
+      </span>
+      <br>
+      <span class="mdl-chip mdl-color--purple mdl-color-text--white">
+        <span class="mdl-chip__text">Eventi</span>
+      </span>
+      <br>
+      <span class="mdl-chip">
+        <span class="mdl-chip__text">Altro</span>
+      </span>
+      <br>
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-button mdl-js-ripple-effect">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+  </div>
+</div>
