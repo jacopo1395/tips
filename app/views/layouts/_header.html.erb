@@ -9,7 +9,7 @@
       <!-- Navigation. Hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <%= link_to ("Home &nbsp;&nbsp;<i class='material-icons'>home</i>").html_safe,
-                    new_user_registration_path,
+                    root_path,
                     method: :get, class: "mdl-button mdl-js-button" %>
         <div style="width: 32px;"></div>
         <% if !user_signed_in? %>
@@ -57,6 +57,10 @@
     <nav class="mdl-navigation">
       <% if !user_signed_in? %>
         <div class="drawer-item">
+          <i class="material-icons">home</i>
+          <%= link_to "Home", root_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+        <div class="drawer-item">
           <i class="material-icons">person</i>
           <%= link_to "Entra", new_user_session_path, method: :get, class: "mdl-navigation__link" %>
         </div>
@@ -66,6 +70,10 @@
         </div>
       <% elsif %>
         <p class="drawer-welcome-message">Benvenuto <%= current_user.username %>!</p>
+        <div class="drawer-item">
+          <i class="material-icons">home</i>
+          <%= link_to "Home", root_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
         <div class="drawer-item">
           <i class="material-icons">person</i>
           <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
