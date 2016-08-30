@@ -11,6 +11,12 @@
         <%= link_to "Registrati", "#", class: "mdl-navigation__link" %>
         <%= link_to "Entra", "#", class: "mdl-navigation__link" %>
         
+        <% if current_user.try(:admin?) %>
+		[
+		<%= link_to 'aggiungi/rimuovi admin',  new_admin_path, :method => :get%>
+		]
+		<% end %>
+		
           
         <% if !user_signed_in? %>
 		[
