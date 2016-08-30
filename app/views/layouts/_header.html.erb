@@ -9,8 +9,12 @@
       <!-- Navigation. Hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <% if !user_signed_in? %>
-          <%= link_to "Registrati", new_user_registration_path, method: :get, class: "mdl-navigation__link" %>
-          <%= link_to "Entra", new_user_session_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to ("Registrati &nbsp;&nbsp;<i class='material-icons'>person_add</i>").html_safe,
+                      new_user_registration_path,
+                      method: :get, class: "mdl-button mdl-js-button" %>
+          <%= link_to ("Entra &nbsp;&nbsp;<i class='material-icons'>exit_to_app</i>").html_safe,
+                      new_user_session_path,
+                      method: :get, class: "mdl-button mdl-js-button" %>
         <% elsif %>
           <button id="profile-menu-button" class="mdl-button mdl-js-button">
             <%= current_user.username %> &nbsp;&nbsp;
@@ -20,7 +24,7 @@
           <ul class="profile-menu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="profile-menu-button">
             <li class="mdl-menu__item">
               <i class="material-icons">person</i>
-              <%= link_to 'Il Mio Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+              <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
             </li>
             <li class="mdl-menu__item">
               <i class="material-icons">edit</i>
@@ -59,7 +63,7 @@
         <p class="drawer-welcome-message">Benvenuto <%= current_user.username %>!</p>
         <div class="drawer-item">
           <i class="material-icons">person</i>
-          <%= link_to 'Il Mio Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
         </div>
         <div class="drawer-item">
           <i class="material-icons">edit</i>
