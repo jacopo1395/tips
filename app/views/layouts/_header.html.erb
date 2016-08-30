@@ -20,7 +20,7 @@
           <ul class="profile-menu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="profile-menu-button">
             <li class="mdl-menu__item">
               <i class="material-icons">person</i>
-              <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+              <%= link_to 'Il Mio Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
             </li>
             <li class="mdl-menu__item">
               <i class="material-icons">edit</i>
@@ -59,7 +59,7 @@
         <p class="drawer-welcome-message">Benvenuto <%= current_user.username %>!</p>
         <div class="drawer-item">
           <i class="material-icons">person</i>
-          <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to 'Il Mio Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
         </div>
         <div class="drawer-item">
           <i class="material-icons">edit</i>
