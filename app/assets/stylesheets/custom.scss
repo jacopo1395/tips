@@ -30,8 +30,42 @@ nav {
         display: inline;
         color: black;
         height: 50px;
-        padding-left: 4px;
+        padding-left: 6px;
       }
+    }
+  }
+}
+
+.mdl-layout__drawer {
+  p.drawer-welcome-message {
+    padding-left: 38px;
+    padding-right: 30px;
+    padding-top: 12px;
+    padding-bottom: 4px;
+    font-size: 1.15em;
+  }
+
+  .drawer-item {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    .material-icons {
+      vertical-align: middle;
+    }
+
+    .mdl-navigation__link {
+      display: inline;
+      padding-left: 6px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
     }
   }
 }

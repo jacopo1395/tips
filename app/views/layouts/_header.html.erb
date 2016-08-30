@@ -14,7 +14,7 @@
         <% elsif %>
           <button id="profile-menu-button" class="mdl-button mdl-js-button">
             <%= current_user.username %> &nbsp;&nbsp;
-            <i class="material-icons">person_pin</i>
+            <i class="material-icons">account_circle</i>
           </button>
 
           <ul class="profile-menu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="profile-menu-button">
@@ -39,14 +39,52 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Menu</span>
     <nav class="mdl-navigation">
-      <%= link_to "Entra", "#", class: "mdl-navigation__link" %>
-      <%= link_to "Registrati", "#", class: "mdl-navigation__link" %>
+      <% if !user_signed_in? %>
+        <div class="drawer-item">
+          <i class="material-icons">person</i>
+          <%= link_to "Entra", new_user_session_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+        <div class="drawer-item">
+          <i class="material-icons">person_add</i>
+          <%= link_to "Registrati", new_user_registration_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+      <% elsif %>
+        <p class="drawer-welcome-message">Benvenuto <%= current_user.username %>!</p>
+        <div class="drawer-item">
+          <i class="material-icons">person</i>
+          <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+        <div class="drawer-item">
+          <i class="material-icons">edit</i>
+          <%= link_to 'Modifica Profilo', edit_user_registration_path, method: :get, class: "mdl-navigation__link" %>
+        </div>
+        <div class="drawer-item">
+          <i class="material-icons">exit_to_app</i>
+          <%= link_to 'Esci', destroy_user_session_path, method: :delete, class: "mdl-navigation__link" %>
+        </div>
+      <% end %>
       <hr>
-      <%= link_to "Recenti", "#", class: "mdl-navigation__link" %>
-      <%= link_to "Popolari", "#", class: "mdl-navigation__link" %>
+      <div class="drawer-item">
+        <i class="material-icons">fiber_new</i>
+        <%= link_to "Recenti", "#", class: "mdl-navigation__link" %>
+      </div>
+      <div class="drawer-item">
+        <i class="material-icons">favorite</i>
+        <%= link_to "Popolari", "#", class: "mdl-navigation__link" %>
+      </div>
+      <div class="drawer-item">
+        <i class="material-icons">near_me</i>
+        <%= link_to "Nelle vicinanze", "#", class: "mdl-navigation__link" %>
+      </div>
       <hr>
-      <%= link_to "Chi Siamo", "#", class: "mdl-navigation__link" %>
-      <%= link_to "Contattaci", "#", class: "mdl-navigation__link" %>
+      <div class="drawer-item">
+        <i class="material-icons">info</i>
+        <%= link_to "Chi Siamo", "#", class: "mdl-navigation__link" %>
+      </div>
+      <div class="drawer-item">
+        <i class="material-icons">email</i>
+        <%= link_to "Contattaci", "#", class: "mdl-navigation__link" %>
+      </div>
     </nav>
   </div>
   <main class="mdl-layout__content">
