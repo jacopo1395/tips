@@ -24,21 +24,11 @@ class PlacesController < ApplicationController
 
   # POST /places
   # POST /places.json
-  def create
-	
+  def create	
 	 @p=Api.new("AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
-	 @var=@p.spot("41.8917929","12.550459700000033","50")
-	 render plain: @var
-   # @places=HTTP.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=41.8917929,12.550459700000033&radius=50&type=restaurant&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U	")
-	#@var=ActiveSupport::JSON.decode(@places)
-	#render plain: @var["results"][0]["types"][0]
-	
-	#if @place.save
-    #  render plain: @place
-    #else
-    #  render 'new'
-    #end
- 
+	 @var=@p.nearby4("41.8917929","12.550459700000033","500",{:name => "vegetariano", :type => "restaurant"})
+	 #@var=@p.text_search("restaurants")
+	 render plain: @var  
 	
   end
 
