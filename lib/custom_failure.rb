@@ -1,6 +1,6 @@
 class CustomFailure < Devise::FailureApp
   def redirect_url
-   retry_path
+   sign_in_retry_path
   end
 
   def respond
