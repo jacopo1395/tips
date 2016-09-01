@@ -367,9 +367,9 @@ nav {
   margin-bottom: 30px;
 }
 
-/* Sign up card */
+/* Form card (signup, login, ...) */
 .form-card {
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -383,8 +383,26 @@ nav {
 .error-card {
   margin-left: auto;
   margin-right: auto;
-  background-color: red;
-  color: white;
+  margin-top: 40px;
+  margin-bottom: 0;
+  min-height: 0;
+  background-color: rgb(240, 85, 50);
+
+  .mdl-card__title {
+    color: white;
+    padding-bottom: 8px;
+  }
+
+  .mdl-card__supporting-text {
+    color: white;
+    padding-top: 8px;
+
+    p {
+      font-size: 1.05em;
+      margin-bottom: 0;
+    }
+  }
+
 }
 
 /* Devise shared links */
