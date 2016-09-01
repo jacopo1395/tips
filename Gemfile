@@ -34,11 +34,14 @@ gem 'material_design_lite-rails', '~> 1.2'
 # Devise
 gem 'devise'
 
-#facebook OAuth
+# facebook OAuth
 gem 'omniauth-facebook'
 
 # HTTP
 gem 'http'
+
+# Geokit
+gem 'geokit-rails'
 
 
 
