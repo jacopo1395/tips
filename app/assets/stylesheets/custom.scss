@@ -368,7 +368,7 @@ nav {
 }
 
 /* Sign up card */
-.signup-card {
+.form-card {
   margin-top: 40px;
   margin-bottom: 20px;
   margin-left: auto;
@@ -377,6 +377,14 @@ nav {
   .mdl-button {
     width: 100%;
   }
+}
+
+/* Error card */
+.error-card {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+  color: white;
 }
 
 /* Devise shared links */
