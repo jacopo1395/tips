@@ -13,9 +13,6 @@
                     method: :get, class: "mdl-button mdl-js-button" %>
         <div style="width: 26px;"></div>
         <% if !user_signed_in? %>
-          <!-- <%= link_to ("Registrati &nbsp;&nbsp;<i class='material-icons'>person_add</i>").html_safe,
-                      new_user_registration_path,
-                      method: :get, class: "mdl-button mdl-js-button" %> -->
 
           <button id="signup-menu-button" class="mdl-button mdl-js-button">
             Nuovo utente? &nbsp;&nbsp;
@@ -37,7 +34,6 @@
           <%= link_to ("Entra &nbsp;&nbsp;<i class='material-icons'>exit_to_app</i>").html_safe,
                       new_user_session_path,
                       method: :get, class: "mdl-button mdl-js-button" %>
-          <!-- <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %> -->
         <% elsif %>
           <button id="profile-menu-button" class="mdl-button mdl-js-button">
             <%= current_user.username %> &nbsp;&nbsp;
