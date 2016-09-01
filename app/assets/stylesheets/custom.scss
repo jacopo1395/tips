@@ -370,11 +370,25 @@ nav {
 /* Sign up card */
 .signup-card {
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
 
   .mdl-button {
     width: 100%;
+  }
+}
+
+/* Devise shared links */
+.devise-shared-links {
+  display: table;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 60px;
+
+  .mdl-button {
+    text-transform: none;
   }
 }
