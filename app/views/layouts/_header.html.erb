@@ -97,7 +97,7 @@
           <i class="material-icons">edit</i>
           <%= link_to 'Modifica Profilo', edit_user_registration_path, method: :get, class: "mdl-navigation__link" %>
         </div>
-        <%= if current_user.try(:admin?) %>
+        <% if current_user.try(:admin?) %>
           <div class="drawer-item">
             <i class="material-icons">supervisor_account</i>
             <%= link_to 'Area Admin', new_admin_path, method: :get, class: "mdl-navigation__link" %>
