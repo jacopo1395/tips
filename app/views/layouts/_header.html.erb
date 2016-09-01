@@ -95,16 +95,16 @@
         </div>
         <div class="drawer-item">
           <i class="material-icons">person</i>
-          <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to 'Il mio profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
         </div>
         <div class="drawer-item">
           <i class="material-icons">edit</i>
-          <%= link_to 'Modifica Profilo', edit_user_registration_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to 'Modifica profilo', edit_user_registration_path, method: :get, class: "mdl-navigation__link" %>
         </div>
         <% if current_user.try(:admin?) %>
           <div class="drawer-item">
             <i class="material-icons">supervisor_account</i>
-            <%= link_to 'Area Admin', new_admin_path, method: :get, class: "mdl-navigation__link" %>
+            <%= link_to 'Area admin', new_admin_path, method: :get, class: "mdl-navigation__link" %>
           </div>
         <% end %>
         <div class="drawer-item">
