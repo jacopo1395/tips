@@ -11,16 +11,33 @@
         <%= link_to ("Home &nbsp;&nbsp;<i class='material-icons'>home</i>").html_safe,
                     root_path,
                     method: :get, class: "mdl-button mdl-js-button" %>
-        <div style="width: 32px;"></div>
+        <div style="width: 26px;"></div>
         <% if !user_signed_in? %>
-          <%= link_to ("Registrati &nbsp;&nbsp;<i class='material-icons'>person_add</i>").html_safe,
+          <!-- <%= link_to ("Registrati &nbsp;&nbsp;<i class='material-icons'>person_add</i>").html_safe,
                       new_user_registration_path,
-                      method: :get, class: "mdl-button mdl-js-button" %>
-          <div style="width: 32px;"></div>
+                      method: :get, class: "mdl-button mdl-js-button" %> -->
+
+          <button id="signup-menu-button" class="mdl-button mdl-js-button">
+            Nuovo utente? &nbsp;&nbsp;
+            <i class="material-icons">person_add</i>
+          </button>
+
+          <ul class="profile-menu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="signup-menu-button">
+            <li class="mdl-menu__item">
+              <i class="material-icons">person_add</i>
+              <%= link_to 'Registrati!', new_user_registration_path, method: :get, class: "mdl-navigation__link" %>
+            </li>
+            <li class="mdl-menu__item">
+              <i class="material-icons">share</i>
+              <%= link_to 'Entra con Facebook', user_facebook_omniauth_authorize_path, class: "mdl-navigation__link" %>
+            </li>
+          </ul>
+
+          <div style="width: 26px;"></div>
           <%= link_to ("Entra &nbsp;&nbsp;<i class='material-icons'>exit_to_app</i>").html_safe,
                       new_user_session_path,
                       method: :get, class: "mdl-button mdl-js-button" %>
-          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+          <!-- <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %> -->
         <% elsif %>
           <button id="profile-menu-button" class="mdl-button mdl-js-button">
             <%= current_user.username %> &nbsp;&nbsp;
