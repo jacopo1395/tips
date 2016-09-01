@@ -34,6 +34,9 @@ gem 'material_design_lite-rails', '~> 1.2'
 # Devise
 gem 'devise'
 
+#facebook OAuth
+gem 'omniauth-facebook'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

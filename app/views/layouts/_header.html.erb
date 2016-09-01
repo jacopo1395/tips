@@ -20,6 +20,7 @@
           <%= link_to ("Entra &nbsp;&nbsp;<i class='material-icons'>exit_to_app</i>").html_safe,
                       new_user_session_path,
                       method: :get, class: "mdl-button mdl-js-button" %>
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
         <% elsif %>
           <button id="profile-menu-button" class="mdl-button mdl-js-button">
             <%= current_user.username %> &nbsp;&nbsp;
@@ -49,6 +50,7 @@
             </li>
           </ul>
         <% end %>
+
       </nav>
     </div>
   </header>
