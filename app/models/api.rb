@@ -1,19 +1,30 @@
 class Api < ApplicationRecord
+	acts_as_mappable :default_units => :km
+	
 	require "http"
 	
-	#inizializza la libreria | key = chiave fornita dalla api
-	def initialize(key)
-		@api_key=key
-	end	
+	
+	#inizializza la libreria 
+	# ESEMPIO  @p=Api.new()
+	def initialize(ip)
+		@api_key="AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U"
+		location = Geokit::Geocoders::MultiGeocoder.geocode(ip)
+		@lat=location.lat.to_s
+		@long=location.lng.to_s
+	end
 	
 	# nearby chiama le API nearby di google
 	# parametri obbligatori, stringhe: 1) latitudine, 2)longitudine
 	# parametro opzionale, stringa: 3) radius -di default = 500 
 	# parametro opzionale: 4) hash con chiave e valore -chiave ammesse :name e :type  NOTA perusare il 4 parametro è obbligatorio usare anche il terzo
-	## ESEMPI   nearby("11111","22222")     nearby("11111","22222","50")     nearby("11111","22222","50", {:name => "vegetariano", :type => "restaurant"}) ##
+	## ESEMPI   @p.nearby("11111","22222")     @p.nearby("11111","22222","50")     @p.nearby("11111","22222","50", {:name => "vegetariano", :type => "restaurant"}) ##
 	# ritorno: un array di POI
 	def nearby(*args)
 		case args.size
+		when 0
+			magic_nearby({})
+		when 1
+			magic_nearby(args[0])
 		when 2
 			nearby2(args[0],args[1])
 		when 3
@@ -23,6 +34,10 @@ class Api < ApplicationRecord
 		end
 	end
 	
+	# trova latitudine e longitudine dall'IP
+	def magic_nearby(options)		
+		nearby4(@lat,@long,"500",options)
+	end
 	
 	# imposta radius a 500
 	def nearby2(lat,long)
@@ -79,9 +94,10 @@ class Api < ApplicationRecord
 
 
 	# text_search nearby chiama le API text_search di google
-	# WORKING IN PROGRESS...
+	# ESEMPIO text_search("ristoranti vegani roma")
+	# ritorno: array di POI
 	def text_search(query)
-		q=textseach_s+'key='+@api_key+"&query="+query
+		q=textseach_s+'key='+@api_key+"&query="+formatt(query)+"&language=it"
 		#location=-33.8670522,151.1957362&radius=500&type=restaurant&name=cruise&key
 		places=HTTP.get(q)
 		var=ActiveSupport::JSON.decode(places)["results"]
@@ -89,7 +105,7 @@ class Api < ApplicationRecord
 		var.each do |x|
 		poi=Poi.new(:name => x["name"], 
 					#:types => x["types"], 
-					:address => x["vicinity"],
+					:address => x["formatted_address"],
 					:rate => x["rating"],
 					#:lat => var[i]["geometry"]["location"]["lat"], 
 					#:long => var[i]["geometry"]["location"]["lng"] 
@@ -115,6 +131,20 @@ class Api < ApplicationRecord
 	
 	#
 	private
+	
+	def formatt(string)
+		s=""
+		i=0
+		string.split(' ').each do |x|
+			if i==0 
+				s=s+x
+			else 
+				s=s+"+"+x
+			end
+			i=1
+		end
+		s
+	end
 	
 	def nearby_s
 		"https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
