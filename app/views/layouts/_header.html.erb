@@ -83,6 +83,10 @@
           <i class="material-icons">person_add</i>
           <%= link_to "Registrati", new_user_registration_path, method: :get, class: "mdl-navigation__link" %>
         </div>
+        <div class="drawer-item">
+          <i class="material-icons">share</i>
+          <%= link_to 'Entra con Facebook', user_facebook_omniauth_authorize_path, class: "mdl-navigation__link" %>
+        </div>
       <% elsif %>
         <p class="drawer-welcome-message">Benvenuto <%= current_user.username %>!</p>
         <div class="drawer-item">
