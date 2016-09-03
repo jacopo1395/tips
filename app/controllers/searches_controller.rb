@@ -19,7 +19,7 @@ class SearchesController < ApplicationController
 
     @search = SearchResults.new
 
-    render html: "Ciao!"
+    render html: "Ciao! #{@search.location}"
   end
 
 end
