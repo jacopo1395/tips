@@ -8,6 +8,8 @@ class SearchesController < ApplicationController
     spot_names = Array.new
     spot_list.each do |spot|
       spot_names.push spot.name
+      spot_names.push spot.vicinity
+      spot_names.push spot.rating
       spot_names.push spot.types
     end
 
