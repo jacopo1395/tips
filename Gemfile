@@ -34,6 +34,9 @@ gem 'material_design_lite-rails', '~> 1.2'
 # Devise
 gem 'devise'
 
+# Gemified version of Google Places APIs
+gem 'google_places'
+
 #facebook OAuth
 gem 'omniauth-facebook'
 
