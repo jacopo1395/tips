@@ -17,9 +17,9 @@ class SearchesController < ApplicationController
     #
     # render html: ("Hello, Google Places!<br><br> #{spot_names}").html_safe
 
-    @search = SearchResults.new
+    @search = SearchResults.new(request.remote_ip)
 
-    render html: "Ciao! #{@search.location}"
+    render html: "Ciao! #{request.remote_ip} #{@search.location}"
   end
 
 end
