@@ -6,7 +6,7 @@ module SearchesHelper
 
     def initialize(remote_ip)
       @client = GooglePlaces::Client.new("AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
-      @location = Geokit::Geocoders::MultiGeocoder.geocode(remote_ip)
+      # @location = Geokit::Geocoders::MultiGeocoder.geocode(remote_ip)
     end
 
   end

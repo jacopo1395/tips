@@ -19,7 +19,7 @@ class SearchesController < ApplicationController
 
     @search = SearchResults.new(request.remote_ip)
 
-    render html: "Ciao! #{request.remote_ip} #{@search.location}"
+    render html: "IP address: #{request.remote_ip} | Latitude: #{request.location.latitude} | Longitude: #{request.location.longitude}"
   end
 
 end
