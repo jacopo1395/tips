@@ -17,9 +17,15 @@ class SearchesController < ApplicationController
     #
     # render html: ("Hello, Google Places!<br><br> #{spot_names}").html_safe
 
-    @search = SearchResults.new(request.remote_ip)
+    @search = SearchResults.new(request.location.latitude, request.location.longitude)
 
-    render html: "IP address: #{request.remote_ip} | Latitude: #{request.location.latitude} | Longitude: #{request.location.longitude}"
+    to_render = ""
+    @search.spots.each do |spot|
+      to_render += spot.name + ", " + spot.types.to_s
+      to_render += "<br>"
+    end
+
+    render html: to_render.html_safe
   end
 
 end

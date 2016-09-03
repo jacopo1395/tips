@@ -38,7 +38,6 @@ gem 'devise'
 gem 'google_places'
 
 # Geocoder for location (lng, lat)
-# gem 'geokit-rails'
 gem 'geocoder'
 
 #facebook OAuth
