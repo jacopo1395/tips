@@ -37,6 +37,9 @@ gem 'devise'
 # Gemified version of Google Places APIs
 gem 'google_places'
 
+# Geocoder for location (lng, lat)
+gem 'geocoder'
+
 #facebook OAuth
 gem 'omniauth-facebook'
 
