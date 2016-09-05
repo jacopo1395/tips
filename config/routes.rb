@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   get '/admin', to: 'admins#admin'  #da cancellare!! Ti fa diventare admin, è solo per test.
 
-  get '/search', to: 'searches#new'
+  get '/search', to: 'searches#search'
 
 end
