@@ -35,7 +35,10 @@ gem 'material_design_lite-rails', '~> 1.2'
 gem 'devise'
 
 # Gemified version of Google Places APIs
-gem 'google_places'
+# gem 'google_places'
+
+# For http requests
+gem 'http'
 
 # Geocoder for location (lng, lat)
 gem 'geocoder'

@@ -2,159 +2,168 @@ module SearchesHelper
 
   class SearchResults
 
-    attr_accessor :spot_types_by_number
-    attr_accessor :spots
+    require "http"
 
-    @@spot_types = [
-      "accounting",
-      "airport",
-      "amusement_park",
-      "aquarium",
-      "art_gallery",
-      "atm",
-      "bakery",
-      "bank",
-      "bar",
-      "beauty_salon",
-      "bicycle_store",
-      "book_store",
-      "bowling_alley",
-      "bus_station",
-      "cafe",
-      "campground",
-      "car_dealer",
-      "car_rental",
-      "car_repair",
-      "car_wash",
-      "casino",
-      "cemetery",
-      "church",
-      "city_hall",
-      "clothing_store",
-      "convenience_store",
-      "courthouse",
-      "dentist",
-      "department_store",
-      "doctor",
-      "electrician",
-      "electronics_store",
-      "embassy",
-      "establishment",
-      "finance",
-      "fire_station",
-      "florist",
-      "food",
-      "funeral_home",
-      "furniture_store",
-      "gas_station",
-      "general_contractor",
-      "grocery_or_supermarket",
-      "gym",
-      "hair_care",
-      "hardware_store",
-      "health",
-      "hindu_temple",
-      "home_goods_store",
-      "hospital",
-      "insurance_agency",
-      "jewelry_store",
-      "laundry",
-      "lawyer",
-      "library",
-      "liquor_store",
-      "local_government_office",
-      "locksmith",
-      "lodging",
-      "meal_delivery",
-      "meal_takeaway",
-      "mosque",
-      "movie_rental",
-      "movie_theater",
-      "moving_company",
-      "museum",
-      "night_club",
-      "painter",
-      "park",
-      "parking",
-      "pet_store",
-      "pharmacy",
-      "physiotherapist",
-      "place_of_worship",
-      "plumber",
-      "police",
-      "post_office",
-      "real_estate_agency",
-      "restaurant",
-      "roofing_contractor",
-      "rv_park",
-      "school",
-      "shoe_store",
-      "shopping_mall",
-      "spa",
-      "stadium",
-      "storage",
-      "store",
-      "subway_station",
-      "synagogue",
-      "taxi_stand",
-      "train_station",
-      "transit_station",
-      "travel_agency",
-      "university",
-      "veterinary_care",
-      "zoo"
+    attr_accessor :places_by_type
+    attr_accessor :place_types_by_number
+    attr_accessor :place_top_types
+
+    PLACE_TYPES = %w[
+      amusement_park
+      aquarium
+      art_gallery
+      bakery
+      bar
+      book_store
+      bowling_alley
+      cafe
+      church
+      clothing_store
+      convenience_store
+      department_store
+      electronics_store
+      establishment
+      library
+      meal_takeaway
+      mosque
+      movie_theater
+      museum
+      night_club
+      park
+      restaurant
+      shoe_store
+      shopping_mall
+      spa
+      store
+      synagogue
+      zoo
     ]
 
-    @@spot_excluded_types = [
-      "accounting",
-      "airport",
-      "atm",
-      "bank",
-      "bus_station",
-      "car_dealer",
-      "car_rental",
-      "car_repair",
-      "car_wash",
-      "dentist",
-      "doctor",
-      "electrician",
-      "embassy",
-      "finance",
-      "fire_station",
-      "funeral_home",
-      "furniture_store",
-      "gas_station",
-      "hospital",
-      "insurance_agency",
-      "laundry",
-      "lawyer",
-      "local_government_office",
-      "moving_company",
-      "parking",
-      "pharmacy",
-      "physiotherapist",
-      "police",
-      "post_office",
-      "subway_station",
-      "taxi_stand",
-      "train_station",
-      "travel_agency",
-      "veterinary_care"
+    PLACE_TYPES_TEST = %w[
+      bar
+      movie_theater
+      museum
+      park
+      restaurant
     ]
 
     def initialize(latitude, longitude)
-      @client = GooglePlaces::Client.new("AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
-      # @spots = @client.spots(latitude, longitude, radius: 5000)
-      @spots = @client.spots(40.7711329, -73.9741874, radius: 2000)
+      @places_by_type = Hash.new
 
-      @spot_types_by_number = {}
-      @spot_types_by_number.default = 0
-      @spots.each do |spot|
-        spot.types.each do |type|
-          @spot_types_by_number[type] += 1
-        end
+      # Google Places API key
+      @api_key = "AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U"
+
+      # Provide default coordinates to use for development
+      if Rails.env.development?
+        # Colosseum (Rome) coordinates
+        @latitude = 41.89015
+        @longitude = 12.49244
+      else
+        # Geocoder (gem) gets user's coordinates from his IP address
+        @latitude = latitude
+        @longitude = longitude
       end
+
+      # Set default radius
+      @radius = 500
+
+      get_places_by_type
+      get_place_types_by_number @places_by_type
+      get_top_types
     end
 
+    def get_top_types(limit = 4)
+      @place_top_types = @place_types_by_number.sort_by { |type, quantity| -1*quantity }
+      @place_top_types = @place_top_types[0..3]
+    end
+
+    def remove_places_by_type(*types_to_remove)
+      @places_by_type.except!(*types_to_remove)
+      @place_types_by_number.except!(*types_to_remove)
+      get_top_types
+    end
+
+    def keep_places_by_type(*types_to_keep)
+      @places_by_type.slice!(*types_to_keep)
+      @place_types_by_number.slice!(*types_to_keep)
+      get_top_types
+    end
+
+    ### Private methods ###
+
+    private
+
+      def build_nearby_query(options = {})
+        # Base url
+        query = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+        # Add location (latitude and longitude)
+        query += "location=#{@latitude},#{@longitude}"
+        # If a radius value is specified, add it. Otherwise default to 500.
+        if !options[:radius].nil?
+          query += "&radius=#{options[:radius]}"
+        else
+          query += "&radius=500"
+        end
+        # If a type value is specified, add it.
+        if !options[:type].blank?
+          query += "&type=#{options[:type]}"
+        end
+        # If a name value is specified, add it.
+        if !options[:name].blank?
+          query += "&name=#{options[:name]}"
+        end
+        # If a previous request returned a next page token, add it.
+        if !options[:next_page_token].blank?
+          query += "&pagetoken=#{options[:next_page_token]}"
+        end
+        # Add API key
+        query += "&key=#{@api_key}"
+
+        return query
+      end
+
+      def get_places_by_type(options = { max_pages: 1 })
+        @places_by_type = Hash.new
+
+        if Rails.env.development?
+          # Minimize api calls during development
+          place_types = PLACE_TYPES_TEST
+        else
+          place_types = PLACE_TYPES
+        end
+
+        place_types.each do |place_type|
+
+          query = build_nearby_query(type: place_type)
+          http_string_result = HTTP.get(query).to_s
+
+          page_number = 0
+          http_parsed_result = Array.new
+          http_parsed_result[page_number] = JSON.parse(http_string_result)
+
+          @places_by_type[place_type] = http_parsed_result[page_number]["results"]
+
+          next_page_token = http_parsed_result[page_number]["next_page_token"]
+          page_number += 1
+
+          while (!next_page_token.blank? && page_number < options[:max_pages]) do
+            http_string_result = build_nearby_query(next_page_token: next_page_token)
+            http_string_result = HTTP.get(query).to_s
+            http_parsed_result[page_number] = JSON.parse(http_string_result)
+
+            @places_by_type[place_type].concat(http_parsed_result[page_number]["results"])
+
+            next_page_token = http_parsed_result[page_number]["next_page_token"]
+            page_number += 1
+          end
+        end
+      end
+
+      def get_place_types_by_number(places_by_type)
+        @place_types_by_number = Hash.new
+        @places_by_type.each do |type, places|
+          @place_types_by_number[type.to_s] = places.length
+        end
+      end
   end
 end
