@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830124354) do
+ActiveRecord::Schema.define(version: 20160906163912) do
+
+  create_table "final_results", force: :cascade do |t|
+    t.string   "userMail"
+    t.integer  "searchNumber"
+    t.string   "apiId"
+    t.string   "api"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "is_favourites", force: :cascade do |t|
+    t.string   "userMail"
+    t.string   "apiId"
+    t.string   "api"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "is_recents", force: :cascade do |t|
+    t.string   "userMail"
+    t.string   "apiId1"
+    t.string   "api1"
+    t.string   "apiId2"
+    t.string   "api2"
+    t.string   "apiId3"
+    t.string   "api3"
+    t.string   "apiId4"
+    t.string   "api4"
+    t.string   "apiId5"
+    t.string   "api5"
+    t.integer  "last"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pois", force: :cascade do |t|
     t.string   "name"
@@ -24,14 +58,20 @@ ActiveRecord::Schema.define(version: 20160830124354) do
     t.string   "api"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "apiId"
+    t.float    "lat"
+    t.float    "long"
   end
 
   create_table "questions", force: :cascade do |t|
     t.text     "text"
     t.text     "option"
     t.integer  "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "questionId"
+    t.integer  "searchNumber"
+    t.string   "userMail"
   end
 
   create_table "searches", force: :cascade do |t|

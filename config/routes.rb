@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :pois 
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root 'static_pages#home'
@@ -20,8 +22,9 @@ Rails.application.routes.draw do
   
   get '/admin', to: 'admins#admin'  #da cancellare!! Ti fa diventare admin, è solo per test.
   
+  devise_scope :user do get "/recent_pois" => "users/recent_pois#getpois" end
   
-  
+
   
   
 
