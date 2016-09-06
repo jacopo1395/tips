@@ -4,18 +4,20 @@
   </div>
   <div class="mdl-card__supporting-text">
     <div class="row">
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white">
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white"
+        href="/search?text=ciao">
         Option 1
-      </button>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--green mdl-color-text--white">
+      </a>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--green mdl-color-text--white">
         Option 2
-      </button>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--cyan mdl-color-text--white">
+      </a>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--cyan mdl-color-text--white">
         Option 3
-      </button>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white">
+      </a>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white"
+        href="/search?clear=true">
         Option 4
-      </button>
+      </a>
     </div>
   </div>
   <div class="mdl-card__actions mdl-card--border">
@@ -25,4 +27,6 @@
   </div>
 </div>
 
-<%= debug params if Rails.env.development?%>
+<% if Rails.env.development? %>
+  <%= debug params %>
+<% end %>
