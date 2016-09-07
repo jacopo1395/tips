@@ -112,6 +112,10 @@ module SearchesHelper
         if !options[:name].blank?
           query += "&name=#{options[:name]}"
         end
+        # If a keyword is specified, add it.
+        if !options.[:keyword].blank?
+          query += "&keyword=#{options[:keyword]}"
+        end
         # If a previous request returned a next page token, add it.
         if !options[:next_page_token].blank?
           query += "&pagetoken=#{options[:next_page_token]}"
