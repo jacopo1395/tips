@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :searches
+  resources :pois
+  get '/nuovo', to: 'pois#nuovo'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root 'static_pages#home'

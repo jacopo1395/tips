@@ -1,0 +1,14 @@
+<h1>Listing POIs</h1>
+ 
+<table>
+  <tr>
+    <th>Nome</th>
+  </tr>
+ 
+  <% @pois.each do |poi| %>
+    <tr>
+      <td><%= poi.name %></td>
+      <td><%= link_to 'Show', poi_path(poi) %></td>
+    </tr>
+  <% end %>
+</table>
