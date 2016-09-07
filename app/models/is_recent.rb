@@ -1,0 +1,2 @@
+class IsRecent < ApplicationRecord
+end
