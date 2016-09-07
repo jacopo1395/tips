@@ -102,7 +102,7 @@ class Api < ApplicationRecord
 				end
 				i=i+1
 			end
-			poi[:type]=s
+			poi[:types]=s
 			a.push(poi)
 			i=i+1
 		end
