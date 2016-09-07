@@ -47,14 +47,15 @@ module SearchesHelper
       restaurant
     ]
 
+    # Place types not supported by Google Places APIs
+    # Should be written in ITALIAN
     PLACE_ADDITIONAL_TYPES = %w[
-      pastry
+      pasticceria
       pub
     ]
 
     PLACE_ADDITIONAL_TYPES_TEST = %w[
       pasticceria
-      pub
     ]
 
     def initialize(latitude, longitude)
