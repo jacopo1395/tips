@@ -15,7 +15,7 @@ class SearchesController < ApplicationController
     if @search.nil?
       latitude = request.location.latitude
       longitude = request.location.longitude
-      @search = Search.new(latitude, longitude)
+      @search = SearchResults.new(latitude, longitude)
     else
       # Do something
     end

@@ -47,6 +47,16 @@ module SearchesHelper
       restaurant
     ]
 
+    PLACE_ADDITIONAL_TYPES = %w[
+      pastry
+      pub
+    ]
+
+    PLACE_ADDITIONAL_TYPES_TEST = %w[
+      pastry
+      pub
+    ]
+
     def initialize(latitude, longitude)
       @places_by_type = Hash.new
 
@@ -113,7 +123,7 @@ module SearchesHelper
           query += "&name=#{options[:name]}"
         end
         # If a keyword is specified, add it.
-        if !options.[:keyword].blank?
+        if !options[:keyword].blank?
           query += "&keyword=#{options[:keyword]}"
         end
         # If a previous request returned a next page token, add it.
@@ -132,13 +142,40 @@ module SearchesHelper
         if Rails.env.development?
           # Minimize api calls during development
           place_types = PLACE_TYPES_TEST
+          place_additional_types = PLACE_ADDITIONAL_TYPES_TEST
         else
           place_types = PLACE_TYPES
+          place_additional_types = PLACE_ADDITIONAL_TYPES
         end
 
         place_types.each do |place_type|
 
           query = build_nearby_query(type: place_type)
+          http_string_result = HTTP.get(query).to_s
+
+          page_number = 0
+          http_parsed_result = Array.new
+          http_parsed_result[page_number] = JSON.parse(http_string_result)
+
+          @places_by_type[place_type] = http_parsed_result[page_number]["results"]
+
+          next_page_token = http_parsed_result[page_number]["next_page_token"]
+          page_number += 1
+
+          while (!next_page_token.blank? && page_number < options[:max_pages]) do
+            http_string_result = build_nearby_query(next_page_token: next_page_token)
+            http_string_result = HTTP.get(query).to_s
+            http_parsed_result[page_number] = JSON.parse(http_string_result)
+
+            @places_by_type[place_type].concat(http_parsed_result[page_number]["results"])
+
+            next_page_token = http_parsed_result[page_number]["next_page_token"]
+            page_number += 1
+          end
+        end
+
+        place_additional_types.each do |place_type|
+          query = build_nearby_query(keyword: place_type)
           http_string_result = HTTP.get(query).to_s
 
           page_number = 0
