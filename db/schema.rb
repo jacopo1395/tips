@@ -12,6 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20160907154028) do
 
+  create_table "apis", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "final_results", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160907154028) do
 
   create_table "pois", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "types"
     t.string   "address"
     t.integer  "rate"
     t.integer  "price"
