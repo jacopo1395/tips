@@ -53,7 +53,7 @@ module SearchesHelper
     ]
 
     PLACE_ADDITIONAL_TYPES_TEST = %w[
-      pastry
+      pasticceria
       pub
     ]
 

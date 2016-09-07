@@ -29,6 +29,8 @@
 
 <% if Rails.env.development? %>
   <%= debug params %>
-  <%= debug @search.place_types_by_number %>
-  <%= debug @search.places_by_type %>
+  <% if !@search.nil? %>
+    <%= debug @search.place_types_by_number %>
+    <%= debug @search.places_by_type %>
+  <% end %>
 <% end %>
