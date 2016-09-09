@@ -100,6 +100,35 @@ module SearchesHelper
       get_top_types
     end
 
+    def add_new_places_by_keyword(types_to_add, options = { max_pages: 1 })
+      remove_places_by_type(options[:types_to_remove]) if !options[:types_to_remove].blank?
+
+      types_to_add.each do |place_type|
+        query = build_nearby_query(keyword: place_type)
+        http_string_result = HTTP.get(query).to_s
+
+        page_number = 0
+        http_parsed_result = Array.new
+        http_parsed_result[page_number] = JSON.parse(http_string_result)
+
+        @places_by_type[place_type] = http_parsed_result[page_number]["results"]
+
+        next_page_token = http_parsed_result[page_number]["next_page_token"]
+        page_number += 1
+
+        while (!next_page_token.blank? && page_number < options[:max_pages]) do
+          http_string_result = build_nearby_query(next_page_token: next_page_token)
+          http_string_result = HTTP.get(query).to_s
+          http_parsed_result[page_number] = JSON.parse(http_string_result)
+
+          @places_by_type[place_type].concat(http_parsed_result[page_number]["results"])
+
+          next_page_token = http_parsed_result[page_number]["next_page_token"]
+          page_number += 1
+        end
+      end
+    end
+
     ### Private methods ###
 
     private
