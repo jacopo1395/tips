@@ -33,6 +33,7 @@ end
 # Seed the database with the following questions.
 question = Question.new
 question.string_id = "first_question"
+question.text = "Cosa vuoi fare?"
 question.options = {
   "Mangiare" => "next_question_id",
   "Bere" => "next_question_id",
