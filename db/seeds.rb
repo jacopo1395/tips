@@ -39,6 +39,6 @@ question.options = {
   "Uscire" => "next_question_id",
   "Rilassarmi" => "next_question_id"
 }
-# question.time_condition = {}
-# question.required_place_types = []
+question.time_condition = {}
+question.required_place_types = []
 question.save
