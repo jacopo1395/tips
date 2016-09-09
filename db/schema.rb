@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909083823) do
+ActiveRecord::Schema.define(version: 20160909130002) do
 
   create_table "apis", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 20160909083823) do
 
   create_table "questions", force: :cascade do |t|
     t.text     "text"
-    t.text     "option"
+    t.text     "options"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.string   "next_questions"
+    t.text     "next_questions"
     t.string   "string_id"
   end
 
