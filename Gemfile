@@ -40,6 +40,12 @@ gem 'geocoder'
 gem 'omniauth-facebook'
 # Use the database to store sessions
 gem 'activerecord-session_store'
+# Geokit
+gem 'geokit-rails'
+
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

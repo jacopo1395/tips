@@ -51,5 +51,6 @@ Questa applicazione web fa uso delle seguenti tecnologie:
 
 * Ruby
 * Rails
+* Devise
 * Heroku
 * Google Material Design Lite (MDL)
