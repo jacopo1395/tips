@@ -119,3 +119,22 @@ question.required_place_types = %w[
   pasticceria
 ]
 question.save
+
+question = Question.new
+question.string_id = "bere"
+question.text = "Dove preferisci andare a bere?"
+question.options = {
+  "Dolce" => "",
+  "Salata" => ""
+}
+question.time_condition = {
+  :from => "21:30:00",
+  :to => "01:00:00"
+}
+question.required_place_types = %w[
+  pub
+  enoteca
+  birreria
+  discoteca
+]
+question.save
