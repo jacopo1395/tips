@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
 
-  include SearchesHelper
+  # include SearchesHelper
 
   before_filter :load_search
   after_filter :save_search
@@ -15,7 +15,7 @@ class SearchesController < ApplicationController
     if @search.nil?
       latitude = request.location.latitude
       longitude = request.location.longitude
-      @search = SearchResults.new(latitude, longitude)
+      @search = Search.new(latitude, longitude)
     else
       # Do something
     end
