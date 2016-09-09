@@ -1,12 +1,8 @@
-<!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <!-- Title -->
       <span class="mdl-layout-title">Nome Progetto</span>
-      <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. Hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <%= link_to ("Home &nbsp;&nbsp;<i class='material-icons'>home</i>").html_safe,
                     root_path,
