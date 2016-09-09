@@ -2,7 +2,7 @@ class CreatePois < ActiveRecord::Migration[5.0]
   def change
     create_table :pois do |t|
       t.string :name
-      t.string :type
+      t.string :types 
       t.string :address
       t.integer :rate
       t.integer :price

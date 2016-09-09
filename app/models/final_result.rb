@@ -1,0 +1,2 @@
+class FinalResult < ApplicationRecord
+end
