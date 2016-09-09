@@ -8,6 +8,6 @@ class SearchesController < ApplicationController
 		#@var=@p.nearby()
 		@var=@p.nearby({:name => "vegetariano", :type => "restaurant"})
 		#@var=@p.text_search("ristoranti roma vegani")
-		render plain: @var  
+		render plain: @var
 	 end
 end

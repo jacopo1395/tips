@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907154028) do
+ActiveRecord::Schema.define(version: 20160909083823) do
 
   create_table "apis", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 20160907154028) do
   create_table "questions", force: :cascade do |t|
     t.text     "text"
     t.text     "option"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "next_questions"
+    t.string   "string_id"
   end
 
   create_table "searches", force: :cascade do |t|
