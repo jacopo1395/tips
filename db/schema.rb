@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160909083823) do
 
   create_table "pois", force: :cascade do |t|
     t.string   "name"
-    t.string   "types"
+    t.string   "type"
     t.string   "address"
     t.integer  "rate"
     t.integer  "price"
