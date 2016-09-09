@@ -37,15 +37,15 @@ question.text = "Cosa vuoi fare?"
 question.options = {
   "Colazione" => "colazione",
   "Pranzo" => "pranzo",
-  "Cena" => "",
-  "Merenda" => "",
-  "Bere" => "",
-  "Aperitivo" => "",
-  "Divertimento" => "",
-  "Scoprire i dintorni" => "",
-  "Rilassarmi" => "",
-  "Shopping" => "",
-  "Imparare" => ""
+  "Cena" => "cena",
+  "Merenda" => "merenda",
+  "Bere" => "bere",
+  "Aperitivo" => "aperitivo",
+  "Divertirmi" => "divertimento",
+  "Scoprire i dintorni" => "scoprire",
+  "Rilassarmi" => "relax",
+  "Shopping" => "shopping",
+  "Imparare" => "imparare"
 }
 question.time_condition = {}
 question.required_place_types = []
@@ -73,8 +73,8 @@ question = Question.new
 question.string_id = "pranzo"
 question.text = "Vai di fretta?"
 question.options = {
-  "Si" => "",
-  "No" => ""
+  "Si, non ho molto tempo" => "",
+  "No, mangio con tutta calma" => ""
 }
 question.time_condition = {
   :from => "11:00:00",
@@ -124,8 +124,10 @@ question = Question.new
 question.string_id = "bere"
 question.text = "Dove preferisci andare a bere?"
 question.options = {
-  "Dolce" => "",
-  "Salata" => ""
+  "Enoteca" => "",
+  "Birreria" => "",
+  "Pub" => "",
+  "Discoteca" => ""
 }
 question.time_condition = {
   :from => "21:30:00",
@@ -136,5 +138,24 @@ question.required_place_types = %w[
   enoteca
   birreria
   discoteca
+]
+question.save
+
+question = Question.new
+question.string_id = "aperitivo"
+question.text = "Dove preferisci andare?"
+question.options = {
+  "Bar" => "",
+  "Enoteca" => "",
+  "Birrera" => ""
+}
+question.time_condition = {
+  :from => "17:00:00",
+  :to => "20:00:00"
+}
+question.required_place_types = %w[
+  bar
+  enoteca
+  birreria
 ]
 question.save
