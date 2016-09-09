@@ -101,3 +101,21 @@ question.required_place_types = %w[
   restaurant
 ]
 question.save
+
+question = Question.new
+question.string_id = "merenda"
+question.text = "Preferisci una merenda dolce o salata?"
+question.options = {
+  "Dolce" => "",
+  "Salata" => ""
+}
+question.time_condition = {
+  :from => "14:30:00",
+  :to => "18:00:00"
+}
+question.required_place_types = %w[
+  cafe
+  gelateria
+  pasticceria
+]
+question.save
