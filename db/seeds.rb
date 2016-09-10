@@ -204,3 +204,22 @@ question.required_place_types = %w[
   punti_di_interesse
 ]
 question.save
+
+question = Question.new
+question.string_id = "relax"
+question.text = "Sei da solo o in compagnia?"
+question.options = {
+  "Da solo" => "",
+  "In compagnia" => ""
+}
+question.time_condition = {
+  :from => "8:00:00",
+  :to => "24:00:00"
+}
+question.required_place_types = %w[
+  library
+  cinema
+  teatro
+  parco
+]
+question.save
