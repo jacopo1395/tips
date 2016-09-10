@@ -243,3 +243,28 @@ question.required_place_types = %w[
   shoe_store
 ]
 question.save
+
+question = Question.new
+question.string_id = "imparare"
+question.text = "Cosa ti piacerebbe imparare?"
+question.options = {
+  "Visita di arte e cultura" => "",
+  "Scienza e natura" => "",
+  "Letteratura" => ""
+}
+question.time_condition = {
+  :from => "10:00:00",
+  :to => "19:00:00"
+}
+question.required_place_types = %w[
+  library
+  book_store
+  park
+  aquarium
+  zoo
+  monument
+  museum
+  art_gallery
+  church
+]
+question.save
