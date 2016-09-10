@@ -223,3 +223,23 @@ question.required_place_types = %w[
   parco
 ]
 question.save
+
+question = Question.new
+question.string_id = "shopping"
+question.text = "A cosa sei interessato?"
+question.options = {
+  "Libri" => "",
+  "Vestiti" => "",
+  "Scarpe" => ""
+}
+question.time_condition = {
+  :from => "10:00:00",
+  :to => "19:00:00"
+}
+question.required_place_types = %w[
+  store
+  book_store
+  clothing_store
+  shoe_store
+]
+question.save
