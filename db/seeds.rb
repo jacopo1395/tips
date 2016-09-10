@@ -185,3 +185,22 @@ question.required_place_types = %w[
   bowling
 ]
 question.save
+
+question = Question.new
+question.string_id = "scoprire"
+question.text = "Dove preferisci andare?"
+question.options = {
+  "Parco" => "",
+  "Luoghi di religione" => "",
+  "Altri punti di interesse" => ""
+}
+question.time_condition = {
+  :from => "8:00:00",
+  :to => "21:00:00"
+}
+question.required_place_types = %w[
+  luoghi_religione
+  parco
+  punti_di_interesse
+]
+question.save
