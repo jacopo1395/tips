@@ -122,12 +122,11 @@ question.save
 
 question = Question.new
 question.string_id = "bere"
-question.text = "Dove preferisci andare a bere?"
+question.text = "Cosa vorresti bere?"
 question.options = {
-  "Enoteca" => "",
-  "Birreria" => "",
-  "Pub" => "",
-  "Discoteca" => ""
+  "Vino" => "",
+  "Birra" => "",
+  "Altro" => ""
 }
 question.time_condition = {
   :from => "21:30:00",
