@@ -4,20 +4,28 @@
   </div>
   <div class="mdl-card__supporting-text">
     <div class="row">
-      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white"
-        href="/search?text=ciao">
-        Option 1
-      </a>
-      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--green mdl-color-text--white">
-        Option 2
-      </a>
-      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--cyan mdl-color-text--white">
-        Option 3
-      </a>
-      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white"
-        href="/search?clear=true">
-        Option 4
-      </a>
+      <% if !@question.valid_options[0].nil? %>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white"
+          href="/search?text=ciao">
+          <%= @question.valid_options[0]["text"] %>
+        </a>
+      <% end %>
+      <% if !@question.valid_options[1].nil? %>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--green mdl-color-text--white">
+          <%= @question.valid_options[1]["text"] %>
+        </a>
+      <% end %>
+      <% if !@question.valid_options[2].nil? %>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--cyan mdl-color-text--white">
+          <%= @question.valid_options[2]["text"] %>
+        </a>
+      <% end %>
+      <% if !@question.valid_options[3].nil? %>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white"
+          href="/search?clear=true">
+          <%= @question.valid_options[3]["text"] %>
+        </a>
+      <% end %>
     </div>
   </div>
   <div class="mdl-card__actions mdl-card--border">
@@ -31,6 +39,7 @@
   <%= debug params %>
   <% if !@question.nil? %>
     <%= debug @question.options %>
+    <%= debug @question.valid_options %>
   <% end %>
   <% if !@search.nil? %>
     <%= debug @search.place_types_by_number %>
