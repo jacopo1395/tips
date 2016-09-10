@@ -158,3 +158,30 @@ question.required_place_types = %w[
   birreria
 ]
 question.save
+
+question = Question.new
+question.string_id = "divertimento"
+question.text = "Cosa preferisci fare?"
+question.options = {
+  "Ballare" => "",
+  "Parco" => "",
+  "Cinema" => "",
+  "Teatro" => "",
+  "Concerto" => "",
+  "Sala giochi" => "",
+  "Bowling" => ""
+}
+question.time_condition = {
+  :from => "8:00:00",
+  :to => "23:59:59"
+}
+question.required_place_types = %w[
+  discoteca
+  parco
+  cinema
+  teatro
+  concerto
+  sala_giochi
+  bowling
+]
+question.save
