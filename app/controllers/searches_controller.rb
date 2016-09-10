@@ -2,12 +2,13 @@ class SearchesController < ApplicationController
 
   # include SearchesHelper
 
-  before_filter :load_search
-  after_filter :save_search
+  before_filter :load_data
+  after_filter :save_data
 
   def search
     if params[:clear] == "true"
       @search = nil
+      @question = nil
       return
     end
 
@@ -16,17 +17,20 @@ class SearchesController < ApplicationController
       latitude = request.location.latitude
       longitude = request.location.longitude
       @search = Search.new(latitude, longitude)
+      @question = Question.find_by!(string_id: "cosa_vuoi_fare")
     else
       # Do something
     end
   end
 
   private
-    def load_search
+    def load_data
       @search = session[:search_object]
+      @question = session[:question_object]
     end
 
-    def save_search
+    def save_data
       session[:search_object] = @search
+      session[:question_object] = @question
     end
 end
