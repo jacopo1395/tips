@@ -65,16 +65,15 @@ question.time_condition = {
 question.required_place_types = %w[
   bar
   cafe
-  pasticceria
 ]
 question.save
 
 question = Question.new
 question.string_id = "pranzo"
-question.text = "Vai di fretta?"
+question.text = "Vuoi sederti?"
 question.options = {
-  "Si, non ho molto tempo" => "",
-  "No, mangio con tutta calma" => ""
+  "No, non ho molto tempo" => "",
+  "Si, mangio con tutta calma" => ""
 }
 question.time_condition = {
   :from => "11:00:00",
