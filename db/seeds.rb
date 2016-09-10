@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Question model
-# empty_question_model = {
+# Question attributes
+# empty_question = {
 #   :string_id => "",
 #   :options => {
 #
