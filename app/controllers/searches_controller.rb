@@ -9,7 +9,6 @@ class SearchesController < ApplicationController
     if params[:clear] == "true"
       @search = nil
       @question = nil
-      return
     end
 
     # If @search is nil, create a Search object and ask the first question
