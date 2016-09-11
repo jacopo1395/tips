@@ -12,14 +12,14 @@ class Question < ApplicationRecord
       return false if current_time < self.time_condition[:from] || current_time > self.time_condition[:to]
     end
 
-    return true
-
     # Check if at least one of the required places is present
-    # self.required_place_types.each do |required_place_type|
-    #   return true if !search.places_by_type[:required_place_type].nil?
-    # end
-    #
-    # return false
+    self.required_place_types.each do |required_place_type|
+      if !search.places_by_type[required_place_type].nil?
+        return true
+      end
+    end
+
+    return false
   end
 
   def check_options_conditions(search)
