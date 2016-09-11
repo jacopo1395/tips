@@ -8,6 +8,7 @@
                     root_path,
                     method: :get, class: "mdl-button mdl-js-button" %>
         <div style="width: 26px;"></div>
+        <%= link_to 'trova utenti', find_users_path, class: "mdl-navigation__link" %>
         <% if !user_signed_in? %>
 
           <button id="signup-menu-button" class="mdl-button mdl-js-button">
@@ -39,7 +40,7 @@
           <ul class="profile-menu mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="profile-menu-button">
             <li class="mdl-menu__item">
               <i class="material-icons">person</i>
-              <%= link_to 'Visualizza Profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+              <%= link_to 'Visualizza Profilo', my_profile_path, method: :get, class: "mdl-navigation__link" %>
             </li>
             <li class="mdl-menu__item">
               <i class="material-icons">edit</i>
@@ -91,7 +92,7 @@
         </div>
         <div class="drawer-item">
           <i class="material-icons">person</i>
-          <%= link_to 'Il mio profilo', profile_path, method: :get, class: "mdl-navigation__link" %>
+          <%= link_to 'Il mio profilo', my_profile_path, method: :get, class: "mdl-navigation__link" %>
         </div>
         <div class="drawer-item">
           <i class="material-icons">edit</i>

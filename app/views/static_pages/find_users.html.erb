@@ -1,0 +1,6 @@
+<h1>Cerca un utente per nome o email</h1><br>
+<%= form_tag find_users_results_path, method: :get do %>
+  <%= text_field_tag :user, params[:user] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+<br>

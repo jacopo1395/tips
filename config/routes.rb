@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   # Home page. "/home" is equal to "/" in this case
   get '/home', to: 'static_pages#home'
 
-  # Path to the user profile. Maybe should be updated to point at the profile page
-  # created by Devise for users?
-  get '/profile', to: 'static_pages#profile'
+  # Path to the user profile.
+  get '/my_profile', to: 'static_pages#my_profile'
+  get '/profile/:id', to: 'static_pages#profile', as: 'profile'
+  
+  # cercare altri utenti per username o email
+  get "find_users", to: 'static_pages#find_users'
+  get "find_users/results", to: 'static_pages#list_users'
 
   # Start a new search
   get '/search', to: 'searches#search'
@@ -23,7 +27,7 @@ Rails.application.routes.draw do
 
   # Points of interest related pages
   get '/nuovo', to: 'pois#nuovo'
-
+  
   # Devise stuff
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do get "/sign_in/retry" => "users/sessions#retry" end

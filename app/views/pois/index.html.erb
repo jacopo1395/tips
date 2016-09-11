@@ -1,15 +1,49 @@
-<h1>Listing POIs</h1>
- 
+<p id="notice"><%= notice %></p>
+
+<h1>Pois</h1>
+
 <table>
-  <tr>
-    <th>Nome</th>
-  </tr>
- 
-  <% @pois.each do |poi| %>
+  <thead>
     <tr>
-      <td><%= poi.name %></td>
-      <td><%= link_to 'Show', poi_path(poi) %></td>
+      <th>Name</th>
+      <th>Types</th>
+      <th>Address</th>
+      <th>Rate</th>
+      <th>Price</th>
+      <th>Map</th>
+      <th>Image</th>
+      <th>Review</th>
+      <th>Api</th>
+      <th>Apiid</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @pois.each do |poi| %>
+      <tr>
+        <td><%= poi.name %></td>
+        <td><%= poi.types %></td>
+        <td><%= poi.address %></td>
+        <td><%= poi.rate %></td>
+        <td><%= poi.price %></td>
+        <td><%= poi.map %></td>
+        <td><%= poi.image %></td>
+        <td><%= poi.review %></td>
+        <td><%= poi.api %></td>
+        <td><%= poi.apiId %></td>
+        <td><%= poi.lat %></td>
+        <td><%= poi.long %></td>
+        <td><%= link_to 'Show', poi %></td>
+        <td><%= link_to 'Edit', edit_poi_path(poi) %></td>
+        <td><%= link_to 'Destroy', poi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
+<br>
+
+<%= link_to 'New Poi', new_poi_path %>
