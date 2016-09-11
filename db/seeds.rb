@@ -129,7 +129,7 @@ question.options = {
 }
 question.time_condition = {
   :from => "21:30:00",
-  :to => "01:00:00"
+  :to => "24:00:00"
 }
 question.required_place_types = %w[
   pub
@@ -171,8 +171,8 @@ question.options = {
   "Bowling" => ""
 }
 question.time_condition = {
-  :from => "8:00:00",
-  :to => "23:59:59"
+  :from => "08:00:00",
+  :to => "24:00:00"
 }
 question.required_place_types = %w[
   discoteca
@@ -194,7 +194,7 @@ question.options = {
   "Altri punti di interesse" => ""
 }
 question.time_condition = {
-  :from => "8:00:00",
+  :from => "08:00:00",
   :to => "21:00:00"
 }
 question.required_place_types = %w[
@@ -212,7 +212,7 @@ question.options = {
   "In compagnia" => ""
 }
 question.time_condition = {
-  :from => "8:00:00",
+  :from => "08:00:00",
   :to => "24:00:00"
 }
 question.required_place_types = %w[
