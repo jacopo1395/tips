@@ -50,8 +50,10 @@ question.options = {
   "Shopping" => "shopping",
   "Imparare" => "imparare"
 }
-question.time_condition = {}
-question.required_place_types = []
+question.time_condition = nil
+question.required_place_types = nil
+question.additional_place_types = nil
+question.place_types_to_keep = nil
 question.save
 
 question = Question.new
