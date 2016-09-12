@@ -7,6 +7,18 @@ class Question < ApplicationRecord
 
   attr_accessor :valid_options
 
+  # Check what options can be shown to the user
+  def check_options_conditions(search)
+    @valid_options = Array.new
+
+    self.options.each do |text, next_question_id|
+      next_question = Question.find_by(string_id: next_question_id)
+      if next_question.check_conditions(search)
+        @valid_options.push({ "text" => text, "next_question_id" => next_question_id })
+      end
+    end
+  end
+
   # Used by check_options_conditions
   # Check if the question can be asked to the user
   def check_conditions(search)
@@ -24,17 +36,5 @@ class Question < ApplicationRecord
     end
 
     return false
-  end
-
-  # Check what options can be shown to the user
-  def check_options_conditions(search)
-    @valid_options = Array.new
-
-    self.options.each do |text, next_question_id|
-      next_question = Question.find_by(string_id: next_question_id)
-      if next_question.check_conditions(search)
-        @valid_options.push({ "text" => text, "next_question_id" => next_question_id })
-      end
-    end
   end
 end
