@@ -13,14 +13,17 @@
 #   :options => {
 #
 #   },
-#   :next_questions => {
-#
-#   },
 #   :time_condition => {
 #     :from => "",
 #     :to => "",
 #   },
 #   :required_place_types => [
+#
+#   ],
+#   :additional_place_types => [
+#
+#   ],
+#   :place_types_to_keep => [
 #
 #   ]
 # }
