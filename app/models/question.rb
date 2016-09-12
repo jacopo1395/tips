@@ -2,9 +2,13 @@ class Question < ApplicationRecord
   serialize :options
   serialize :time_condition
   serialize :required_place_types
+  serialize :additional_place_types
+  serialize :place_types_to_keep
 
   attr_accessor :valid_options
 
+  # Used by check_options_conditions
+  # Check if the question can be asked to the user
   def check_conditions(search)
     # Check time condition
     if !self.time_condition.nil? && !self.time_condition[:from].nil? && !self.time_condition[:to].nil?
@@ -22,6 +26,7 @@ class Question < ApplicationRecord
     return false
   end
 
+  # Check what options can be shown to the user
   def check_options_conditions(search)
     @valid_options = Array.new
 
