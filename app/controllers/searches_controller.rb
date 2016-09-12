@@ -20,6 +20,10 @@ class SearchesController < ApplicationController
       @question.check_options_conditions(@search)
     else
       # Do something
+      @question = Question.find_by!(string_id: params[:next_question_id])
+      @search.keep_places_by_type(@question.place_types_to_keep)
+      @search.add_new_places_by_keyword(@question.additional_place_types)
+      @question.check_options_conditions(@search)
     end
   end
 
