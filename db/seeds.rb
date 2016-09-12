@@ -77,8 +77,8 @@ question = Question.new
 question.string_id = "pranzo"
 question.text = "Vuoi sederti?"
 question.options = {
-  "No, non ho molto tempo" => "",
-  "Si, mangio con tutta calma" => ""
+  "No, non ho molto tempo" => "pranzo_no",
+  "Si, mangio con tutta calma" => "pranzo_si"
 }
 question.time_condition = {
   :from => "11:00:00",
@@ -87,7 +87,110 @@ question.time_condition = {
 question.required_place_types = %w[
   restaurant
 ]
+question.additional_place_types = nil
+question.place_types_to_keep = %w[
+  restaurant
+]
 question.save
+
+  question = Question.new
+  question.string_id = "pranzo_no"
+  question.text = "Dove preferisci mangiare?"
+  question.options = {
+    "Fast food" => "",
+    "Pizzeria al taglio" => "",
+    "Kebab" => "",
+    "Paninoteca" => ""
+  }
+  question.time_condition = {
+    :from => "11:00:00",
+    :to => "14:30:00"
+  }
+  question.required_place_types = nil
+  question.additional_place_types = nil
+  question.place_types_to_keep = nil
+  question.save
+
+  question = Question.new
+  question.string_id = "pranzo_si"
+  question.text = "Quale tipo di ristorante preferisci?"
+  question.options = {
+    "Italiano" => "pranzo_si_italiano",
+    "Orientale" => "pranzo_si_orientale",
+    "Fast food" => "pranzo_si_fast_food"
+  }
+  question.time_condition = {
+    :from => "11:00:00",
+    :to => "14:30:00"
+  }
+  question.required_place_types = nil
+  question.additional_place_types = nil
+  question.place_types_to_keep = nil
+  question.save
+
+    question = Question.new
+    question.string_id = "pranzo_si_italiano"
+    question.text = "Quali piatti preferisci mangiare oggi?"
+    question.options = {
+      "Pasta" => "",
+      "Pizza" => "",
+      "Pesce" => "",
+      "Carne" => "",
+    }
+    question.time_condition = {
+      :from => "11:00:00",
+      :to => "14:30:00"
+    }
+    question.required_place_types = nil
+    question.additional_place_types = [
+      "ristorante pasta",
+      "pizzeria",
+      "ristorante pesce",
+      "ristorante carne"
+    ]
+    question.place_types_to_keep = []
+    question.save
+
+    question = Question.new
+    question.string_id = "pranzo_si_orientale"
+    question.text = "Quale tipo di cucina preferisci?"
+    question.options = {
+      "Giapponese" => "",
+      "Cinese" => "",
+      "Coreano" => "",
+      "Indiano" => ""
+    }
+    question.time_condition = {
+      :from => "11:00:00",
+      :to => "14:30:00"
+    }
+    question.required_place_types = nil
+    question.additional_place_types = [
+      "indiano",
+      "giapponese",
+      "cinese",
+      "coreano"
+    ]
+    question.place_types_to_keep = []
+    question.save
+
+    question = Question.new
+    question.string_id = "pranzo_si_fast_food"
+    question.text = "Domanda?"
+    question.options = {
+      "Pasta" => "",
+      "Pizza" => "",
+      "Pesce" => "",
+      "Carne" => "",
+    }
+    question.time_condition = {
+      :from => "11:00:00",
+      :to => "14:30:00"
+    }
+    question.required_place_types = nil
+    question.additional_place_types = nil
+    question.place_types_to_keep = []
+    question.save
 
 question = Question.new
 question.string_id = "cena"
@@ -180,9 +283,9 @@ question.time_condition = {
   :to => "24:00:00"
 }
 question.required_place_types = %w[
-  discoteca
-  parco
-  cinema
+  night_club
+  park
+  movie_theater
   teatro
   concerto
   sala_giochi

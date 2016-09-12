@@ -3,7 +3,7 @@
     <h2 class="mdl-card__title-text"><%= @question.text %></h2>
   </div>
   <div class="mdl-card__supporting-text">
-    <div class="row">
+    <!-- <div class="row"> -->
       <% if !@question.valid_options[0].nil? %>
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white"
           href="/search?next_question_id=<%= @question.valid_options[0]["next_question_id"] %>">
@@ -28,7 +28,7 @@
           <%= @question.valid_options[3]["text"] %>
         </a>
       <% end %>
-    </div>
+    <!-- </div> -->
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">

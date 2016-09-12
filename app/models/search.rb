@@ -1,5 +1,5 @@
 class Search < ApplicationRecord
-	
+
 	require "http"
 
 	attr_accessor :places_by_type
@@ -50,10 +50,11 @@ class Search < ApplicationRecord
 	PLACE_ADDITIONAL_TYPES = %w[
 		pasticceria
 		pub
+		giapponese
 	]
 
-	PLACE_ADDITIONAL_TYPES_TEST = %w[
-		pasticceria
+	PLACE_ADDITIONAL_TYPES_TEST = [
+		"pasticceria"
 	]
 
 	def initialize(latitude, longitude)
