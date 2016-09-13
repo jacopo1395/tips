@@ -18,11 +18,11 @@ class SearchesController < ApplicationController
       @search = Search.new(latitude, longitude)
       @question = Question.find_by!(string_id: "cosa_vuoi_fare")
       @question.check_options_conditions(@search)
-    else
+    elsif !params[:next_question_id].nil?
       # Do something
       @question = Question.find_by!(string_id: params[:next_question_id])
       # @search.keep_places_by_type(@question.place_types_to_keep) if !@question.place_types_to_keep.nil?
-      # @search.add_new_places_by_keyword(@question.additional_place_types) if !@question.additional_place_types.nil?
+      @search.add_new_places_by_keyword(@question.additional_place_types) if !@question.additional_place_types.nil?
       @question.check_options_conditions(@search)
     end
   end

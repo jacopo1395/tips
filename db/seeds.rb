@@ -124,7 +124,12 @@ question.save
     :to => "14:30:00"
   }
   question.required_place_types = nil
-  question.additional_place_types = nil
+  question.additional_place_types = %w[
+    ristorante+giapponese
+    ristorante+italiano
+    ristorante+cinese
+    fast+food
+  ]
   question.place_types_to_keep = nil
   question.save
 
@@ -143,10 +148,10 @@ question.save
     }
     question.required_place_types = nil
     question.additional_place_types = [
-      "ristorante pasta",
+      "ristorante+pasta",
       "pizzeria",
-      "ristorante pesce",
-      "ristorante carne"
+      "ristorante+pesce",
+      "ristorante+carne"
     ]
     question.place_types_to_keep = []
     question.save
@@ -165,13 +170,8 @@ question.save
       :to => "14:30:00"
     }
     question.required_place_types = nil
-    question.additional_place_types = [
-      "indiano",
-      "giapponese",
-      "cinese",
-      "coreano"
-    ]
-    question.place_types_to_keep = []
+    question.additional_place_types = nil
+    question.place_types_to_keep = nil
     question.save
 
     question = Question.new

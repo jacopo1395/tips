@@ -90,12 +90,14 @@ class Search < ApplicationRecord
 	def remove_places_by_type(*types_to_remove)
 		@places_by_type.except!(*types_to_remove)
 		@place_types_by_number.except!(*types_to_remove)
+		get_place_types_by_number @places_by_type
 		get_top_types
 	end
 
 	def keep_places_by_type(*types_to_keep)
 		@places_by_type.slice!(*types_to_keep)
 		@place_types_by_number.slice!(*types_to_keep)
+		get_place_types_by_number @places_by_type
 		get_top_types
 	end
 
@@ -126,6 +128,8 @@ class Search < ApplicationRecord
 				page_number += 1
 			end
 		end
+
+		get_place_types_by_number @places_by_type
 	end
 
 	### Private methods ###
