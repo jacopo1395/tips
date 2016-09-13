@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'static_pages#profile', as: 'profile'
 
   # cercare altri utenti per username o email
-  get "find_users", to: 'static_pages#find_users'
-  get "find_users/results", to: 'static_pages#list_users'
+  get "/find_users", to: 'static_pages#find_users'
+  get "/find_users/results", to: 'static_pages#list_users'
+  
+  # cercare altri utenti per username o email
+  get "/final_quest", to: 'questions#final_quest'
+  get "/final_filter", to: 'questions#final_filter'
 
   # Start a new search
   get '/search', to: 'searches#search', as: 'new_tip'
