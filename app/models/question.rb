@@ -7,6 +7,15 @@ class Question < ApplicationRecord
 
   attr_accessor :valid_options
 
+  OPTION_COLORS = %w[
+    mdl-color--orange
+    mdl-color--green
+    mdl-color--red
+    mdl-color--cyan
+    mdl-color--purple
+    mdl-color--pink
+  ]
+
   # Check what options can be shown to the user
   def check_options_conditions(search)
     @valid_options = Array.new
