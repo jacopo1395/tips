@@ -13,13 +13,15 @@ Rails.application.routes.draw do
   # Path to the user profile.
   get '/my_profile', to: 'static_pages#my_profile'
   get '/profile/:id', to: 'static_pages#profile', as: 'profile'
-  
+
   # cercare altri utenti per username o email
   get "find_users", to: 'static_pages#find_users'
   get "find_users/results", to: 'static_pages#list_users'
 
   # Start a new search
   get '/search', to: 'searches#search'
+  # Link to general_question
+  get '/search/general_question', to: 'searches#general_question'
 
   # Admin-related pages
   get '/new_admin', to: 'admins#new_admin'
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
 
   # Points of interest related pages
   get '/nuovo', to: 'pois#nuovo'
-  
+
   # Devise stuff
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do get "/sign_in/retry" => "users/sessions#retry" end

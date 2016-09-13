@@ -27,6 +27,9 @@ class SearchesController < ApplicationController
     end
   end
 
+  def general_question
+  end
+
   private
     def load_data
       @search = session[:search_object]
