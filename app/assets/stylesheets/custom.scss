@@ -383,6 +383,7 @@ nav {
 
 }
 
+/* Question card */
 .question-card {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -418,6 +419,14 @@ nav {
     //   }
     // }
   }
+}
+
+/* General question card */
+.general-question-card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 /* Home page popular hints */
