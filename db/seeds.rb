@@ -28,6 +28,46 @@
 #   ]
 # }
 
+# Completely reset Poi table
+Poi.all.each do |poi|
+  poi.destroy
+end
+
+poi= Poi.new
+poi.name="da mario"
+poi.rate=3.1
+poi.types="ristorante"
+poi.address="via roma 1"
+poi.save
+
+poi= Poi.new
+poi.name="da luigi"
+poi.rate="1"
+poi.types="ristorante"
+poi.address="via milano 2"
+poi.save
+
+poi= Poi.new
+poi.name="da toad"
+poi.rate=2
+poi.types="ristorante"
+poi.address="via bologna 3"
+poi.save
+
+poi= Poi.new
+poi.name="da bowser"
+poi.rate="3"
+poi.types="ristorante"
+poi.address="via firenze 4"
+poi.save
+
+poi= Poi.new
+poi.name="da peach"
+poi.rate="5"
+poi.types="ristorante"
+poi.address="via catania 5"
+poi.save
+
 # Completely reset Questions table
 Question.all.each do |question|
   question.destroy
