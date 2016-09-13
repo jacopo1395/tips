@@ -5,10 +5,13 @@
   <div class="mdl-card__supporting-text">
     <!-- <div class="row"> -->
       <% if !@question.valid_options[0].nil? %>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white"
+        <!-- <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white"
           href="/search?next_question_id=<%= @question.valid_options[0]["next_question_id"] %>">
           <%= @question.valid_options[0]["text"] %>
-        </a>
+        </a> -->
+        <%= link_to @question.valid_options[0]["text"],
+                    "/search?next_question_id=#{@question.valid_options[0]["next_question_id"]}",
+                    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white" %>
       <% end %>
       <% if !@question.valid_options[1].nil? %>
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--green mdl-color-text--white"
