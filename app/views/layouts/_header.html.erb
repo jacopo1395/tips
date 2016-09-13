@@ -3,12 +3,31 @@
     <div class="mdl-layout__header-row">
       <span class="mdl-layout-title">Nome Progetto</span>
       <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right" style="margin-top:4px; margin-right:30px;">
+
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="find-user-text-field">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <!-- <input class="mdl-textfield__input" type="text" name="sample"
+                 id="find-user-text-field" placeholder="Trova un altro utente!"> -->
+          <%= form_tag find_users_results_path, method: :get do %>
+            <%= text_field_tag  :user,
+                                params[:user],
+                                class: "mdl-textfield__input",
+                                placeholder: "Trova un altro utente!",
+                                id: "find-user-text-field" %>
+            <!-- <%= submit_tag "Search", name: nil %> -->
+          <% end %>
+        </div>
+      </div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <%= link_to ("Home &nbsp;&nbsp;<i class='material-icons'>home</i>").html_safe,
                     root_path,
                     method: :get, class: "mdl-button mdl-js-button" %>
         <div style="width: 26px;"></div>
-        <%= link_to 'trova utenti', find_users_path, class: "mdl-navigation__link" %>
+        <!-- <%= link_to 'trova utenti', find_users_path, class: "mdl-navigation__link" %> -->
         <% if !user_signed_in? %>
 
           <button id="signup-menu-button" class="mdl-button mdl-js-button">
