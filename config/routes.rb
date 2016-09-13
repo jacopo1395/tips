@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "find_users/results", to: 'static_pages#list_users'
 
   # Start a new search
-  get '/search', to: 'searches#search'
+  get '/search', to: 'searches#search', as: 'new_tip'
   # Link to general_question
   get '/search/general_question', to: 'searches#general_question'
 

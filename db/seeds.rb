@@ -7,27 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Question attributes
-# empty_question = {
-#   :string_id => "",
-#   :options => {
-#
-#   },
-#   :time_condition => {
-#     :from => "",
-#     :to => "",
-#   },
-#   :required_place_types => [
-#
-#   ],
-#   :additional_place_types => [
-#
-#   ],
-#   :place_types_to_keep => [
-#
-#   ]
-# }
-
 # Completely reset Poi table
 Poi.all.each do |poi|
   poi.destroy
@@ -67,6 +46,27 @@ poi.rate="5"
 poi.types="ristorante"
 poi.address="via catania 5"
 poi.save
+
+# Question attributes
+# empty_question = {
+#   :string_id => "",
+#   :options => {
+#
+#   },
+#   :time_condition => {
+#     :from => "",
+#     :to => "",
+#   },
+#   :required_place_types => [
+#
+#   ],
+#   :additional_place_types => [
+#
+#   ],
+#   :place_types_to_keep => [
+#
+#   ]
+# }
 
 # Completely reset Questions table
 Question.all.each do |question|
@@ -121,8 +121,8 @@ question.options = {
   "Si, mangio con tutta calma" => "pranzo_si"
 }
 question.time_condition = {
-  :from => "11:00:00",
-  :to => "14:30:00"
+  :from => "06:00:00",
+  :to => "24:00:00"
 }
 question.required_place_types = %w[
   restaurant
@@ -142,10 +142,7 @@ question.save
     "Kebab" => "",
     "Paninoteca" => ""
   }
-  question.time_condition = {
-    :from => "11:00:00",
-    :to => "14:30:00"
-  }
+  question.time_condition = nil
   question.required_place_types = nil
   question.additional_place_types = nil
   question.place_types_to_keep = nil
@@ -159,10 +156,7 @@ question.save
     "Orientale" => "pranzo_si_orientale",
     "Fast food" => "pranzo_si_fast_food"
   }
-  question.time_condition = {
-    :from => "11:00:00",
-    :to => "14:30:00"
-  }
+  question.time_condition = nil
   question.required_place_types = nil
   question.additional_place_types = %w[
     ristorante+giapponese
@@ -182,10 +176,7 @@ question.save
       "Pesce" => "",
       "Carne" => "",
     }
-    question.time_condition = {
-      :from => "11:00:00",
-      :to => "14:30:00"
-    }
+    question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = [
       "ristorante+pasta",
@@ -205,10 +196,7 @@ question.save
       "Coreano" => "",
       "Indiano" => ""
     }
-    question.time_condition = {
-      :from => "11:00:00",
-      :to => "14:30:00"
-    }
+    question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = nil
     question.place_types_to_keep = nil
@@ -223,10 +211,7 @@ question.save
       "Pesce" => "",
       "Carne" => "",
     }
-    question.time_condition = {
-      :from => "11:00:00",
-      :to => "14:30:00"
-    }
+    question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = nil
     question.place_types_to_keep = []
@@ -346,9 +331,8 @@ question.time_condition = {
   :to => "21:00:00"
 }
 question.required_place_types = %w[
-  luoghi_religione
-  parco
-  punti_di_interesse
+  park
+  point_of_interest
 ]
 question.save
 

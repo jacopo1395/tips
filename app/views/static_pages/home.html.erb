@@ -11,9 +11,12 @@
       Prova i suggerimenti intelligenti di Nome Progetto!
     </p>
     <br>
-    <button class="mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+    <!--<button class="mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect">
       Cosa posso fare?
-    </button>
+    </button>-->
+    <%= link_to "Cosa posso fare?",
+				new_tip_path,
+				class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
   </div>
   <div class="mdl-card__menu">
     <button class="mdl-button mdl-button--icon mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -26,35 +29,35 @@
 
 <h3>Suggerimenti Recenti</h3>
 <div class="home-recent-hints">
-  <% @pois_recent.each do |i| %>
+  <% (@pois[:recent]).each do |poi| %>
     <div class="home-recent-card mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">  <%= i.name %></h2>
+        <h2 class="mdl-card__title-text">  <%= poi.name %></h2>
       </div>
       <div class="mdl-card__supporting-text">
         <span class="mdl-chip mdl-chip--contact">
           <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
             <i class="material-icons" style="vertical-align: middle;">place</i>
           </span>
-          <span class="mdl-chip__text"><%= i.types %></span>
+          <span class="mdl-chip__text"><%= poi.types %></span>
         </span>
         <span class="mdl-chip mdl-chip--contact">
           <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
             <i class="material-icons" style="vertical-align: middle;">star</i>
           </span>
-          <span class="mdl-chip__text"><%= i.rate %></span>
+          <span class="mdl-chip__text"><%= poi.rate %></span>
         </span>
         <br>
         <span class="mdl-chip mdl-chip--contact">
           <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
             <i class="material-icons" style="vertical-align: middle;">map</i>
           </span>
-          <span class="mdl-chip__text"><%= i.address %></span>
+          <span class="mdl-chip__text"><%= poi.address %></span>
         </span>
       </div>
       <div class="mdl-card__actions mdl-card--border">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          <%= link_to 'Maggiori Info' , poi_path(i) %>
+          <%= link_to 'Maggiori Info' , poi_path(poi) %>
         </a>
       </div>
       <div class="mdl-card__menu">
