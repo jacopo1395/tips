@@ -1,7 +1,10 @@
 class StaticPagesController < ApplicationController
 
   def home
-	@pois_recent = Poi.order(updated_at: :desc).limit(5)
+	@pois={}
+	@pois[:recent] = Poi.order(updated_at: :desc).limit(4)
+	#@pois[:popular] += Poi.order(updated_at: :desc).limit(5)
+	@pois
   end
 
   def my_profile
