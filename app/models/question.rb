@@ -21,9 +21,13 @@ class Question < ApplicationRecord
     @valid_options = Array.new
 
     self.options.each do |text, next_question_id|
-      next_question = Question.find_by(string_id: next_question_id)
-      if !next_question.nil? && next_question.check_conditions(search)
-        @valid_options.push({ "text" => text, "next_question_id" => next_question_id })
+      if next_question_id.blank?
+        @valid_options.push({ "text" => text, "next_question_id" => "domanda_generale" })
+      else
+        next_question = Question.find_by(string_id: next_question_id)
+        if !next_question.nil? && next_question.check_conditions(search)
+          @valid_options.push({ "text" => text, "next_question_id" => next_question_id })
+        end
       end
     end
   end
