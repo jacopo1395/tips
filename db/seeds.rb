@@ -142,10 +142,7 @@ question.save
     "Kebab" => "",
     "Paninoteca" => ""
   }
-  question.time_condition = {
-    :from => "11:00:00",
-    :to => "14:30:00"
-  }
+  question.time_condition = nil
   question.required_place_types = nil
   question.additional_place_types = nil
   question.place_types_to_keep = nil
@@ -159,10 +156,7 @@ question.save
     "Orientale" => "pranzo_si_orientale",
     "Fast food" => "pranzo_si_fast_food"
   }
-  question.time_condition = {
-    :from => "11:00:00",
-    :to => "14:30:00"
-  }
+  question.time_condition = nil
   question.required_place_types = nil
   question.additional_place_types = %w[
     ristorante+giapponese
@@ -182,10 +176,7 @@ question.save
       "Pesce" => "",
       "Carne" => "",
     }
-    question.time_condition = {
-      :from => "11:00:00",
-      :to => "14:30:00"
-    }
+    question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = [
       "ristorante+pasta",
@@ -205,10 +196,7 @@ question.save
       "Coreano" => "",
       "Indiano" => ""
     }
-    question.time_condition = {
-      :from => "11:00:00",
-      :to => "14:30:00"
-    }
+    question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = nil
     question.place_types_to_keep = nil
@@ -223,10 +211,7 @@ question.save
       "Pesce" => "",
       "Carne" => "",
     }
-    question.time_condition = {
-      :from => "11:00:00",
-      :to => "14:30:00"
-    }
+    question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = nil
     question.place_types_to_keep = []
