@@ -3,12 +3,22 @@
     <h2 class="mdl-card__title-text"><%= @question.text %></h2>
   </div>
   <div class="mdl-card__supporting-text">
+
     <% color_number = 0 %>
+    <% option_colors_len = Question::OPTION_COLORS.length %>
+
     <% @question.valid_options.each do |valid_option| %>
-      <%= link_to valid_option["text"],
-                  "/search?next_question_id=#{valid_option["next_question_id"]}",
-                  class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect #{Question::OPTION_COLORS[color_number]} mdl-color-text--white" %>
+      <% if valid_option["next_question_id"] == "domanda_generale" %>
+        <%= link_to valid_option["text"],
+                    "/final_quest",
+                    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect #{Question::OPTION_COLORS[color_number]} mdl-color-text--white" %>
+      <% else %>
+        <%= link_to valid_option["text"],
+                    "/search?next_question_id=#{valid_option["next_question_id"]}",
+                    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect #{Question::OPTION_COLORS[color_number]} mdl-color-text--white" %>
+      <% end %>
       <% color_number += 1 %>
+      <% color_number %= option_colors_len %>
     <% end %>
   </div>
   <div class="mdl-card__actions mdl-card--border">
