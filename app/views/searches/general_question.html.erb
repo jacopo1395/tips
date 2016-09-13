@@ -1,10 +1,35 @@
 <div class="general-question-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">General question</h2>
+    <h2 class="mdl-card__title-text">Testo domanda generale</h2>
   </div>
   <div class="mdl-card__supporting-text">
-    <h3>Voto minimo</h3>
-    <input class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="1" step="1">
+    <div class="item-card mdl-color--orange mdl-shadow--2dp">
+      <h4>Voto</h4>
+      <input class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="1" step="1">
+      <div class="ranking-values">
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">1</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">2</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">3</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">4</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">5</span>
+      </div>
+    </div>
+    <div class="item-card mdl-color--green mdl-shadow--2dp">
+      <h4>Prezzo</h4>
+      <input class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="50">
+      <div class="ranking-values">
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Basso</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Alto</span>
+      </div>
+    </div>
+    <div class="item-card mdl-color--blue mdl-shadow--2dp">
+      <h4>Distanza</h4>
+      <input class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="50">
+      <div class="ranking-values">
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Vicino</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Lontano</span>
+      </div>
+    </div>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
