@@ -3,35 +3,29 @@
     <h2 class="mdl-card__title-text"><%= @question.text %></h2>
   </div>
   <div class="mdl-card__supporting-text">
-    <!-- <div class="row"> -->
-      <% if !@question.valid_options[0].nil? %>
-        <!-- <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white"
-          href="/search?next_question_id=<%= @question.valid_options[0]["next_question_id"] %>">
-          <%= @question.valid_options[0]["text"] %>
-        </a> -->
-        <%= link_to @question.valid_options[0]["text"],
-                    "/search?next_question_id=#{@question.valid_options[0]["next_question_id"]}",
-                    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white" %>
-      <% end %>
-      <% if !@question.valid_options[1].nil? %>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--green mdl-color-text--white"
-          href="/search?next_question_id=<%= @question.valid_options[1]["next_question_id"] %>">
-          <%= @question.valid_options[1]["text"] %>
-        </a>
-      <% end %>
-      <% if !@question.valid_options[2].nil? %>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--cyan mdl-color-text--white"
-          href="/search?next_question_id=<%= @question.valid_options[2]["next_question_id"] %>">
-          <%= @question.valid_options[2]["text"] %>
-        </a>
-      <% end %>
-      <% if !@question.valid_options[3].nil? %>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white"
-          href="/search?next_question_id=<%= @question.valid_options[3]["next_question_id"] %>">
-          <%= @question.valid_options[3]["text"] %>
-        </a>
-      <% end %>
-    <!-- </div> -->
+    <% if !@question.valid_options[0].nil? %>
+      <%= link_to @question.valid_options[0]["text"],
+                  "/search?next_question_id=#{@question.valid_options[0]["next_question_id"]}",
+                  class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange mdl-color-text--white" %>
+    <% end %>
+    <% if !@question.valid_options[1].nil? %>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--green mdl-color-text--white"
+        href="/search?next_question_id=<%= @question.valid_options[1]["next_question_id"] %>">
+        <%= @question.valid_options[1]["text"] %>
+      </a>
+    <% end %>
+    <% if !@question.valid_options[2].nil? %>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--cyan mdl-color-text--white"
+        href="/search?next_question_id=<%= @question.valid_options[2]["next_question_id"] %>">
+        <%= @question.valid_options[2]["text"] %>
+      </a>
+    <% end %>
+    <% if !@question.valid_options[3].nil? %>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red mdl-color-text--white"
+        href="/search?next_question_id=<%= @question.valid_options[3]["next_question_id"] %>">
+        <%= @question.valid_options[3]["text"] %>
+      </a>
+    <% end %>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
