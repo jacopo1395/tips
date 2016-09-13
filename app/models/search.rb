@@ -53,8 +53,8 @@ class Search < ApplicationRecord
 		giapponese
 	]
 
-	PLACE_ADDITIONAL_TYPES_TEST = [
-		"pasticceria"
+	PLACE_ADDITIONAL_TYPES_TEST = %w[
+		pasticceria
 	]
 
 	def initialize(latitude, longitude)
