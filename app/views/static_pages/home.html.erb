@@ -56,9 +56,12 @@
         </span>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           <%= link_to 'Maggiori Info' , poi_path(poi) %>
-        </a>
+        </a> -->
+        <%= link_to 'Maggiori Info',
+                    poi_path(poi),
+                    class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
       </div>
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
