@@ -7,6 +7,8 @@ class Question < ApplicationRecord
 
   attr_accessor :valid_options
 
+  FIRST_QUESTION_ID = "cosa_vuoi_fare"
+
   OPTION_COLORS = %w[
     mdl-color--orange
     mdl-color--green
