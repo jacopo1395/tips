@@ -5,8 +5,8 @@
   <div class="mdl-card__supporting-text">
     <div class="item-card mdl-color--orange mdl-shadow--2dp">
       <h4>Voto</h4>
-      <input id="ranking" class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="1" step="1">
-      <div class="ranking-values">
+      <input id="rating" class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="1" step="1">
+      <div class="rating-values">
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">1</span>
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">2</span>
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">3</span>
@@ -17,7 +17,7 @@
     <div class="item-card mdl-color--green mdl-shadow--2dp">
       <h4>Prezzo</h4>
       <input id="price" class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="50">
-      <div class="ranking-values">
+      <div class="rating-values">
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Basso</span>
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Alto</span>
       </div>
@@ -25,7 +25,7 @@
     <div class="item-card mdl-color--blue mdl-shadow--2dp">
       <h4>Distanza</h4>
       <input id="distance" class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="50">
-      <div class="ranking-values">
+      <div class="rating-values">
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Vicino</span>
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Lontano</span>
       </div>
@@ -40,12 +40,12 @@
 
 <script>
   function sendParams() {
-    var ranking = document.getElementById("ranking").value;
+    var rating = document.getElementById("rating").value;
     var price = document.getElementById("price").value;
     var distance = document.getElementById("distance").value;
 
     var query = "/final_filter?";
-    query += "&ranking=" + ranking;
+    query += "&rating=" + rating;
     query += "&price=" + price;
     query += "&distance=" + distance;
 

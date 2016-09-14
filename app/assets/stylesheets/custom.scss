@@ -455,19 +455,27 @@ nav {
     }
   }
 
-  .ranking-values {
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: space-between;
+  .mdl-card__supporting-text {
+    .rating-values {
+      margin-left: 10px;
+      margin-right: 10px;
+      display: flex;
+      justify-content: space-between;
 
+      .mdl-button {
+        min-width: 0;
+      }
+    }
+    
     .mdl-button {
-      min-width: 0;
+      text-transform: none;
     }
   }
 
-  .mdl-button {
-    text-transform: none;
+  .mdl-card__actions {
+    .mdl-button {
+      float: right;
+    }
   }
 }
 

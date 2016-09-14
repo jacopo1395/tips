@@ -1,2 +1,6 @@
 FINITO!
-<%= debug(@search) %>
+
+<% if Rails.env.development? %>
+  <%= debug @search.places_by_type %>
+<% end %>
+
