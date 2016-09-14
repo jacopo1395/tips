@@ -1,7 +1,5 @@
 class SearchesController < ApplicationController
 
-  # include SearchesHelper
-
   before_filter :load_data
   after_filter :save_data
 
@@ -22,8 +20,12 @@ class SearchesController < ApplicationController
       # Do something
       @question = Question.find_by!(string_id: params[:next_question_id])
       @search.keep_places_by_type(@question.place_types_to_keep) if !@question.place_types_to_keep.nil?
-      @search.add_new_places_by_keyword(@question.additional_place_types) if !@question.additional_place_types.nil?
-      @question.check_options_conditions(@search)
+      if @question.options.nil?
+        redirect_to '/final_quest'
+      else
+        @search.add_new_places_by_keyword(@question.additional_place_types) if !@question.additional_place_types.nil?
+        @question.check_options_conditions(@search)
+      end
     end
   end
 

@@ -191,16 +191,56 @@ question.save
     question.string_id = "pranzo_si_orientale"
     question.text = "Quale tipo di cucina preferisci?"
     question.options = {
-      "Giapponese" => "",
-      "Cinese" => "",
-      "Coreano" => "",
-      "Indiano" => ""
+      "Giapponese" => "pranzo_si_orientale_giapponese",
+      "Cinese" => "pranzo_si_orientale_cinese",
+      "Coreano" => "pranzo_si_orientale_coreano",
+      "Indiano" => "pranzo_si_orientale_indiano"
     }
     question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = nil
     question.place_types_to_keep = nil
     question.save
+
+      question = Question.new
+      question.string_id = "pranzo_si_orientale_giapponese"
+      question.text = nil
+      question.options = nil
+      question.time_condition = nil
+      question.required_place_types = nil
+      question.additional_place_types = nil
+      question.place_types_to_keep = "ristorante+giapponese"
+      question.save
+
+      question = Question.new
+      question.string_id = "pranzo_si_orientale_cinese"
+      question.text = nil
+      question.options = nil
+      question.time_condition = nil
+      question.required_place_types = nil
+      question.additional_place_types = nil
+      question.place_types_to_keep = "ristorante+cinese"
+      question.save
+
+      question = Question.new
+      question.string_id = "pranzo_si_orientale_coreano"
+      question.text = nil
+      question.options = nil
+      question.time_condition = nil
+      question.required_place_types = nil
+      question.additional_place_types = nil
+      question.place_types_to_keep = "ristorante+coreano"
+      question.save
+
+      question = Question.new
+      question.string_id = "pranzo_si_orientale_indiano"
+      question.text = nil
+      question.options = nil
+      question.time_condition = nil
+      question.required_place_types = nil
+      question.additional_place_types = nil
+      question.place_types_to_keep = "ristorante+indiano"
+      question.save
 
     question = Question.new
     question.string_id = "pranzo_si_fast_food"
