@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
       latitude = request.location.latitude
       longitude = request.location.longitude
       @search = Search.new(latitude, longitude)
-      @question = Question.find_by!(string_id: "cosa_vuoi_fare")
+      @question = Question.find_by!(string_id: Question::FIRST_QUESTION_ID)
       @question.check_options_conditions(@search)
     elsif !params[:next_question_id].nil?
       # Do something
