@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -61,4 +61,68 @@
 </p>
 
 <%= link_to 'Edit', edit_poi_path(@poi) %> |
-<%= link_to 'Back', pois_path %>
+<%= link_to 'Back', pois_path %> -->
+
+<div class="mdl-grid">
+
+  <div class="hint-header-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text"><%= @poi.name %></h2>
+      <div class="mdl-layout-spacer"></div>
+      <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+        <i class="material-icons">share</i>
+      </button>
+    </div>
+  </div>
+
+  <div class="hint-gallery-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <!-- <div class="hint-main-image"></div> -->
+      <%= link_to image_tag "Roma.jpg" %>
+
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <div class="hint-thumbnails">
+        <% (1..8).each do %>
+          <div class="thumbnail mdl-shadow--2dp">
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint-map mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <div id="hint-map" style="width:100%;min-height:500px;">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="hint-description mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Descrizione</h2>
+    </div>
+  </div>
+
+  <div class="hint-reviews mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Recensioni</h2>
+    </div>
+  </div>
+</div>
+
+<script>
+  function loadMap() {
+    var mapCanvas = document.getElementById("hint-map");
+    var mapOptions = {
+      center: new google.maps.LatLng(51.508742,-0.120850),
+      zoom: 5
+    };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>

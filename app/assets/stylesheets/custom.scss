@@ -466,7 +466,7 @@ nav {
         min-width: 0;
       }
     }
-    
+
     .mdl-button {
       text-transform: none;
     }
@@ -475,6 +475,47 @@ nav {
   .mdl-card__actions {
     .mdl-button {
       float: right;
+    }
+  }
+}
+
+/* Hint header card */
+.hint-header-card {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  min-height: 0;
+
+  .mdl-card__title-text {
+    text-transform: capitalize;
+    font-size: 2.0em;
+  }
+}
+
+.hint-gallery-card {
+  .mdl-card__title {
+    margin-top: 16px;
+    margin-right: 16px;
+    overflow:hidden;
+    position: relative;
+    height: 400px;
+  }
+
+  .hint-thumbnails {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    width: 100%;
+
+    .thumbnail {
+      flex: 0 0 auto;
+      width: auto;
+      margin-right: 8px;
+      border-radius: 4px;
+      background: image-url("Roma.jpg") center / cover; /* 50% 50% centers image in div */
+      min-width: 80px;
+      min-height: 80px;
     }
   }
 }
