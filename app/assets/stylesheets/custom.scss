@@ -499,6 +499,10 @@ nav {
     overflow:hidden;
     position: relative;
     height: 400px;
+
+    .hint-main-image {
+      max-height: 400px;
+    }
   }
 
   .hint-thumbnails {
