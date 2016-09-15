@@ -105,6 +105,12 @@
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Descrizione</h2>
     </div>
+
+    <div class="mdl-card__supporting-text">
+      <% (1..300).each do %>
+        <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
+      <% end %>
+    </div>
   </div>
 
   <div class="hint-reviews mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col">
