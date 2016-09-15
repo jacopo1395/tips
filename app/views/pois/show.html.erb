@@ -95,13 +95,13 @@
 
   <div class="hint-map mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
-      <div id="hint-map" style="width:100%;min-height:500px;">
+      <div id="hint-map" style="width:100%;min-height:400px;">
 
       </div>
     </div>
   </div>
 
-  <div class="hint-description mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col">
+  <div class="hint-description-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Descrizione</h2>
     </div>
@@ -113,9 +113,28 @@
     </div>
   </div>
 
-  <div class="hint-reviews mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col">
+  <div class="hint-reviews-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Recensioni</h2>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <ul class="mdl-list" style="margin-top:0;">
+        <% (1..5).each do |i| %>
+          <li class="mdl-list__item mdl-list__item--three-line">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-avatar">person</i>
+              <span>Review <%= i %></span>
+              <span class="mdl-list__item-text-body">
+                <% (1..40).each do %>
+                  <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
+                <% end %>
+              </span>
+            </span>
+          </li>
+          <br>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
