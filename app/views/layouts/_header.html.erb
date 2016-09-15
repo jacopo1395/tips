@@ -7,15 +7,12 @@
                   mdl-textfield--floating-label mdl-textfield--align-right" style="margin-top:4px; margin-right:30px;">
 
         <div class="mdl-textfield__expandable-holder">
-          <!-- <input class="mdl-textfield__input" type="text" name="sample"
-                 id="find-user-text-field" placeholder="Trova un altro utente!"> -->
           <%= form_tag find_users_results_path, method: :get do %>
             <%= text_field_tag  :user,
                                 params[:user],
                                 class: "mdl-textfield__input",
                                 placeholder: "Trova un altro utente!",
                                 id: "find-user-text-field" %>
-            <!-- <%= submit_tag "Search", name: nil %> -->
           <% end %>
         </div>
         <label class="mdl-button mdl-js-button mdl-button--icon" for="find-user-text-field">
