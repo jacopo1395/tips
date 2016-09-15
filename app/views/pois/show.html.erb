@@ -177,6 +177,13 @@
     });
     infowindow.open(map, marker);
   }
+
+  window.onload = function() {
+    alert("Ciao!");
+    var mainContent = document.getElementById("main-content");
+    mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
+  }
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>
