@@ -489,6 +489,12 @@ nav {
     text-transform: capitalize;
     font-size: 2.0em;
   }
+
+  .mdl-card__supporting-text {
+    .material-icons {
+      vertical-align: middle;
+    }
+  }
 }
 
 /* Hint gallery card */
