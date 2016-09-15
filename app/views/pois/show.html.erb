@@ -117,11 +117,19 @@
 <script>
   function loadMap() {
     var mapCanvas = document.getElementById("hint-map");
+    var hintPosition = new google.maps.LatLng(41.890251, 12.492373);
     var mapOptions = {
-      center: new google.maps.LatLng(41.890251, 12.492373),
+      center: hintPosition,
       zoom: 16
     };
-  var map = new google.maps.Map(mapCanvas, mapOptions);
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var marker = new google.maps.Marker({position: hintPosition});
+    marker.setMap(map);
+
+    var infowindow = new google.maps.InfoWindow({
+      content: "<%= @poi.name.capitalize %>"
+    });
+    infowindow.open(map, marker);
   }
 </script>
 
