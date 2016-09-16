@@ -1,64 +1,123 @@
-<p id="notice"><%= notice %></p>
+<div class="mdl-grid" style="margin-bottom: 150px;">
 
-<p>
-  <strong>Name:</strong>
-  <%= @poi.name %>
-</p>
+  <div class="hint-header-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text"><%= @poi.name %></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
+          <i class="material-icons">info</i>
+        </span>
+        <span class="mdl-chip__text"><%= @poi.types.capitalize %></span>
+      </span>
+      <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
+          <i class="material-icons">star</i>
+        </span>
+        <span class="mdl-chip__text"><%= @poi.rate %></span>
+      </span>
+      <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
+          <i class="material-icons">map</i>
+        </span>
+        <span class="mdl-chip__text"><%= @poi.address %></span>
+      </span>
+    </div>
+    <div class="mdl-card__menu">
+      <button class="mdl-button mdl-button--icon mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <i class="material-icons">share</i>
+      </button>
+    </div>
+  </div>
 
-<p>
-  <strong>Types:</strong>
-  <%= @poi.types %>
-</p>
+  <div class="hint-gallery-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <!-- <div class="hint-main-image"></div> -->
+      <%= link_to image_tag "Roma.jpg", class: "hint-main-image" %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @poi.address %>
-</p>
+    </div>
 
-<p>
-  <strong>Rate:</strong>
-  <%= @poi.rate %>
-</p>
+    <div class="mdl-card__supporting-text">
+      <div class="hint-thumbnails">
+        <% (1..8).each do %>
+          <div class="thumbnail mdl-shadow--2dp">
 
-<p>
-  <strong>Price:</strong>
-  <%= @poi.price %>
-</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Map:</strong>
-  <%= @poi.map %>
-</p>
+  <div class="hint-map mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <div id="hint-map" style="width:100%;min-height:400px;">
 
-<p>
-  <strong>Image:</strong>
-  <%= @poi.image %>
-</p>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Review:</strong>
-  <%= @poi.review %>
-</p>
+  <div class="hint-description-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Descrizione</h2>
+    </div>
 
-<p>
-  <strong>Api:</strong>
-  <%= @poi.api %>
-</p>
+    <div class="mdl-card__supporting-text">
+      <% (1..300).each do %>
+        <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Apiid:</strong>
-  <%= @poi.apiId %>
-</p>
+  <div class="hint-reviews-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Recensioni</h2>
+    </div>
 
-<p>
-  <strong>Lat:</strong>
-  <%= @poi.lat %>
-</p>
+    <div class="mdl-card__supporting-text">
+      <ul class="mdl-list" style="margin-top:0;">
+        <% (1..5).each do |i| %>
+          <li class="mdl-list__item mdl-list__item--three-line">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-avatar">person</i>
+              <span>Review <%= i %></span>
+              <span class="mdl-list__item-text-body">
+                <% (1..40).each do %>
+                  <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
+                <% end %>
+              </span>
+            </span>
+          </li>
+          <br>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Long:</strong>
-  <%= @poi.long %>
-</p>
+<script>
+  function loadMap() {
+    var mapCanvas = document.getElementById("hint-map");
+    var hintPosition = new google.maps.LatLng(41.890251, 12.492373);
+    var mapOptions = {
+      center: hintPosition,
+      zoom: 16
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var marker = new google.maps.Marker({position: hintPosition});
+    marker.setMap(map);
 
-<%= link_to 'Edit', edit_poi_path(@poi) %> |
-<%= link_to 'Back', pois_path %>
+    var infowindow = new google.maps.InfoWindow({
+      content: "<%= @poi.name.capitalize %>"
+    });
+    infowindow.open(map, marker);
+  }
+
+  window.onload = function() {
+    var mainContent = document.getElementById("main-content");
+    mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
+  }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>
