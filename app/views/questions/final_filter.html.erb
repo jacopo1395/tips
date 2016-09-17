@@ -22,8 +22,9 @@ FINITO!
   </thead>
 
   <tbody>
+  <% i=0 %>
     <% @pois.each do |poi| %>
-      <tr>
+      <tr>      
         <td><%= poi.name %></td>
         <td><%= poi.types %></td>
         <td><%= poi.address %></td>
@@ -35,7 +36,9 @@ FINITO!
         <td><%= poi.api %></td>
         <td><%= poi.apiId %></td>
         <td><%= poi.lat %></td>
-        <td><%= poi.long %></td>        
+        <td><%= poi.long %></td>    
+        <td><%= link_to 'SCEGLI',  final_result_path(:id => i) %></td> 
+        <% i=i+1 %>
       </tr>
     <% end %>
   </tbody>

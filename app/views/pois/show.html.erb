@@ -34,7 +34,7 @@
   <div class="hint-gallery-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
       <!-- <div class="hint-main-image"></div> -->
-      <%= link_to image_tag "Roma.jpg", class: "hint-main-image" %>
+      <%= link_to image_tag @poi.image, class: "hint-main-image" %>
 
     </div>
 
@@ -98,7 +98,7 @@
 <script>
   function loadMap() {
     var mapCanvas = document.getElementById("hint-map");
-    var hintPosition = new google.maps.LatLng(41.890251, 12.492373);
+    var hintPosition = new google.maps.LatLng(14, 12);
     var mapOptions = {
       center: hintPosition,
       zoom: 16

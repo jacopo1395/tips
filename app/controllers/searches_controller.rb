@@ -32,6 +32,10 @@ class SearchesController < ApplicationController
   def general_question
   end
 
+  def final_result
+    
+  end
+
   private
     def load_data
       @search = session[:search_object]

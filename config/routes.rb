@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/search', to: 'searches#search', as: 'new_tip'
   # Link to general_question
   get '/search/general_question', to: 'searches#general_question'
+  # Link to final result
+  get '/final_result/:id', to: 'questions#final_result', as: 'final_result'
 
   # Admin-related pages
   get '/new_admin', to: 'admins#new_admin'
