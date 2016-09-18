@@ -34,15 +34,17 @@
   <div class="hint-gallery-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
       <!-- <div class="hint-main-image"></div> -->
-      <%= link_to image_tag @poi.image, class: "hint-main-image" %>
+      <%= link_to image_tag @poi.image[0], class: "hint-main-image" %>
 
     </div>
 
     <div class="mdl-card__supporting-text">
       <div class="hint-thumbnails">
-        <% (1..8).each do %>
-          <div class="thumbnail mdl-shadow--2dp">
-
+   
+        <% @poi.image.each do |img|%>
+          <div class="mdl-card__title">
+              <%= link_to image_tag img, class: "hint-main-image" %>
+             
           </div>
         <% end %>
       </div>
@@ -98,7 +100,7 @@
 <script>
   function loadMap() {
     var mapCanvas = document.getElementById("hint-map");
-    var hintPosition = new google.maps.LatLng(14, 12);
+    var hintPosition = new google.maps.LatLng(<%= @poi.lat %>, <%= @poi.long %>);
     var mapOptions = {
       center: hintPosition,
       zoom: 16

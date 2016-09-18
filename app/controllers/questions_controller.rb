@@ -98,16 +98,31 @@ class QuestionsController < ApplicationController
 			res_string= HTTP.get(query+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s
 			res_string=res_string.split("HREF=\"")[1]
 			res_string=res_string.split("\">here")[0]
-			poi[:image]=res_string
+			poi[:image][0]=res_string
 		else
-			poi[:image]="http://portfoliotheme.org/enigmatic/wp-content/uploads/sites/9/2012/07/placeholder1.jpg"
+			poi[:image][0]="http://portfoliotheme.org/enigmatic/wp-content/uploads/sites/9/2012/07/placeholder1.jpg"
 		end
 		return poi
     end 
 
     def details(placeid)
     	query="https://maps.googleapis.com/maps/api/place/details/json?"
-    	res_string= HTTP.get(query+"&placeid="+placeid+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
-    	#work in progress
+    	http_response= HTTP.get(query+"&placeid="+placeid+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
+    	http_response_parsed=JSON.parse(http_response)
+    	i=0
+    	img=[]
+    	http_response_parsed.each do |photo|
+    		img[i]= http_response_parsed["result"]["photos"][i]["photo_reference"].to_s 
+    		i+=1
+    	end
+    	query2="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600" 
+    	i=0
+    	img.each do |id|				
+			res_string= HTTP.get(query2+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s
+			res_string=res_string.split("HREF=\"")[1]
+			res_string=res_string.split("\">here")[0]
+			@poi[:image][i]=res_string
+			i+=1
+		end
     end
 end

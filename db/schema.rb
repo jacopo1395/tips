@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913135952) do
+ActiveRecord::Schema.define(version: 20160918093308) do
 
   create_table "apis", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160913135952) do
     t.float    "rate"
     t.integer  "price"
     t.string   "map"
-    t.string   "image"
+    t.text     "image"
     t.text     "review"
     t.string   "api"
     t.datetime "created_at", null: false
