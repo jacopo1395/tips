@@ -16,7 +16,7 @@
     </div>
     <div class="item-card mdl-color--green mdl-shadow--2dp">
       <h4>Prezzo</h4>
-      <input id="price" class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="50">
+      <input id="price" class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="3">
       <div class="rating-values">
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Basso</span>
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Alto</span>
@@ -24,7 +24,7 @@
     </div>
     <div class="item-card mdl-color--blue mdl-shadow--2dp">
       <h4>Distanza</h4>
-      <input id="distance" class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="50">
+      <input id="distance" class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="3">
       <div class="rating-values">
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Vicino</span>
         <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Lontano</span>
@@ -91,7 +91,7 @@
         <td><%= poi.api %></td>
         <td><%= poi.apiId %></td>
         <td><%= poi.lat %></td>
-        <td><%= poi.long %></td>        
+        <td><%= poi.long %></td>
       </tr>
     <% end %>
   </tbody>
@@ -100,4 +100,3 @@
 <% if Rails.env.development? %>
   <%= debug @search.places_by_type %>
 <% end %>
-
