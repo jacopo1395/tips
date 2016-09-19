@@ -527,6 +527,8 @@ nav {
       background: image-url("Roma.jpg") center / cover; /* 50% 50% centers image in div */
       min-width: 80px;
       min-height: 80px;
+      max-width: 80px;
+      max-height: 80px;
     }
   }
 }
