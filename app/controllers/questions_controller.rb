@@ -106,9 +106,11 @@ class QuestionsController < ApplicationController
     end 
 
     def details(placeid)
-    	query="https://maps.googleapis.com/maps/api/place/details/json?"
+    	query="https://maps.googleapis.com/maps/api/place/details/json?language=it"
     	http_response= HTTP.get(query+"&placeid="+placeid+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
     	http_response_parsed=JSON.parse(http_response)
+    	#render plain: http_response_parsed
+    	#return
     	i=0
     	img=[]
     	http_response_parsed.each do |photo|
@@ -124,5 +126,15 @@ class QuestionsController < ApplicationController
 			@poi[:image][i]=res_string
 			i+=1
 		end
+		i=0
+		http_response_parsed["result"]["reviews"].each do |rev|
+			if rev==nil 
+				return 
+			end
+			review = { :author => rev["author_name"], :rating => rev["rating"], :text => rev["text"]}
+			@poi[:review][i]=review
+			i += 1
+		end
+		
     end
 end

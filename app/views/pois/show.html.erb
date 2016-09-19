@@ -74,15 +74,16 @@
 
     <div class="mdl-card__supporting-text">
       <ul class="mdl-list" style="margin-top:0;">
-        <% (1..5).each do |i| %>
+        <% @poi.review.each do |review| %>
           <li class="mdl-list__item mdl-list__item--three-line">
             <span class="mdl-list__item-primary-content">
               <i class="material-icons mdl-list__item-avatar">person</i>
-              <span>Review <%= i %></span>
+              <span><%= review[:author] %></span>
+              <span> Voto:<%= review[:rating] %></span>
               <span class="mdl-list__item-text-body">
-                <% (1..40).each do %>
-                  <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
-                <% end %>
+                
+                  <%= review[:text] %>
+                
               </span>
             </span>
           </li>
