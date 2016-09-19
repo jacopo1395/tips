@@ -334,17 +334,6 @@ nav {
   }
 }
 
-/* Home page recent hints */
-.home-recent-hints {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
 /* Form card (signup, login, ...) */
 .form-card {
   margin-top: 30px;
@@ -529,6 +518,48 @@ nav {
       min-height: 80px;
     }
   }
+}
+
+/* Profile main card */
+.profile-main-card {
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .profile-pic-card {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+
+    .profile-pic {
+      // zoom: 2;  //increase if you have very small images
+
+      display: block;
+      margin: auto;
+
+      height: auto;
+      min-height: 200px;
+
+      width: auto;
+      min-width: 200px;
+    }
+  }
+
+  .profile-info-card {
+  }
+}
+
+/* Home page recent hints */
+.home-recent-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 /* Home page popular hints */

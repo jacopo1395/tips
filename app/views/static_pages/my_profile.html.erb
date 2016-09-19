@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<!-- <% if user_signed_in? %>
 <h1>Mio Profilo</h1>
 <div>
 	Username: <%= current_user.username %> <br>
@@ -9,5 +9,15 @@
 
 <% if !user_signed_in? %>
 <h1>Esegui il login prima di accedere al tuo profilo</h1>
-<% end %>
+<% end %> -->
 
+<div class="mdl-grid">
+	<div class="profile-main-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-grid">
+		<div class="profile-pic-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col">
+			<%= image_tag "Roma.jpg", class: "profile-pic" %>
+		</div>
+		<div class="profile-info-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col">
+
+		</div>
+	</div>
+</div>
