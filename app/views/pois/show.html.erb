@@ -34,17 +34,24 @@
   <div class="hint-gallery-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
       <!-- <div class="hint-main-image"></div> -->
-      <%= link_to image_tag @poi.image[0], class: "hint-main-image" %>
-
+      <% if !@poi.image.nil? && !@poi.image.empty? %>
+        <%= link_to image_tag @poi.image[0], class: "hint-main-image" %>
+      <% else %>
+        <div  class="mdl-card__title-text mdl-text-color--red">
+          Non ci sono immagini per questo suggerimento...
+        </div>
+      <% end %>
     </div>
 
-    <div class="mdl-card__supporting-text">
-      <div class="hint-thumbnails">
-        <% @poi.image.each do |img| %>
-          <%= link_to image_tag img, class: "thumbnail" %>
-        <% end %>
+    <% if !@poi.image.nil? && !@poi.image.empty? %>
+      <div class="mdl-card__supporting-text">
+        <div class="hint-thumbnails">
+          <% @poi.image.each do |img| %>
+            <%= link_to image_tag img, class: "thumbnail" %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <div class="hint-map mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
