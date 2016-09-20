@@ -6,16 +6,6 @@ class QuestionsController < ApplicationController
 	require "http"
 
 	def final_quest
-		###da cancellare###>>>>>>>>>>>>>>>>>>>>>>>>>>>>><
-		@pois1=[]
-		query="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600" 
-		@search.places_by_type.each do |type, places|
-			places.each do |place|
-				@pois1.push(toObject(place,type))
-			end
-		end
-	@pois1
-###<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	end
 
 	def final_filter
@@ -62,6 +52,8 @@ class QuestionsController < ApplicationController
 	private
     def load_data
       @search = session[:search_object]
+      @lat= session[:lat]
+      @long =session[:long]
     end
 
     def save_data
@@ -77,9 +69,9 @@ class QuestionsController < ApplicationController
     end
 
     def distanza(x,y)
-    	distanza2punti(request.location.latitude.to_f,
+    	distanza2punti(@lat.to_f,
     					x,
-    					request.location.longitude.to_f,
+    					@long.to_f,
     					y)
     end
 
