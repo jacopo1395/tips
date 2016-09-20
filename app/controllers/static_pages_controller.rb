@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
 
   def home
   	@pois={}
-  	@pois[:recent] = Poi.order(updated_at: :desc).limit(4)
+  	@pois[:recent] = Poi.order(updated_at: :desc).limit(5)
   	#@pois[:popular] += Poi.order(updated_at: :desc).limit(5)
     res= HTTP.get("https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true")
     res_parsed = JSON.parse(res)
@@ -21,12 +21,14 @@ class StaticPagesController < ApplicationController
   end
 
   def my_profile
-      #@pois[:popular] += Poi.order(updated_at: :desc).limit(5)
-    res= HTTP.get("https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true")
-    res_parsed = JSON.parse(res)
-    
-    @lat=res_parsed["location"]["lat"]
-    @long=res_parsed["location"]["lng"]
+    @my_pois={}
+    is_recent= Is_recent.find_by userMail: current_user.email
+    poi =Poi.find(is_recent[:PoisId1].to_i)
+    poi+=Poi.find(is_recent[:PoisId2].to_i)
+    poi+=Poi.find(is_recent[:PoisId3].to_i)
+    poi+=Poi.find(is_recent[:PoisId4].to_i)
+    poi+=Poi.find(is_recent[:PoisId5].to_i)
+    @my_pois=poi
   end
 
   def profile
