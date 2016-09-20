@@ -43,20 +43,21 @@ class QuestionsController < ApplicationController
 					if user_signed_in?
 						rec=Is_recent.find_by userMail: current_user.email
 						if rec[:last]==0 
-							rec.update_attributes( :PoisId1 => @poi.id , :last => 1)							
+							options={ :PoisId1 => @poi.id , :last => 1}							
 						end
 						if rec[:last]==1 
-							rec.update_attributes( :PoisId1 => @poi.id , :last => 2)							
+							options={ :PoisId2 => @poi.id , :last => 2}								
 						end
 						if rec[:last]==2 
-							rec.update_attributes( :PoisId1 => @poi.id , :last => 3)
+							options={ :PoisId3 => @poi.id , :last => 3}	
 						end
 						if rec[:last]==3 
-							rec.update_attributes( :PoisId1 => @poi.id , :last => 4)
+							options={ :PoisId4 => @poi.id , :last => 4}	
 						end
 						if rec[:last]==4 
-							rec.update_attributes( :PoisId1 => @poi.id , :last => 0)
+							options={ :PoisId5 => @poi.id , :last => 0}	
 						end
+						rec.update_attributes (options)
 					end
 					
 					redirect_to @poi				

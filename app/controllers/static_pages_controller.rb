@@ -23,19 +23,55 @@ class StaticPagesController < ApplicationController
   def my_profile
     @my_pois={}
     poi=nil
+    @my_pois[:recent] =Array.new
+
     is_recent= Is_recent.find_by userMail: current_user.email
     n=is_recent[:PoisId1].to_i
     if(n!=nil && n!=0 && n!="")
       p=Poi.find(n)
+    
+      if (p!=nil)
+        poi =p
+        @my_pois[:recent][0]= poi
+      end
     end
-    if (p!=nil)
-      poi =p
+    
+    n=is_recent[:PoisId2].to_i
+    if(n!=nil && n!=0 && n!="")
+      p=Poi.find(n)    
+      if (p!=nil)
+        poi =p
+        @my_pois[:recent][1]= poi
+      end
     end
-    #poi+=Poi.find(is_recent[:PoisId2].to_i)
-    #poi+=Poi.find(is_recent[:PoisId3].to_i)
-    #poi+=Poi.find(is_recent[:PoisId4].to_i)
-    #poi+=Poi.find(is_recent[:PoisId5].to_i)
-    @my_pois[:recent] = poi
+
+    n=is_recent[:PoisId3].to_i
+    if(n!=nil && n!=0 && n!="")
+      p=Poi.find(n)
+      if (p!=nil)
+        poi =p
+        @my_pois[:recent][2]= poi
+      end
+    end
+
+    n=is_recent[:PoisId4].to_i
+    if(n!=nil && n!=0 && n!="")
+      p=Poi.find(n)
+      if (p!=nil)
+        poi =p
+        @my_pois[:recent][3]= poi
+      end
+    end
+
+    n=is_recent[:PoisId5].to_i
+    if(n!=nil && n!=0 && n!="")
+      p=Poi.find(n)
+      if (p!=nil)
+        poi =p
+        @my_pois[:recent][4]= poi
+      end
+    end
+
     @my_pois
   end
 
