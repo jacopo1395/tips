@@ -7,6 +7,7 @@
 
 	<h3>Suggerimenti Recenti</h3>
 <div class="home-recent-hints">
+<% if !@my_pois[:recent].nil? %>
   <% (@my_pois[:recent]).each do |poi| %>
     <div class="home-recent-card mdl-card mdl-shadow--2dp">
       <% if !poi.image.nil? && !poi.image.empty? %>
@@ -51,6 +52,7 @@
       </div>
     </div>
   <% end %>
+<% end %>
   <div class="home-recent-more-card mdl-card mdl-shadow--2dp">
     <div class="mdl-card__actions">
       <span class="mdl-chip mdl-color--red mdl-color-text--white">

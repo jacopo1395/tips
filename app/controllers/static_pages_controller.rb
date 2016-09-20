@@ -22,13 +22,21 @@ class StaticPagesController < ApplicationController
 
   def my_profile
     @my_pois={}
+    poi=nil
     is_recent= Is_recent.find_by userMail: current_user.email
-    poi =Poi.find(is_recent[:PoisId1].to_i)
-    poi+=Poi.find(is_recent[:PoisId2].to_i)
-    poi+=Poi.find(is_recent[:PoisId3].to_i)
-    poi+=Poi.find(is_recent[:PoisId4].to_i)
-    poi+=Poi.find(is_recent[:PoisId5].to_i)
-    @my_pois=poi
+    n=is_recent[:PoisId1].to_i
+    if(n!=nil && n!=0 && n!="")
+      p=Poi.find(n)
+    end
+    if (p!=nil)
+      poi =p
+    end
+    #poi+=Poi.find(is_recent[:PoisId2].to_i)
+    #poi+=Poi.find(is_recent[:PoisId3].to_i)
+    #poi+=Poi.find(is_recent[:PoisId4].to_i)
+    #poi+=Poi.find(is_recent[:PoisId5].to_i)
+    @my_pois[:recent] = poi
+    @my_pois
   end
 
   def profile

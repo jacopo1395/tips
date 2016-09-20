@@ -39,28 +39,26 @@ class QuestionsController < ApplicationController
 				if(i==params[:id].to_i)
 					@poi=toObject(place,type)
 					details(place["place_id"])
-					rec=Is_recent.find_by userMail: current_user.email
-					if rec[:last]==0 
-						rec[:PoisId1]
-						rec[:last]=1
-					end
-					if rec[:last]==1 
-						rec[:PoisId2]
-						rec[:last]=2
-					end
-					if rec[:last]==2 
-						rec[:PoisId3]
-						rec[:last]=3
-					end
-					if rec[:last]==3 
-						rec[:PoisId4]
-						rec[:last]=4
-					end
-					if rec[:last]==4 
-						rec[:PoisId5]
-						rec[:last]==0
-					end
 					@poi.save
+					if user_signed_in?
+						rec=Is_recent.find_by userMail: current_user.email
+						if rec[:last]==0 
+							rec.update_attributes( :PoisId1 => @poi.id , :last => 1)							
+						end
+						if rec[:last]==1 
+							rec.update_attributes( :PoisId1 => @poi.id , :last => 2)							
+						end
+						if rec[:last]==2 
+							rec.update_attributes( :PoisId1 => @poi.id , :last => 3)
+						end
+						if rec[:last]==3 
+							rec.update_attributes( :PoisId1 => @poi.id , :last => 4)
+						end
+						if rec[:last]==4 
+							rec.update_attributes( :PoisId1 => @poi.id , :last => 0)
+						end
+					end
+					
 					redirect_to @poi				
 				end
 				i=i+1
