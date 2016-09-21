@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  type: 
+  types: MyString
   address: MyString
   rate: 1
   price: 1
@@ -10,10 +10,13 @@ one:
   image: MyString
   review: MyText
   api: MyString
+  apiId: MyString
+  lat: 1.5
+  long: 1.5
 
 two:
   name: MyString
-  type: 
+  types: MyString
   address: MyString
   rate: 1
   price: 1
@@ -21,3 +24,6 @@ two:
   image: MyString
   review: MyText
   api: MyString
+  apiId: MyString
+  lat: 1.5
+  long: 1.5

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+FINITO!
 
 <h1>Pois</h1>
 
@@ -22,28 +22,30 @@
   </thead>
 
   <tbody>
+  <% i=0 %>
     <% @pois.each do |poi| %>
-      <tr>
+      <tr>      
         <td><%= poi.name %></td>
         <td><%= poi.types %></td>
         <td><%= poi.address %></td>
         <td><%= poi.rate %></td>
         <td><%= poi.price %></td>
         <td><%= poi.map %></td>
-        <td><%= poi.image %></td>
+        <td><%= image_tag poi.image[0], size: "50x20"%></td>
         <td><%= poi.review %></td>
         <td><%= poi.api %></td>
         <td><%= poi.apiId %></td>
         <td><%= poi.lat %></td>
-        <td><%= poi.long %></td>
-        <td><%= link_to 'Show', poi %></td>
-        <td><%= link_to 'Edit', edit_poi_path(poi) %></td>
-        <td><%= link_to 'Destroy', poi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= poi.long %></td>    
+        <td><%= link_to 'SCEGLI',  final_result_path(:id => i) %></td> 
+        <% i=i+1 %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Poi', new_poi_path %>
+<% if Rails.env.development? %>
+  <%= debug @search.places_by_type %>
+<% end %>
+

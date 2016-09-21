@@ -152,7 +152,7 @@ nav {
   .mdl-card__title {
     height: 220px;
     color: white;
-    background: image-url('Ristorante.jpg') center / cover;
+    // background: image-url('Ristorante.jpg') center / cover;
 
     h2.mdl-card__title-text {
       font-weight: 400;
@@ -383,6 +383,7 @@ nav {
 
 }
 
+/* Question card */
 .question-card {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -391,22 +392,149 @@ nav {
 
   .mdl-card__supporting-text {
 
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
+    .mdl-button {
+      display: block;
+      width: 90%;
+      padding-top: 6%;
+      padding-bottom: 6%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
 
-      .mdl-button {
-        margin-top: 12px;
-        margin-bottom: 12px;
-        width: 40%;
-        padding-top: 15%;
-        padding-bottom: 15%;
-        padding-left: 0;
-        padding-right: 0;
-      }
+    // .row {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   justify-content: space-around;
+    //
+    //   .mdl-button {
+    //     margin-top: 12px;
+    //     margin-bottom: 12px;
+    //     width: 40%;
+    //     padding-top: 15%;
+    //     padding-bottom: 15%;
+    //     padding-left: 0;
+    //     padding-right: 0;
+    //   }
+    // }
+  }
+}
+
+/* General question card */
+.general-question-card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  .item-card {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: white;
+  }
+
+  .mdl-slider {
+    &:active::-webkit-slider-thumb,
+    &::-webkit-slider-thumb {
+        background: white !important;
+    }
+
+    &:active::-moz-range-thumb,
+    &::-moz-range-thumb {
+        background: white !important;
+    }
+
+    &:active::-ms-thumb,
+    &::-ms-thumb {
+        background: white !important;
     }
   }
+
+  .mdl-card__supporting-text {
+    .rating-values {
+      margin-left: 10px;
+      margin-right: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      .mdl-button {
+        min-width: 0;
+      }
+    }
+
+    .mdl-button {
+      text-transform: none;
+    }
+  }
+
+  .mdl-card__actions {
+    .mdl-button {
+      float: right;
+    }
+  }
+}
+
+/* Hint header card */
+.hint-header-card {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  min-height: 0;
+
+  .mdl-card__title-text {
+    text-transform: capitalize;
+    font-size: 2.0em;
+  }
+
+  .mdl-card__supporting-text {
+    .material-icons {
+      vertical-align: middle;
+    }
+  }
+}
+
+/* Hint gallery card */
+.hint-gallery-card {
+  .mdl-card__title {
+    margin-top: 16px;
+    margin-right: 16px;
+    overflow:hidden;
+    position: relative;
+    height: 300px;
+
+    .hint-main-image {
+      max-height: 300px;
+    }
+  }
+
+  .hint-thumbnails {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    width: 100%;
+
+    .thumbnail {
+      flex: 0 0 auto;
+      width: auto;
+      margin-right: 8px;
+      border-radius: 4px;
+      background: image-url("Roma.jpg") center / cover; /* 50% 50% centers image in div */
+      min-width: 80px;
+      min-height: 80px;
+      max-width: 80px;
+      max-height: 80px;
+    }
+  }
+}
+
+.hint-reviews-card {
+  min-height: 0;
 }
 
 /* Home page popular hints */

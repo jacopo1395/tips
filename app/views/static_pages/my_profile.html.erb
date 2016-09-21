@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+<h1>Mio Profilo</h1>
+<div>
+	Username: <%= current_user.username %> <br>
+	Email: <%= current_user.email %>  <br>
+	Admin: <%= current_user.admin %>
+</div>
+<% end %>
+
+<% if !user_signed_in? %>
+<h1>Esegui il login prima di accedere al tuo profilo</h1>
+<% end %>

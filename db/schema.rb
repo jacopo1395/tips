@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909161004) do
+ActiveRecord::Schema.define(version: 20160918093308) do
 
   create_table "apis", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 20160909161004) do
 
   create_table "pois", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "types"
     t.string   "address"
-    t.integer  "rate"
+    t.float    "rate"
     t.integer  "price"
     t.string   "map"
-    t.string   "image"
+    t.text     "image"
     t.text     "review"
     t.string   "api"
     t.datetime "created_at",     null: false
@@ -65,10 +65,13 @@ ActiveRecord::Schema.define(version: 20160909161004) do
   create_table "questions", force: :cascade do |t|
     t.text     "text"
     t.text     "options"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.text     "next_questions"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "string_id"
+    t.text     "time_condition"
+    t.text     "required_place_types"
+    t.text     "additional_place_types"
+    t.text     "place_types_to_keep"
   end
 
   create_table "searches", force: :cascade do |t|
