@@ -5,48 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-
 # Completely reset Poi table
 Poi.all.each do |poi|
   poi.destroy
 end
-
 poi= Poi.new
 poi.name="da mario"
 poi.rate=3.1
 poi.types="ristorante"
 poi.address="via roma 1"
 poi.save
-
 poi= Poi.new
 poi.name="da luigi"
 poi.rate="1"
 poi.types="ristorante"
 poi.address="via milano 2"
 poi.save
-
 poi= Poi.new
 poi.name="da toad"
 poi.rate=2
 poi.types="ristorante"
 poi.address="via bologna 3"
 poi.save
-
 poi= Poi.new
 poi.name="da bowser"
 poi.rate="3"
 poi.types="ristorante"
 poi.address="via firenze 4"
 poi.save
-
 poi= Poi.new
 poi.name="da peach"
 poi.rate="5"
 poi.types="ristorante"
 poi.address="via catania 5"
 poi.save
-
 # Question attributes
 # empty_question = {
 #   :string_id => "",
@@ -67,12 +59,10 @@ poi.save
 #
 #   ]
 # }
-
 # Completely reset Questions table
 Question.all.each do |question|
   question.destroy
 end
-
 # Seed the database with the following questions.
 question = Question.new
 question.string_id = "cosa_vuoi_fare"
@@ -95,7 +85,6 @@ question.required_place_types = nil
 question.additional_place_types = nil
 question.place_types_to_keep = nil
 question.save
-
 question = Question.new
 question.string_id = "colazione"
 question.text = "Preferisci una colazione dolce o salata?"
@@ -112,7 +101,6 @@ question.required_place_types = %w[
   cafe
 ]
 question.save
-
 question = Question.new
 question.string_id = "pranzo"
 question.text = "Vuoi sederti?"
@@ -132,7 +120,6 @@ question.place_types_to_keep = %w[
   restaurant
 ]
 question.save
-
   question = Question.new
   question.string_id = "pranzo_no"
   question.text = "Dove preferisci mangiare?"
@@ -147,7 +134,6 @@ question.save
   question.additional_place_types = nil
   question.place_types_to_keep = nil
   question.save
-
   question = Question.new
   question.string_id = "pranzo_si"
   question.text = "Quale tipo di ristorante preferisci?"
@@ -166,7 +152,6 @@ question.save
   ]
   question.place_types_to_keep = nil
   question.save
-
     question = Question.new
     question.string_id = "pranzo_si_italiano"
     question.text = "Quali piatti preferisci mangiare oggi?"
@@ -186,7 +171,6 @@ question.save
     ]
     question.place_types_to_keep = []
     question.save
-
     question = Question.new
     question.string_id = "pranzo_si_orientale"
     question.text = "Quale tipo di cucina preferisci?"
@@ -201,7 +185,6 @@ question.save
     question.additional_place_types = nil
     question.place_types_to_keep = nil
     question.save
-
       question = Question.new
       question.string_id = "pranzo_si_orientale_giapponese"
       question.text = nil
@@ -211,7 +194,6 @@ question.save
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+giapponese"
       question.save
-
       question = Question.new
       question.string_id = "pranzo_si_orientale_cinese"
       question.text = nil
@@ -221,7 +203,6 @@ question.save
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+cinese"
       question.save
-
       question = Question.new
       question.string_id = "pranzo_si_orientale_coreano"
       question.text = nil
@@ -231,7 +212,6 @@ question.save
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+coreano"
       question.save
-
       question = Question.new
       question.string_id = "pranzo_si_orientale_indiano"
       question.text = nil
@@ -241,7 +221,6 @@ question.save
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+indiano"
       question.save
-
     question = Question.new
     question.string_id = "pranzo_si_fast_food"
     question.text = "Domanda?"
@@ -256,7 +235,6 @@ question.save
     question.additional_place_types = nil
     question.place_types_to_keep = []
     question.save
-
 question = Question.new
 question.string_id = "cena"
 question.text = "Che tipo di ristorante preferisci?"
@@ -273,7 +251,6 @@ question.required_place_types = %w[
   restaurant
 ]
 question.save
-
 question = Question.new
 question.string_id = "merenda"
 question.text = "Preferisci una merenda dolce o salata?"
@@ -291,7 +268,6 @@ question.required_place_types = %w[
   pasticceria
 ]
 question.save
-
 question = Question.new
 question.string_id = "bere"
 question.text = "Cosa vorresti bere?"
@@ -311,7 +287,6 @@ question.required_place_types = %w[
   discoteca
 ]
 question.save
-
 question = Question.new
 question.string_id = "aperitivo"
 question.text = "Dove preferisci andare?"
@@ -330,7 +305,6 @@ question.required_place_types = %w[
   birreria
 ]
 question.save
-
 question = Question.new
 question.string_id = "divertimento"
 question.text = "Cosa preferisci fare?"
@@ -357,7 +331,6 @@ question.required_place_types = %w[
   bowling
 ]
 question.save
-
 question = Question.new
 question.string_id = "scoprire"
 question.text = "Dove preferisci andare?"
@@ -375,7 +348,6 @@ question.required_place_types = %w[
   point_of_interest
 ]
 question.save
-
 question = Question.new
 question.string_id = "relax"
 question.text = "Sei da solo o in compagnia?"
@@ -394,7 +366,6 @@ question.required_place_types = %w[
   parco
 ]
 question.save
-
 question = Question.new
 question.string_id = "shopping"
 question.text = "A cosa sei interessato?"
@@ -414,7 +385,6 @@ question.required_place_types = %w[
   shoe_store
 ]
 question.save
-
 question = Question.new
 question.string_id = "imparare"
 question.text = "Cosa ti piacerebbe imparare?"

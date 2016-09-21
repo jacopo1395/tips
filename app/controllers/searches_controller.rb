@@ -11,8 +11,8 @@ class SearchesController < ApplicationController
 
     # If @search is nil, create a Search object and ask the first question
     if @search.nil?
-      latitude = request.location.latitude
-      longitude = request.location.longitude
+      latitude = @lat
+      longitude = @long
       @search = Search.new(latitude, longitude)
       @question = Question.find_by!(string_id: Question::FIRST_QUESTION_ID)
       @question.check_options_conditions(@search)
@@ -40,6 +40,8 @@ class SearchesController < ApplicationController
     def load_data
       @search = session[:search_object]
       @question = session[:question_object]
+      @lat= session[:lat]
+      @long =session[:long]
     end
 
     def save_data

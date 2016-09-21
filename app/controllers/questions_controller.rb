@@ -6,16 +6,6 @@ class QuestionsController < ApplicationController
 	require "http"
 
 	def final_quest
-		###da cancellare###>>>>>>>>>>>>>>>>>>>>>>>>>>>>><
-		@pois1=[]
-		query="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600" 
-		@search.places_by_type.each do |type, places|
-			places.each do |place|
-				@pois1.push(toObject(place,type))
-			end
-		end
-	@pois1
-###<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	end
 
 	def final_filter
@@ -50,6 +40,26 @@ class QuestionsController < ApplicationController
 					@poi=toObject(place,type)
 					details(place["place_id"])
 					@poi.save
+					if user_signed_in?
+						rec=Is_recent.find_by userMail: current_user.email
+						if rec[:last]==0 
+							options={ :PoisId1 => @poi.id , :last => 1}							
+						end
+						if rec[:last]==1 
+							options={ :PoisId2 => @poi.id , :last => 2}								
+						end
+						if rec[:last]==2 
+							options={ :PoisId3 => @poi.id , :last => 3}	
+						end
+						if rec[:last]==3 
+							options={ :PoisId4 => @poi.id , :last => 4}	
+						end
+						if rec[:last]==4 
+							options={ :PoisId5 => @poi.id , :last => 0}	
+						end
+						rec.update_attributes (options)
+					end
+					
 					redirect_to @poi				
 				end
 				i=i+1
@@ -62,6 +72,8 @@ class QuestionsController < ApplicationController
 	private
     def load_data
       @search = session[:search_object]
+      @lat= session[:lat]
+      @long =session[:long]
     end
 
     def save_data
@@ -77,9 +89,9 @@ class QuestionsController < ApplicationController
     end
 
     def distanza(x,y)
-    	distanza2punti(request.location.latitude.to_f,
+    	distanza2punti(@lat.to_f,
     					x,
-    					request.location.longitude.to_f,
+    					@long.to_f,
     					y)
     end
 
