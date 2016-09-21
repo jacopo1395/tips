@@ -2,8 +2,53 @@ class QuestionsController < ApplicationController
 
 	before_filter :load_data
 	after_filter :save_data
+	before_action :is_admin?, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
 	require "http"
+
+  def index
+    @questions = Question.all
+  end
+ 
+  def show
+    @question = Question.find(params[:id])
+  end
+ 
+  def new
+    @question = Question.new
+  end
+ 
+  def edit
+    @question = Question.find(params[:id])
+  end
+ 
+  def create
+    @question = Question.new(question_params)
+ 
+    if @question.save
+      redirect_to @question
+    else
+      render 'new'
+    end
+  end
+ 
+  def update
+    @question = Question.find(params[:id])
+ 
+    if @question.update(article_params)
+      redirect_to @question
+    else
+      render 'edit'
+    end
+  end
+ 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+ 
+    redirect_to questions_path
+  end
+ 
 
 	def final_quest
 	end
@@ -40,6 +85,26 @@ class QuestionsController < ApplicationController
 					@poi=toObject(place,type)
 					details(place["place_id"])
 					@poi.save
+					if user_signed_in?
+						rec=Is_recent.find_by userMail: current_user.email
+						if rec[:last]==0 
+							options={ :PoisId1 => @poi.id , :last => 1}							
+						end
+						if rec[:last]==1 
+							options={ :PoisId2 => @poi.id , :last => 2}								
+						end
+						if rec[:last]==2 
+							options={ :PoisId3 => @poi.id , :last => 3}	
+						end
+						if rec[:last]==3 
+							options={ :PoisId4 => @poi.id , :last => 4}	
+						end
+						if rec[:last]==4 
+							options={ :PoisId5 => @poi.id , :last => 0}	
+						end
+						rec.update_attributes (options)
+					end
+					
 					redirect_to @poi				
 				end
 				i=i+1
@@ -50,6 +115,7 @@ class QuestionsController < ApplicationController
 	
 
 	private
+
     def load_data
       @search = session[:search_object]
       @lat= session[:lat]
@@ -129,4 +195,19 @@ class QuestionsController < ApplicationController
 		end
 		
     end
+
+
+    def question_params
+      params.require(:question).permit(:text, :options, :string_id, :time_condition, :required_place_types, :additional_place_types, :place_types_to_keep)
+    end
+
+    def is_admin?
+    	if (user_signed_in? && current_user.admin==true)
+    		true
+    	else
+    		render html: "tu non puoi passare!"
+    		return false
+    	end
+    end
+
 end

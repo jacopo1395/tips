@@ -1,0 +1,52 @@
+<%= form_for(question) do |f| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :options %>
+    <%= f.text_area :options %>
+  </div>
+
+  <div class="field">
+    <%= f.label :string_id %>
+    <%= f.text_field :string_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_condition %>
+    <%= f.text_area :time_condition %>
+  </div>
+
+  <div class="field">
+    <%= f.label :required_place_types %>
+    <%= f.text_area :required_place_types %>
+  </div>
+
+  <div class="field">
+    <%= f.label :additional_place_types %>
+    <%= f.text_area :additional_place_types %>
+  </div>
+
+  <div class="field">
+    <%= f.label :place_types_to_keep %>
+    <%= f.text_area :place_types_to_keep %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
