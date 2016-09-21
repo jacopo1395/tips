@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # Resources
   resources :pois
   resources :searches
+  resources :questions
 
   # Home page
   root 'static_pages#home'
