@@ -19,18 +19,17 @@ class StaticPagesController < ApplicationController
       @lat=request.location.latitude
       @long=request.location.longitude
     end
-    ##
-    ##cap = HTTP.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+@lat+","+@long+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")#attenzione alla key
-    ##cap_parsed = JSON.parse(cap)
-    ##if cap_parsed["status"]=="OK"
-    ##  cap_parsed["address_components"].each do |x|
-    ##     if x["types"] == "postal_code"
-    ##      @cap=x["long_name"]
-    ##  end
-    ##else
-    ##  @cap=
-    ##end
-    ##@pois[:nearbyPopular] = Poi.where(cap: cap).order(:voltePreferito).first(5)
+    
+    cap = HTTP.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+@lat.to_s+","+@long.to_s+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")#attenzione alla key
+    cap_parsed = JSON.parse(cap)
+    if cap_parsed["status"]=="OK"
+      cap_parsed["results"][0]["address_components"].each do |x|
+        if x["types"][0] == "postal_code"
+          @var=x["long_name"].to_i
+        end
+      end
+    end
+    @pois[:nearbyPopular] = Poi.where("cap = ?", @var).order(:voltePreferito).first(5)
     
     @pois
   end
@@ -65,5 +64,4 @@ class StaticPagesController < ApplicationController
       session[:lat]=@lat
       session[:long]=@long
     end
-
 end
