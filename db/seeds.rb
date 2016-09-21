@@ -239,13 +239,12 @@ question.save
     "Paninoteca" => "pasto_paninoteca"
   }
   question.time_condition = nil
-  #non so come aggiungere kebab
-  question.required_place_types = %w[
-    fast+food
-  ]
+  question.required_place_types = nil
   question.additional_place_types = %w[
     pizzeria
     paninoteca
+    kebab
+    fast+food
   ]
   question.place_types_to_keep = nil
   question.save
@@ -369,8 +368,15 @@ question.save
     }
     question.time_condition = nil
     question.required_place_types = nil
-    question.additional_place_types = nil
-    question.place_types_to_keep = nil
+    question.additional_place_types = %w[
+      ristorante+coreano
+      ristorante+indiano
+      ristorante+thailandese
+    ]
+    question.place_types_to_keep = %[
+      ristorante+giapponese
+      ristorante+cinese
+    ]
     question.save
 
       question = Question.new
@@ -378,7 +384,9 @@ question.save
       question.text = nil
       question.options = nil
       question.time_condition = nil
-      question.required_place_types = nil
+      question.required_place_types = %w[
+        ristorante+giapponese
+      ]
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+giapponese"
       question.save
@@ -388,7 +396,9 @@ question.save
       question.text = nil
       question.options = nil
       question.time_condition = nil
-      question.required_place_types = nil
+      question.required_place_types = %w[
+        ristorante+cinese
+      ]
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+cinese"
       question.save
@@ -398,7 +408,9 @@ question.save
       question.text = nil
       question.options = nil
       question.time_condition = nil
-      question.required_place_types = nil
+      question.required_place_types = %w[
+        ristorante+coreano
+      ]
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+coreano"
       question.save
@@ -408,7 +420,9 @@ question.save
       question.text = nil
       question.options = nil
       question.time_condition = nil
-      question.required_place_types = nil
+      question.required_place_types = %w[
+        ristorante+indiano
+      ]
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+indiano"
       question.save
@@ -418,7 +432,9 @@ question.save
       question.text = nil
       question.options = nil
       question.time_condition = nil
-      question.required_place_types = nil
+      question.required_place_types = %w[
+        ristorante+thailandese
+      ]
       question.additional_place_types = nil
       question.place_types_to_keep = "ristorante+thailandese"
       question.save
@@ -886,7 +902,7 @@ question.required_place_types = %w[
   shoe_store
 ]
 question.save
-	
+
 	######libri
     question = Question.new
     question.string_id = "libri"
