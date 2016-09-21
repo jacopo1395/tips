@@ -6,8 +6,10 @@ class StaticPagesController < ApplicationController
 
   def home
   	@pois={}
-  	@pois[:recent] = Poi.order(updated_at: :desc).limit(5)
-  	#@pois[:popular] += Poi.order(updated_at: :desc).limit(5)
+  	@pois[:recent]  = Poi.order(updated_at: :desc).limit(5)
+  	@pois[:popular] = Poi.order(:voltePreferito).first(5)
+
+    ##chiamata api
     res= HTTP.get("https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true")
     res_parsed = JSON.parse(res)
     if res_parsed["status"]=="OK"
@@ -17,6 +19,18 @@ class StaticPagesController < ApplicationController
       @lat=request.location.latitude
       @long=request.location.longitude
     end
+    
+    cap = HTTP.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+@lat.to_s+","+@long.to_s+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")#attenzione alla key
+    cap_parsed = JSON.parse(cap)
+    if cap_parsed["status"]=="OK"
+      cap_parsed["results"][0]["address_components"].each do |x|
+        if x["types"][0] == "postal_code"
+          @var=x["long_name"].to_i
+        end
+      end
+    end
+    @pois[:nearbyPopular] = Poi.where("cap = ?", @var).order(:voltePreferito).first(5)
+    
     @pois
   end
 
@@ -96,5 +110,4 @@ class StaticPagesController < ApplicationController
       session[:lat]=@lat
       session[:long]=@long
     end
-
 end
