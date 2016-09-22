@@ -53,8 +53,13 @@ class QuestionsController < ApplicationController
 	def final_quest
 	end
 
+	def retry_final_quest
+	end
+
+	# GET /final_filter
 	def final_filter
 		@pois= []
+		precedent=@search.clone
 		@search.places_by_type.each do |type, places|
 			places.each do |place|
 				if place["rating"].to_f < params[:rating].to_f
@@ -75,7 +80,9 @@ class QuestionsController < ApplicationController
 			end
 		end
 		if @pois.empty?
-			render html: "nessun risultato"
+			@search=precedent
+			save_data
+			redirect_to retry_final_quest_path
 		else
 			redirect_to final_result_path(:id => 0)
 		end
@@ -180,12 +187,12 @@ class QuestionsController < ApplicationController
     	query="https://maps.googleapis.com/maps/api/place/details/json?language=it"
     	http_response= HTTP.get(query+"&placeid="+placeid+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
     	http_response_parsed=JSON.parse(http_response)
-    	#render plain: http_response_parsed
+    	#render html: http_response_parsed
     	#return
     	i=0
     	img=[]
-    	http_response_parsed.each do |photo|
-    		img[i]= http_response_parsed["result"]["photos"][i]["photo_reference"].to_s
+    	http_response_parsed["result"]["photos"].each do |photo|
+    		img[i]= photo["photo_reference"].to_s
     		i+=1
     	end
     	query2="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600"
