@@ -1,6 +1,6 @@
 class PoisController < ApplicationController
   before_action :set_poi, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin?, only: [:index, :new, :edit, :create, :update, :destroy]
   # GET /pois
   # GET /pois.json
   def index
@@ -71,4 +71,14 @@ class PoisController < ApplicationController
     def poi_params
       params.require(:poi).permit(:name, :types, :address, :rate, :price, :map, :image, :review, :api, :apiId, :lat, :long)
     end
+
+    def is_admin?
+    	if (user_signed_in? && current_user.admin==true)
+    		true
+    	else
+    		render 'static_pages/denied'
+    		return false
+    	end
+    end
+
 end

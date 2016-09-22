@@ -225,7 +225,7 @@ class QuestionsController < ApplicationController
     	if (user_signed_in? && current_user.admin==true)
     		true
     	else
-    		render html: "tu non puoi passare!"
+    		render 'static_pages/denied'
     		return false
     	end
     end
