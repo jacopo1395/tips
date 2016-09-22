@@ -9,46 +9,46 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
   end
- 
+
   def show
     @question = Question.find(params[:id])
   end
- 
+
   def new
     @question = Question.new
   end
- 
+
   def edit
     @question = Question.find(params[:id])
   end
- 
+
   def create
     @question = Question.new(question_params)
- 
+
     if @question.save
       redirect_to @question
     else
       render 'new'
     end
   end
- 
+
   def update
     @question = Question.find(params[:id])
- 
+
     if @question.update(article_params)
       redirect_to @question
     else
       render 'edit'
     end
   end
- 
+
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
- 
+
     redirect_to questions_path
   end
- 
+
 
 	def final_quest
 	end
@@ -68,21 +68,26 @@ class QuestionsController < ApplicationController
 				end
 			end
 		end
-		
+
 		@search.places_by_type.each do |type, places|
-			places.each do |place|				
+			places.each do |place|
 				@pois.push(toObject(place,type))
 			end
 		end
-	@pois
+		if @pois.empty?
+			render html: "nessun risultato"
+		else
+			redirect_to final_result_path(:id => 0)
+		end
 	end
 
+	#GET /final_result/:id
 	def final_result
 		i=0
 		@search.places_by_type.each do |type, places|
 			places.each do |place|
-				if(i==params[:id].to_i)					
-					if Poi.exists?(apiId: place[:place_id] )
+				if(i==params[:id].to_i)
+					if Poi.exists?(apiId: place["place_id"] )
 						@poi=Poi.find_by apiId: place["place_id"]
 						@poi.increment!(:voltePreferito)
 					else
@@ -94,32 +99,32 @@ class QuestionsController < ApplicationController
 
 					if user_signed_in?
 						rec=Is_recent.find_by userMail: current_user.email
-						if rec[:last]==0 
-							options={ :PoisId1 => @poi.id , :last => 1}							
+						if rec[:last]==0
+							options={ :PoisId1 => @poi.id , :last => 1}
 						end
-						if rec[:last]==1 
-							options={ :PoisId2 => @poi.id , :last => 2}								
+						if rec[:last]==1
+							options={ :PoisId2 => @poi.id , :last => 2}
 						end
-						if rec[:last]==2 
-							options={ :PoisId3 => @poi.id , :last => 3}	
+						if rec[:last]==2
+							options={ :PoisId3 => @poi.id , :last => 3}
 						end
-						if rec[:last]==3 
-							options={ :PoisId4 => @poi.id , :last => 4}	
+						if rec[:last]==3
+							options={ :PoisId4 => @poi.id , :last => 4}
 						end
-						if rec[:last]==4 
-							options={ :PoisId5 => @poi.id , :last => 0}	
+						if rec[:last]==4
+							options={ :PoisId5 => @poi.id , :last => 0}
 						end
 						rec.update_attributes (options)
 					end
-					
-					redirect_to @poi				
+
+					redirect_to @poi
 				end
 				i=i+1
 			end
 		end
-		
+
 	end
-	
+
 
 	private
 
@@ -149,7 +154,7 @@ class QuestionsController < ApplicationController
     end
 
     def toObject(place,type)
-    	query="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600" 
+    	query="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600"
     	poi=Poi.new
 		poi[:name]=place["name"]
 		poi[:types]=type
@@ -160,7 +165,7 @@ class QuestionsController < ApplicationController
 		poi[:address]=place["vicinity"]
 		poi[:apiId]=place["place_id"]
 		if(place["photos"]!=nil)
-			id = place["photos"][0]["photo_reference"]					
+			id = place["photos"][0]["photo_reference"]
 			res_string= HTTP.get(query+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s
 			res_string=res_string.split("HREF=\"")[1]
 			res_string=res_string.split("\">here")[0]
@@ -169,7 +174,7 @@ class QuestionsController < ApplicationController
 			poi[:image][0]="http://portfoliotheme.org/enigmatic/wp-content/uploads/sites/9/2012/07/placeholder1.jpg"
 		end
 		return poi
-    end 
+    end
 
     def details(placeid)
     	query="https://maps.googleapis.com/maps/api/place/details/json?language=it"
@@ -180,12 +185,12 @@ class QuestionsController < ApplicationController
     	i=0
     	img=[]
     	http_response_parsed.each do |photo|
-    		img[i]= http_response_parsed["result"]["photos"][i]["photo_reference"].to_s 
+    		img[i]= http_response_parsed["result"]["photos"][i]["photo_reference"].to_s
     		i+=1
     	end
-    	query2="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600" 
+    	query2="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600"
     	i=0
-    	img.each do |id|				
+    	img.each do |id|
 			res_string= HTTP.get(query2+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s
 			res_string=res_string.split("HREF=\"")[1]
 			res_string=res_string.split("\">here")[0]
@@ -194,14 +199,14 @@ class QuestionsController < ApplicationController
 		end
 		i=0
 		http_response_parsed["result"]["reviews"].each do |rev|
-			if rev==nil 
-				return 
+			if rev==nil
+				return
 			end
 			review = { :author => rev["author_name"], :rating => rev["rating"], :text => rev["text"]}
 			@poi[:review][i]=review
 			i += 1
 		end
-		
+
     end
 
 
