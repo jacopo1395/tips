@@ -81,10 +81,17 @@ class QuestionsController < ApplicationController
 		i=0
 		@search.places_by_type.each do |type, places|
 			places.each do |place|
-				if(i==params[:id].to_i)
-					@poi=toObject(place,type)
-					details(place["place_id"])
-					@poi.save
+				if(i==params[:id].to_i)					
+					if Poi.exists?(apiId: place[:place_id] )
+						@poi=Poi.find_by apiId: place["place_id"]
+						@poi.increment!(:voltePreferito)
+					else
+						@poi=toObject(place,type)
+						details(place["place_id"])
+						@poi.update_attributes(:voltePreferito => 1)
+						@poi.save
+					end
+
 					if user_signed_in?
 						rec=Is_recent.find_by userMail: current_user.email
 						if rec[:last]==0 
@@ -151,6 +158,7 @@ class QuestionsController < ApplicationController
 		poi[:price]=place["price_level"]
 		poi[:rate]=place["rating"]
 		poi[:address]=place["vicinity"]
+		poi[:apiId]=place["place_id"]
 		if(place["photos"]!=nil)
 			id = place["photos"][0]["photo_reference"]					
 			res_string= HTTP.get(query+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s
