@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   get '/new_admin', to: 'admins#new_admin'
   post '/create_admin', to: 'admins#create_admin'
 
+  #Add-Favorite
+  get '/add_favourite/:id',to:'static_pages#add_favourite'
+  get '/remove_favourite/:id',to:'static_pages#remove_favourite'
+
   # Points of interest related pages
   get '/nuovo', to: 'pois#nuovo'
 

@@ -40,6 +40,29 @@ class StaticPagesController < ApplicationController
   def find_users
   end
 
+  def add_favourite
+    if(!check(params[:id]))
+      f=Is_favourite.new(:userMail=>current_user.email,:id=>params[:id])
+      f.save
+    end
+  end
+
+  def remove_favourite
+    if(check(params[:id]))
+      f=Is_favourite.where("userMail = ? AND PoisId = ?",current_user.email,params[:id])
+      f.delete
+    end
+  end
+
+  def check(id)
+    f=Is_favourite.where("userMail = ? AND PoisId = ?",current_user.email,id)
+    if(!f==nil)
+      true
+    else
+      false
+    end
+  end
+
   private
     def delete_previous_search_data
       session[:search_object] = nil
