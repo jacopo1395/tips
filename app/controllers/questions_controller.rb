@@ -58,6 +58,8 @@ class QuestionsController < ApplicationController
 							options={ :PoisId5 => @poi.id , :last => 0}	
 						end
 						rec.update_attributes (options)
+						f=final_results.new(:user_id => current_user.id,:PoisId => @poi.id)
+						f.save
 					end
 					
 					redirect_to @poi				
