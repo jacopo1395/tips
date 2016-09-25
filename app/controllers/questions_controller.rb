@@ -68,7 +68,7 @@ class QuestionsController < ApplicationController
 				if place["price"].to_f > params[:price].to_f
 					places.delete(place)
 				end
-				if distanza(place["geometry"]["location"]["lat"].to_f,place["geometry"]["location"]["lng"].to_f) > params[:distance].to_f*100
+				if distanza(place["geometry"]["location"]["lat"].to_f,place["geometry"]["location"]["lng"].to_f) < params[:distance].to_f*10
 					places.delete(place)
 				end
 			end
@@ -122,7 +122,7 @@ class QuestionsController < ApplicationController
 							options={ :PoisId5 => @poi.id , :last => 0}
 						end
 						rec.update_attributes (options)
-						f=final_results.new(:user_id => current_user.id,:PoisId => @poi.id)
+						f=Final_result.new(:user_id => current_user.id,:PoisId => @poi.id)
 						f.save
 					end
 
