@@ -1,178 +1,100 @@
 <% if user_signed_in? %>
-<h1>Mio Profilo</h1>
-<div>
-	Username: <%= current_user.username %> <br>
-	Email: <%= current_user.email %>  <br>
-	Admin: <%= current_user.admin %>
-
-	<h3>Suggerimenti Recenti</h3>
-<div class="home-recent-hints">
-<% if !@my_pois[:recent].nil? %>
-  <% (@my_pois[:recent]).each do |poi| %>
-    <div class="home-recent-card mdl-card mdl-shadow--2dp">
-      <% if !poi.image.nil? && !poi.image.empty? %>
-        <div class="mdl-card__title" style="background: url('<%= poi.image[0] %>') center / cover;">
-          <h2 class="mdl-card__title-text">  <%= poi.name %></h2>
-        </div>
-      <% else %>
-        <div class="mdl-card__title" style="background: url('/assets/Ristorante.jpg') center / cover;">
-          <h2 class="mdl-card__title-text">  <%= poi.name %></h2>
-        </div>
-      <% end %>
-      <div class="mdl-card__supporting-text">
-        <span class="mdl-chip mdl-chip--contact">
-          <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
-            <i class="material-icons" style="vertical-align: middle;">place</i>
-          </span>
-          <span class="mdl-chip__text"><%= poi.types %></span>
-        </span>
-        <span class="mdl-chip mdl-chip--contact">
-          <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
-            <i class="material-icons" style="vertical-align: middle;">star</i>
-          </span>
-          <span class="mdl-chip__text"><%= poi.rate %></span>
-        </span>
-        <br>
-        <span class="mdl-chip mdl-chip--contact">
-          <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
-            <i class="material-icons" style="vertical-align: middle;">map</i>
-          </span>
-          <span class="mdl-chip__text"><%= poi.address %></span>
-        </span>
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <%= link_to 'Maggiori Info',
-                    poi_path(poi),
-                    class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
-      </div>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">share</i>
-        </button>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-  <div class="home-recent-more-card mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__actions">
-      <span class="mdl-chip mdl-color--red mdl-color-text--white">
-        <span class="mdl-chip__text">Ristoranti</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--blue mdl-color-text--white">
-        <span class="mdl-chip__text">Caffetterie</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--orange mdl-color-text--white">
-        <span class="mdl-chip__text">Musei</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--green mdl-color-text--white">
-        <span class="mdl-chip__text">Parchi</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--purple mdl-color-text--white">
-        <span class="mdl-chip__text">Eventi</span>
-      </span>
-      <br>
-      <span class="mdl-chip">
-        <span class="mdl-chip__text">Altro</span>
-      </span>
-      <br>
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-button mdl-js-ripple-effect">
-        <i class="material-icons">add</i>
-      </button>
-    </div>
-  </div>
-</div>
-</div>
-<% end %>
-
-
-
-  <h3>Tutti i Suggerimenti </h3>
-<div class="home-recent-hints">
-<% if !@my_pois[:recent].nil? %>
-  <% (@my_pois[:recent]).each do |poi| %>
-    <div class="home-recent-card mdl-card mdl-shadow--2dp">
-      <% if !poi.image.nil? && !poi.image.empty? %>
-        <div class="mdl-card__title" style="background: url('<%= poi.image[0] %>') center / cover;">
-          <h2 class="mdl-card__title-text">  <%= poi.name %></h2>
-        </div>
-      <% else %>
-        <div class="mdl-card__title" style="background: url('/assets/Ristorante.jpg') center / cover;">
-          <h2 class="mdl-card__title-text">  <%= poi.name %></h2>
-        </div>
-      <% end %>
-      <div class="mdl-card__supporting-text">
-        <span class="mdl-chip mdl-chip--contact">
-          <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
-            <i class="material-icons" style="vertical-align: middle;">place</i>
-          </span>
-          <span class="mdl-chip__text"><%= poi.types %></span>
-        </span>
-        <span class="mdl-chip mdl-chip--contact">
-          <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
-            <i class="material-icons" style="vertical-align: middle;">star</i>
-          </span>
-          <span class="mdl-chip__text"><%= poi.rate %></span>
-        </span>
-        <br>
-        <span class="mdl-chip mdl-chip--contact">
-          <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
-            <i class="material-icons" style="vertical-align: middle;">map</i>
-          </span>
-          <span class="mdl-chip__text"><%= poi.address %></span>
-        </span>
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <%= link_to 'Maggiori Info',
-                    poi_path(poi),
-                    class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
-      </div>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">share</i>
-        </button>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-  <div class="home-recent-more-card mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__actions">
-      <span class="mdl-chip mdl-color--red mdl-color-text--white">
-        <span class="mdl-chip__text">Ristoranti</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--blue mdl-color-text--white">
-        <span class="mdl-chip__text">Caffetterie</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--orange mdl-color-text--white">
-        <span class="mdl-chip__text">Musei</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--green mdl-color-text--white">
-        <span class="mdl-chip__text">Parchi</span>
-      </span>
-      <br>
-      <span class="mdl-chip mdl-color--purple mdl-color-text--white">
-        <span class="mdl-chip__text">Eventi</span>
-      </span>
-      <br>
-      <span class="mdl-chip">
-        <span class="mdl-chip__text">Altro</span>
-      </span>
-      <br>
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-button mdl-js-ripple-effect">
-        <i class="material-icons">add</i>
-      </button>
-    </div>
-  </div>
-</div>
-</div>
-<% end %>
-
-<% if !user_signed_in? %>
-<h1>Esegui il login prima di accedere al tuo profilo</h1>
+	<div class="mdl-grid">
+		<div class="profile-main-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-grid">
+			<div class="profile-pic-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col">
+				<%= image_tag "Roma.jpg", class: "profile-pic" %>
+			</div>
+			<div class="profile-info-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col">
+				<div class="mdl-card__title">
+					<div class="mdl-card__title-text"><h3><%= current_user.username %><h3></div>
+				</div>
+				<div class="mdl-card__supporting-text">
+					Benvenuto sul profile di <%= current_user.username %> <br>
+					&nbsp;&nbsp;<h5><%= current_user.email %></h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h3>Suggerimenti Recenti di <%= current_user.username %></h3>
+	<div class="home-recent-hints">
+	<% if !@my_pois[:recent].nil? %>
+	  <% (@my_pois[:recent]).each do |poi| %>
+	    <div class="home-recent-card mdl-card mdl-shadow--2dp">
+	      <% if !poi.image.nil? && !poi.image.empty? %>
+	        <div class="mdl-card__title" style="background: url('<%= poi.image[0] %>') center / cover;">
+	          <h2 class="mdl-card__title-text">  <%= poi.name %></h2>
+	        </div>
+	      <% else %>
+	        <div class="mdl-card__title" style="background: url('/assets/Ristorante.jpg') center / cover;">
+	          <h2 class="mdl-card__title-text">  <%= poi.name %></h2>
+	        </div>
+	      <% end %>
+	      <div class="mdl-card__supporting-text">
+	        <span class="mdl-chip mdl-chip--contact">
+	          <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
+	            <i class="material-icons" style="vertical-align: middle;">place</i>
+	          </span>
+	          <span class="mdl-chip__text"><%= poi.types %></span>
+	        </span>
+	        <span class="mdl-chip mdl-chip--contact">
+	          <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
+	            <i class="material-icons" style="vertical-align: middle;">star</i>
+	          </span>
+	          <span class="mdl-chip__text"><%= poi.rate %></span>
+	        </span>
+	        <br>
+	        <span class="mdl-chip mdl-chip--contact">
+	          <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
+	            <i class="material-icons" style="vertical-align: middle;">map</i>
+	          </span>
+	          <span class="mdl-chip__text"><%= poi.address %></span>
+	        </span>
+	      </div>
+	      <div class="mdl-card__actions mdl-card--border">
+	        <%= link_to 'Maggiori Info',
+	                    poi_path(poi),
+	                    class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+	      </div>
+	      <div class="mdl-card__menu">
+	        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+	          <i class="material-icons">share</i>
+	        </button>
+	      </div>
+	    </div>
+	  <% end %>
+	<% end %>
+	  <div class="home-recent-more-card mdl-card mdl-shadow--2dp">
+	    <div class="mdl-card__actions">
+	      <span class="mdl-chip mdl-color--red mdl-color-text--white">
+	        <span class="mdl-chip__text">Ristoranti</span>
+	      </span>
+	      <br>
+	      <span class="mdl-chip mdl-color--blue mdl-color-text--white">
+	        <span class="mdl-chip__text">Caffetterie</span>
+	      </span>
+	      <br>
+	      <span class="mdl-chip mdl-color--orange mdl-color-text--white">
+	        <span class="mdl-chip__text">Musei</span>
+	      </span>
+	      <br>
+	      <span class="mdl-chip mdl-color--green mdl-color-text--white">
+	        <span class="mdl-chip__text">Parchi</span>
+	      </span>
+	      <br>
+	      <span class="mdl-chip mdl-color--purple mdl-color-text--white">
+	        <span class="mdl-chip__text">Eventi</span>
+	      </span>
+	      <br>
+	      <span class="mdl-chip">
+	        <span class="mdl-chip__text">Altro</span>
+	      </span>
+	      <br>
+	      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-button mdl-js-ripple-effect">
+	        <i class="material-icons">add</i>
+	      </button>
+	    </div>
+	  </div>
+	</div>
+<% else %>
+	<h1>Esegui il login prima di accedere al tuo profilo</h1>
 <% end %>

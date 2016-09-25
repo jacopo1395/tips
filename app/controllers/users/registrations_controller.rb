@@ -13,8 +13,8 @@ before_action :save_prev_email, only: [:update]
     super
  
     if resource.save
-      rec_new=Is_recent.new("userMail" => params[:user][:email], "last" => 0)
-      rec_new.save 
+      rec=Is_recent.new("userMail" => params[:user][:email], "last" => 0)
+      rec.save 
     end   
    end
 
