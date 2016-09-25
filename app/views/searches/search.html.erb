@@ -35,6 +35,8 @@
 
 <% if Rails.env.development? %>
   <%= debug params %>
+  <%= debug @lat %>
+  <%= debug @long %>
   <% if !@question.nil? %>
     <%= debug @question.options %>
     <%= debug @question.valid_options %>
@@ -44,3 +46,4 @@
     <%= debug @search.places_by_type %>
   <% end %>
 <% end %>
+

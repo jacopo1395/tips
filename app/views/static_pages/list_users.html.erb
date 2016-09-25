@@ -3,11 +3,15 @@
     <tr>
       <td><%= user.email %></td>
       <td><%= user.username %></td>
-        <% if current_user.email!=user.email %>
-			<td><%= link_to 'Show', profile_path(user) %></td>
-		<% end %>
-		<% if current_user.email==user.email %>
-			<td><%= link_to 'Show', my_profile_path %></td>
+		<% if user_signed_in? %>
+			<% if current_user.email!=user.email %>
+				<td><%= link_to 'Show', profile_path(user) %></td>
+			<% end %>
+			<% if current_user.email==user.email %>
+				<td><%= link_to 'Show', my_profile_path %></td>
+			<% end %>
+		<% else %>
+			<td> <%= link_to 'Show', profile_path(user) %> </td>
 		<% end %>
      <br>
     </tr>

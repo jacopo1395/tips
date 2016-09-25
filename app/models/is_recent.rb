@@ -1,2 +1,2 @@
-class IsRecent < ApplicationRecord
+class Is_recent < ApplicationRecord
 end

@@ -34,19 +34,24 @@
   <div class="hint-gallery-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
       <!-- <div class="hint-main-image"></div> -->
-      <%= link_to image_tag "Roma.jpg", class: "hint-main-image" %>
-
+      <% if !@poi.image.nil? && !@poi.image.empty? %>
+        <%= link_to image_tag @poi.image[0], class: "hint-main-image" %>
+      <% else %>
+        <div  class="mdl-card__title-text mdl-text-color--red">
+          Non ci sono immagini per questo suggerimento...
+        </div>
+      <% end %>
     </div>
 
-    <div class="mdl-card__supporting-text">
-      <div class="hint-thumbnails">
-        <% (1..8).each do %>
-          <div class="thumbnail mdl-shadow--2dp">
-
-          </div>
-        <% end %>
+    <% if !@poi.image.nil? && !@poi.image.empty? %>
+      <div class="mdl-card__supporting-text">
+        <div class="hint-thumbnails">
+          <% @poi.image.each do |img| %>
+            <%= link_to image_tag img, class: "thumbnail" %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <div class="hint-map mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
@@ -75,22 +80,25 @@
     </div>
 
     <div class="mdl-card__supporting-text">
-      <ul class="mdl-list" style="margin-top:0;">
-        <% (1..5).each do |i| %>
-          <li class="mdl-list__item mdl-list__item--three-line">
-            <span class="mdl-list__item-primary-content">
-              <i class="material-icons mdl-list__item-avatar">person</i>
-              <span>Review <%= i %></span>
-              <span class="mdl-list__item-text-body">
-                <% (1..40).each do %>
-                  <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
-                <% end %>
+      <% if !@poi.review.nil? && !@poi.review.empty? %>
+        <ul class="mdl-list" style="margin-top:0;">
+          <% @poi.review.each do |review| %>
+            <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">person</i>
+                <span><%= review[:author] %></span>
+                <span> Voto:<%= review[:rating] %></span>
+                <span class="mdl-list__item-text-body">
+                    <%= review[:text] %>
+                </span>
               </span>
-            </span>
-          </li>
-          <br>
-        <% end %>
-      </ul>
+            </li>
+            <br>
+          <% end %>
+        </ul>
+      <% else %>
+        Al momento non ci sono recensioni per questo suggerimento...
+      <% end %>
     </div>
   </div>
 </div>
@@ -98,7 +106,7 @@
 <script>
   function loadMap() {
     var mapCanvas = document.getElementById("hint-map");
-    var hintPosition = new google.maps.LatLng(41.890251, 12.492373);
+    var hintPosition = new google.maps.LatLng(<%= @poi.lat %>, <%= @poi.long %>);
     var mapOptions = {
       center: hintPosition,
       zoom: 16
@@ -113,10 +121,13 @@
     infowindow.open(map, marker);
   }
 
-  window.onload = function() {
-    var mainContent = document.getElementById("main-content");
-    mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
-  }
+  // window.onload = function() {
+  //   var mainContent = document.getElementById("main-content");
+  //   mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
+  // }
+
+  var mainContent = document.getElementById("main-content");
+  mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
 
 </script>
 

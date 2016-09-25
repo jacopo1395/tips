@@ -152,7 +152,7 @@ nav {
   .mdl-card__title {
     height: 220px;
     color: white;
-    background: image-url('Ristorante.jpg') center / cover;
+    // background: image-url('Ristorante.jpg') center / cover;
 
     h2.mdl-card__title-text {
       font-weight: 400;
@@ -516,6 +516,8 @@ nav {
       background: image-url("Roma.jpg") center / cover; /* 50% 50% centers image in div */
       min-width: 80px;
       min-height: 80px;
+      max-width: 80px;
+      max-height: 80px;
     }
   }
 }
@@ -562,6 +564,10 @@ nav {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   width: 100%;
   margin-bottom: 30px;
+// =======
+// .hint-reviews-card {
+//   min-height: 0;
+// >>>>>>> dev
 }
 
 /* Home page popular hints */
