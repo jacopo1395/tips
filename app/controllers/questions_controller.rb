@@ -106,22 +106,24 @@ class QuestionsController < ApplicationController
 
 					if user_signed_in?
 						rec=Is_recent.find_by userMail: current_user.email
-						if rec[:last]==0
-							options={ :PoisId1 => @poi.id , :last => 1}
+						if !rec.nil?
+							if rec[:last]==0
+								options={ :PoisId1 => @poi.id , :last => 1}
+							end
+							if rec[:last]==1
+								options={ :PoisId2 => @poi.id , :last => 2}
+							end
+							if rec[:last]==2
+								options={ :PoisId3 => @poi.id , :last => 3}
+							end
+							if rec[:last]==3
+								options={ :PoisId4 => @poi.id , :last => 4}
+							end
+							if rec[:last]==4
+								options={ :PoisId5 => @poi.id , :last => 0}
+							end
+							rec.update_attributes (options)
 						end
-						if rec[:last]==1
-							options={ :PoisId2 => @poi.id , :last => 2}
-						end
-						if rec[:last]==2
-							options={ :PoisId3 => @poi.id , :last => 3}
-						end
-						if rec[:last]==3
-							options={ :PoisId4 => @poi.id , :last => 4}
-						end
-						if rec[:last]==4
-							options={ :PoisId5 => @poi.id , :last => 0}
-						end
-						rec.update_attributes (options)
 						f=Final_result.new(:user_id => current_user.id,:PoisId => @poi.id)
 						f.save
 					end
