@@ -216,8 +216,8 @@ question.options = {
   "Si, mangio con tutta calma" => "pasto_seduto"
 }
 question.time_condition = {
-  :from => "06:00:00",
-  :to => "24:00:00"
+  :from => "11:00:00",
+  :to => "15:00:00"
 }
 question.required_place_types = %w[
   restaurant
