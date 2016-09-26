@@ -57,7 +57,16 @@
   <div class="hint-map mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
     <div class="mdl-card__title">
       <div id="hint-map" style="width:100%;min-height:400px;">
-
+        <!-- <script>
+          alert("<%= @poi.apiId %>")
+        </script> -->
+        <iframe
+          width="100%"
+          height="400"
+          frameborder="0" style="border:0"
+          src=<%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyDyJsV1le3xmHoZwIT6H520Apk_SZJQMeg&q=place_id:#{@poi.apiId}" %>
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
@@ -103,7 +112,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   function loadMap() {
     var mapCanvas = document.getElementById("hint-map");
     var hintPosition = new google.maps.LatLng(<%= @poi.lat %>, <%= @poi.long %>);
@@ -129,6 +138,6 @@
   var mainContent = document.getElementById("main-content");
   mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
 
-</script>
+</script> -->
 
-<script src="https://maps.googleapis.com/maps/api/js?callback=loadMap&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?callback=loadMap&key=AIzaSyDyJsV1le3xmHoZwIT6H520Apk_SZJQMeg"></script> -->
