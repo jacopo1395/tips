@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924152330) do
+ActiveRecord::Schema.define(version: 20160926150100) do
 
   create_table "apis", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20160924152330) do
     t.float    "long"
     t.integer  "cap"
     t.integer  "voltePreferito"
+    t.string   "website"
+    t.string   "phone"
   end
 
   create_table "questions", force: :cascade do |t|
