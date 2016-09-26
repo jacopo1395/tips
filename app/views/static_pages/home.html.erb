@@ -4,11 +4,11 @@
     <!-- <h1 class="mdl-card__title-text">Nome Progetto</h1> -->
   </div>
   <div class="mdl-card__supporting-text">
-    <h1>TIP!</h1>
+    <h1>TIPs!</h1>
   </div>
   <div class="mdl-card__actions">
     <p>
-      Prova i suggerimenti intelligenti di TIP!
+      Prova i suggerimenti intelligenti di TIPs!
     </p>
     <br>
     <!--<button class="mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -67,7 +67,10 @@
         </div>
         <% if user_signed_in? %>
           <div class="mdl-card__menu">
-              <a href="mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/<%= poi.id %>" class="material-icons">share</a>
+            <%= link_to "<i class='material-icons'>share</i>".html_safe,
+                        "mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/#{poi.id}",
+                        class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--icon" %>
+              <!-- <a href="mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/<%= poi.id %>" class="material-icons">share</a> -->
           </div>
         <% end %>
       </div>
@@ -140,9 +143,9 @@
         </a>
       </div>
       <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">share</i>
-        </button>
+        <%= link_to "<i class='material-icons'>share</i>".html_safe,
+                    "mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/#{poi.id}",
+                    class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--icon" %>
       </div>
     </div>
   <% end %>
@@ -213,9 +216,9 @@
         </a>
       </div>
       <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">share</i>
-        </button>
+        <%= link_to "<i class='material-icons'>share</i>".html_safe,
+                    "mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/#{poi.id}",
+                    class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--icon" %>
       </div>
     </div>
   <% end %>
