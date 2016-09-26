@@ -80,7 +80,7 @@ question.text = "Cosa vuoi fare?"
 question.options = {
   "Colazione" => "colazione",
   "Pranzo" => "pranzo",
-  "Cena" => "pasto_seduto", ##cena
+  "Cena" => "cena",
   "Merenda" => "merenda",
   "Bere" => "bere",
   "Aperitivo" => "aperitivo",
@@ -511,31 +511,29 @@ question.save
 ######CENA
 #########################################################
 
-=begin
 question = Question.new
 question.string_id = "cena"
 question.text = "Che tipo di ristorante preferisci?"
 question.options = {
-    "Italiano" => "pasto_italiano",
-    "Orientale" => "pasto_orientale",
-    "Fast food" => "pasto_fast_food"
-  }
-  question.time_condition = {
-  :from => "18:00:00",
-  :to => "21:30:00"
-  }
-  question.required_place_types = %w[
-  restaurant
-  ]
-  question.additional_place_types = %w[
-    ristorante+giapponese
-    ristorante+italiano
-    ristorante+cinese
-    fast+food
-  ]
-  question.place_types_to_keep = nil
-  question.save
-=end
+  "Italiano" => "pasto_italiano",
+  "Orientale" => "pasto_orientale",
+  "Fast food" => "pasto_fast_food"
+}
+question.time_condition = {
+:from => "18:00:00",
+:to => "21:30:00"
+}
+question.required_place_types = %w[
+restaurant
+]
+question.additional_place_types = %w[
+  ristorante+giapponese
+  ristorante+italiano
+  ristorante+cinese
+  fast+food
+]
+question.place_types_to_keep = nil
+question.save
 
 #########################################################
 ######MERENDA
