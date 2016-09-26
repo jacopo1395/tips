@@ -280,7 +280,9 @@ question.save
     	fast+food
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "fast+food"
+    question.place_types_to_keep = %w[
+      fast+food
+    ]
     question.save
 
     ######pasto pizzeria
@@ -293,7 +295,9 @@ question.save
     	pizzeria
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "pizzeria"
+    question.place_types_to_keep = %w[
+      pizzeria
+    ]
     question.save
 
     ######pasto kebab
@@ -306,7 +310,9 @@ question.save
     	kebab
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "kebab"
+    question.place_types_to_keep = %w[
+      kebab
+    ]
     question.save
 
     ######pasto paninoteca
@@ -319,7 +325,9 @@ question.save
     	paninoteca
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "paninoteca"
+    question.place_types_to_keep = %w[
+      paninoteca
+    ]
     question.save
 
 
@@ -338,10 +346,10 @@ question.save
     question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = %w[
-      "ristorante",
-      "pizzeria",
-      "ristorante+pesce",
-      "ristorante+carne"
+      ristorante
+      pizzeria
+      ristorante+pesce
+      ristorante+carne
     ]
     question.place_types_to_keep = []
     question.save
@@ -366,10 +374,12 @@ question.save
 	      question.options = nil
 	      question.time_condition = nil
 	      question.required_place_types = %w[
-	        ristorante+pizza
+	        pizzeria
 	      ]
 	      question.additional_place_types = nil
-	      question.place_types_to_keep = "ristorante+pizza"
+	      question.place_types_to_keep = %w[
+          pizzeria
+        ]
 	      question.save
 
 	    ######pesce
@@ -382,7 +392,9 @@ question.save
 	        ristorante+pesce
 	      ]
 	      question.additional_place_types = nil
-	      question.place_types_to_keep = "ristorante+pesce"
+	      question.place_types_to_keep = %w[
+          ristorante+pesce
+        ]
 	      question.save
 
 
@@ -396,7 +408,9 @@ question.save
 	        ristorante+carne
 	      ]
 	      question.additional_place_types = nil
-	      question.place_types_to_keep = "ristorante+carne"
+	      question.place_types_to_keep = %w[
+          ristorante+carne
+        ]
 	      question.save
 
     ######pasto orientale
@@ -417,7 +431,7 @@ question.save
       ristorante+indiano
       ristorante+thailandese
     ]
-    question.place_types_to_keep = %[
+    question.place_types_to_keep = %w[
       ristorante+giapponese
       ristorante+cinese
     ]
@@ -432,7 +446,9 @@ question.save
         ristorante+giapponese
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+giapponese"
+      question.place_types_to_keep = %w[
+        ristorante+giapponese
+      ]
       question.save
 
       question = Question.new
@@ -456,7 +472,9 @@ question.save
         ristorante+coreano
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+coreano"
+      question.place_types_to_keep = %w[
+        ristorante+coreano
+      ]
       question.save
 
       question = Question.new
@@ -480,7 +498,9 @@ question.save
         ristorante+thailandese
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+thailandese"
+      question.place_types_to_keep = %w[
+        ristorante+thailandese
+      ]
       question.save
 
 #########################################################
@@ -576,7 +596,9 @@ question.save
       pasticceria
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "pasticceria"
+    question.place_types_to_keep = %w[
+      pasticceria
+    ]
     question.save
 
     ######merenda gelateria
@@ -723,7 +745,7 @@ question.required_place_types = %w[
 ]
 question.save
 
-	
+
   ######bar
   question = Question.new
   question.string_id = "bar"
