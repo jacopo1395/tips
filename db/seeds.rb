@@ -80,7 +80,7 @@ question.text = "Cosa vuoi fare?"
 question.options = {
   "Colazione" => "colazione",
   "Pranzo" => "pranzo",
-  "Cena" => "pasto_seduto", ##cena
+  "Cena" => "cena",
   "Merenda" => "merenda",
   "Bere" => "bere",
   "Aperitivo" => "aperitivo",
@@ -280,7 +280,9 @@ question.save
     	fast+food
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "fast+food"
+    question.place_types_to_keep = %w[
+      fast+food
+    ]
     question.save
 
     ######pasto pizzeria
@@ -293,7 +295,9 @@ question.save
     	pizzeria
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "pizzeria"
+    question.place_types_to_keep = %w[
+      pizzeria
+    ]
     question.save
 
     ######pasto kebab
@@ -306,7 +310,9 @@ question.save
     	kebab
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "kebab"
+    question.place_types_to_keep = %w[
+      kebab
+    ]
     question.save
 
     ######pasto paninoteca
@@ -319,7 +325,9 @@ question.save
     	paninoteca
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "paninoteca"
+    question.place_types_to_keep = %w[
+      paninoteca
+    ]
     question.save
 
 
@@ -338,10 +346,10 @@ question.save
     question.time_condition = nil
     question.required_place_types = nil
     question.additional_place_types = %w[
-      "ristorante",
-      "pizzeria",
-      "ristorante+pesce",
-      "ristorante+carne"
+      ristorante
+      pizzeria
+      ristorante+pesce
+      ristorante+carne
     ]
     question.place_types_to_keep = []
     question.save
@@ -356,7 +364,9 @@ question.save
 	        ristorante
 	      ]
 	      question.additional_place_types = nil
-	      question.place_types_to_keep = "ristorante"
+	      question.place_types_to_keep = %w[
+          ristorante
+        ]
 	      question.save
 
 	    ######pizza
@@ -366,10 +376,12 @@ question.save
 	      question.options = nil
 	      question.time_condition = nil
 	      question.required_place_types = %w[
-	        ristorante+pizza
+	        pizzeria
 	      ]
 	      question.additional_place_types = nil
-	      question.place_types_to_keep = "ristorante+pizza"
+	      question.place_types_to_keep = %w[
+          pizzeria
+        ]
 	      question.save
 
 	    ######pesce
@@ -382,7 +394,9 @@ question.save
 	        ristorante+pesce
 	      ]
 	      question.additional_place_types = nil
-	      question.place_types_to_keep = "ristorante+pesce"
+	      question.place_types_to_keep = %w[
+          ristorante+pesce
+        ]
 	      question.save
 
 
@@ -396,7 +410,9 @@ question.save
 	        ristorante+carne
 	      ]
 	      question.additional_place_types = nil
-	      question.place_types_to_keep = "ristorante+carne"
+	      question.place_types_to_keep = %w[
+          ristorante+carne
+        ]
 	      question.save
 
     ######pasto orientale
@@ -417,7 +433,7 @@ question.save
       ristorante+indiano
       ristorante+thailandese
     ]
-    question.place_types_to_keep = %[
+    question.place_types_to_keep = %w[
       ristorante+giapponese
       ristorante+cinese
     ]
@@ -432,7 +448,9 @@ question.save
         ristorante+giapponese
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+giapponese"
+      question.place_types_to_keep = %w[
+        ristorante+giapponese
+      ]
       question.save
 
       question = Question.new
@@ -444,7 +462,9 @@ question.save
         ristorante+cinese
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+cinese"
+      question.place_types_to_keep = %w[
+        ristorante+cinese
+      ]
       question.save
 
       question = Question.new
@@ -456,7 +476,9 @@ question.save
         ristorante+coreano
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+coreano"
+      question.place_types_to_keep = %w[
+        ristorante+coreano
+      ]
       question.save
 
       question = Question.new
@@ -480,38 +502,38 @@ question.save
         ristorante+thailandese
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+thailandese"
+      question.place_types_to_keep = %w[
+        ristorante+thailandese
+      ]
       question.save
 
 #########################################################
 ######CENA
 #########################################################
 
-=begin
 question = Question.new
 question.string_id = "cena"
 question.text = "Che tipo di ristorante preferisci?"
 question.options = {
-    "Italiano" => "pasto_italiano",
-    "Orientale" => "pasto_orientale",
-    "Fast food" => "pasto_fast_food"
-  }
-  question.time_condition = {
-  :from => "18:00:00",
-  :to => "21:30:00"
-  }
-  question.required_place_types = %w[
-  restaurant
-  ]
-  question.additional_place_types = %w[
-    ristorante+giapponese
-    ristorante+italiano
-    ristorante+cinese
-    fast+food
-  ]
-  question.place_types_to_keep = nil
-  question.save
-=end
+  "Italiano" => "pasto_italiano",
+  "Orientale" => "pasto_orientale",
+  "Fast food" => "pasto_fast_food"
+}
+question.time_condition = {
+:from => "18:00:00",
+:to => "21:30:00"
+}
+question.required_place_types = %w[
+restaurant
+]
+question.additional_place_types = %w[
+  ristorante+giapponese
+  ristorante+italiano
+  ristorante+cinese
+  fast+food
+]
+question.place_types_to_keep = nil
+question.save
 
 #########################################################
 ######MERENDA
@@ -576,7 +598,9 @@ question.save
       pasticceria
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "pasticceria"
+    question.place_types_to_keep = %w[
+      pasticceria
+    ]
     question.save
 
     ######merenda gelateria
@@ -589,7 +613,9 @@ question.save
       gelateria
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "gelateria"
+    question.place_types_to_keep = %w[
+      gelateria
+    ]
     question.save
 
 
@@ -641,7 +667,9 @@ question.save
       birreria
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "birreria"
+    question.place_types_to_keep = %w[
+      birreria
+    ]
     question.save
 
   ######bere altro
@@ -671,7 +699,9 @@ question.save
       night_club
   	]
     question.additional_place_types = nil
-    question.place_types_to_keep = "night_club"
+    question.place_types_to_keep = %w[
+      night_club
+    ]
     question.save
 
     ######pub
@@ -684,7 +714,9 @@ question.save
       pub
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "pub"
+    question.place_types_to_keep = %w[
+      pub
+    ]
     question.save
 
   ######bere vino
@@ -694,10 +726,12 @@ question.save
   question.options = nil
   question.time_condition = nil
   question.required_place_types = %w[
-      enoteca
-    ]
+    enoteca
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "enoteca"
+  question.place_types_to_keep = %w[
+    enoteca
+  ]
   question.save
 
 #########################################################
@@ -723,7 +757,7 @@ question.required_place_types = %w[
 ]
 question.save
 
-	
+
   ######bar
   question = Question.new
   question.string_id = "bar"
@@ -734,7 +768,9 @@ question.save
       bar
     ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "bar"
+  question.place_types_to_keep = %w[
+    bar
+  ]
   question.save
 
 #########################################################
@@ -775,10 +811,12 @@ question.save
   question.options = nil
   question.time_condition = nil
   question.required_place_types = %w[
-      park
-    ]
+    park
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "park"
+  question.place_types_to_keep = %w[
+    park
+  ]
   question.save
 
   ######cinema
@@ -788,10 +826,12 @@ question.save
   question.options = nil
   question.time_condition = nil
   question.required_place_types = %w[
-      movie_theater
-    ]
+    movie_theater
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "movie_theater"
+  question.place_types_to_keep = %w[
+    movie_theater
+  ]
   question.save
 
   ######teatro
@@ -804,7 +844,9 @@ question.save
   	teatro
   ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "teatro"
+  question.place_types_to_keep = %w[
+    teatro
+  ]
   question.save
 
   ######concerto
@@ -813,9 +855,13 @@ question.save
   question.text = nil
   question.options = nil
   question.time_condition = nil
-  question.required_place_types = %w[concerto]
+  question.required_place_types = %w[
+    concerto
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "concerto"
+  question.place_types_to_keep = %w[
+    concerto
+  ]
   question.save
 
   ######sala giochi
@@ -824,9 +870,13 @@ question.save
   question.text = nil
   question.options = nil
   question.time_condition = nil
-  question.required_place_types = %w[sala_giochi]
+  question.required_place_types = %w[
+    sala_giochi
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "sala_giochi"
+  question.place_types_to_keep = %w[
+    sala_giochi
+  ]
   question.save
 
   ######bowling
@@ -835,9 +885,13 @@ question.save
   question.text = nil
   question.options = nil
   question.time_condition = nil
-  question.required_place_types = %w[bowling_alley]
+  question.required_place_types = %w[
+    bowling_alley
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "bowling_alley"
+  question.place_types_to_keep = %w[
+    bowling_alley
+  ]
   question.save
 
 #########################################################
@@ -869,9 +923,13 @@ question.save
   question.text = nil
   question.options = nil
   question.time_condition = nil
-  question.required_place_types = %w[church]
+  question.required_place_types = %w[
+    church
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = "church"
+  question.place_types_to_keep = %w[
+    church
+  ]
   question.save
 
   ######punto_interesse
