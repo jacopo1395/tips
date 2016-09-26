@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<h3 style="color:white; background-color:rgba(0, 0, 0, 0.3); border-radius:12px; padding-left:32px; padding-right:32px;">Suggerimenti Recenti</h3>
+<h3 style="color:white; background-color:rgba(0, 0, 0, 0.3); border-radius:4px; padding-left:32px; padding-right:32px;">Suggerimenti Recenti</h3>
 <div class="home-recent-hints">
   <% if !@pois[:recent].nil? %>
     <% (@pois[:recent]).each do |poi| %>
@@ -106,7 +106,7 @@
   </div>
 </div>
 
-<h3 style="color:white; background-color:rgba(0, 0, 0, 0.3); border-radius:12px; padding-left:32px; padding-right:32px;">Suggerimenti Popolari</h3>
+<h3 style="color:white; background-color:rgba(0, 0, 0, 0.3); border-radius:4px; padding-left:32px; padding-right:32px;">Suggerimenti Popolari</h3>
 <div class="home-popular-hints">
   <% (@pois[:popular]).each do |poi| %>
     <div class="home-popular-card mdl-card mdl-shadow--2dp">
@@ -179,7 +179,7 @@
   </div>
 </div>
 
-<h3 style="color:white; background-color:rgba(0, 0, 0, 0.3); border-radius:12px; padding-left:32px; padding-right:32px;">Suggerimenti nella tua zona</h3>
+<h3 style="color:white; background-color:rgba(0, 0, 0, 0.3); border-radius:4px; padding-left:32px; padding-right:32px;">Suggerimenti nella tua zona</h3>
 <div class="home-nearby-hints">
   <% @pois[:nearbyPopular].each do |poi| %>
 <div class="home-popular-card mdl-card mdl-shadow--2dp">

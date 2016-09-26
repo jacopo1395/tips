@@ -30,10 +30,10 @@
       </button>
       <% if user_signed_in? %>
       	<% if check(@poi.id) %>
-      		<%= link_to "remove_favourite", remove_favourite_path %>
-		<% else %>
-			<%= link_to "add_favourite",add_favourite_path%>
-		<% end %>      
+      		<%= link_to "Rimuovi dai preferiti <i class='material-icons'>star_border</i>".html_safe, remove_favourite_path, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" %>
+    		<% else %>
+          <%= link_to "Aggiungi ai preferiti <i class='material-icons'>star_border</i>".html_safe, add_favourite_path, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" %>
+    		<% end %>
       <% end %>
     </div>
   </div>
@@ -115,8 +115,14 @@
             <li class="mdl-list__item mdl-list__item--three-line">
               <span class="mdl-list__item-primary-content">
                 <i class="material-icons mdl-list__item-avatar">person</i>
-                <span><%= review[:author] %></span>
-                <span> Voto:<%= review[:rating] %></span>
+                <span><%= review[:author].capitalize %></span>
+                <!-- <span style="float:right;"> Voto:<%= review[:rating] %></span> -->
+                <span class="mdl-chip mdl-chip--contact" style="float:right;">
+                  <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
+                    <i class="material-icons" style="vertical-align: middle;">star</i>
+                  </span>
+                  <span class="mdl-chip__text"><%= review[:rating] %></span>
+                </span>
                 <span class="mdl-list__item-text-body">
                     <%= review[:text] %>
                 </span>
