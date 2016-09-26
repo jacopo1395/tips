@@ -35,9 +35,9 @@
     <div class="mdl-card__title">
       <!-- <div class="hint-main-image"></div> -->
       <% if !@poi.image.nil? && !@poi.image.empty? %>
-        <%= link_to image_tag @poi.image[0], class: "hint-main-image" %>
+        <%= link_to image_tag @poi.image[0], class: "hint-main-image", id: "hint-main-image" %>
       <% else %>
-        <div  class="mdl-card__title-text mdl-text-color--red">
+        <div class="mdl-card__title-text mdl-text-color--red">
           Non ci sono immagini per questo suggerimento...
         </div>
       <% end %>
@@ -47,7 +47,7 @@
       <div class="mdl-card__supporting-text">
         <div class="hint-thumbnails">
           <% @poi.image.each do |img| %>
-            <%= link_to image_tag img, class: "thumbnail" %>
+            <%= image_tag img, class: "thumbnail", onclick: "loadImage(this.src)" %>
           <% end %>
         </div>
       </div>
@@ -141,3 +141,10 @@
 </script> -->
 
 <!-- <script src="https://maps.googleapis.com/maps/api/js?callback=loadMap&key=AIzaSyDyJsV1le3xmHoZwIT6H520Apk_SZJQMeg"></script> -->
+
+<script>
+  function loadImage(src) {
+    // alert(src);
+    document.getElementById("hint-main-image").src = src;
+  }
+</script>
