@@ -460,7 +460,9 @@ question.save
         ristorante+cinese
       ]
       question.additional_place_types = nil
-      question.place_types_to_keep = "ristorante+cinese"
+      question.place_types_to_keep = %w[
+        ristorante+cinese
+      ]
       question.save
 
       question = Question.new
