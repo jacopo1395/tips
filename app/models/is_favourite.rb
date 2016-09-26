@@ -1,2 +1,2 @@
-class IsFavourite < ApplicationRecord
+class Is_favourite < ApplicationRecord
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918093308) do
+ActiveRecord::Schema.define(version: 20160924152330) do
 
   create_table "apis", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160918093308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "PoisId"
-    t.integer  "SearchId"
+    t.integer  "user_id"
   end
 
   create_table "is_favourites", force: :cascade do |t|
@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(version: 20160918093308) do
     t.text     "image"
     t.text     "review"
     t.string   "api"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "apiId"
     t.float    "lat"
     t.float    "long"
+    t.integer  "cap"
+    t.integer  "voltePreferito"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160918093308) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "username",               default: "",    null: false
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -104,7 +107,6 @@ ActiveRecord::Schema.define(version: 20160918093308) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.string   "username"
     t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "uid"
