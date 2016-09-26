@@ -108,6 +108,30 @@ class StaticPagesController < ApplicationController
   def find_users
   end
 
+  def add_favourite
+    if(!check(params[:id]))
+      f=Is_favourite.new(:userMail=>current_user.email,:PoisId=>params[:id])
+      f.save
+    end
+    redirect_to :controller =>'pois', :action => 'show', :id=>params[:id]
+  end
+
+  def remove_favourite
+    if(check(params[:id]))
+      f=Is_favourite.where("userMail = ? AND PoisId = ?",current_user.email,params[:id]).destroy_all
+    end
+    redirect_to :controller =>'pois', :action => 'show', :id=>params[:id]
+  end
+
+  def check(id)
+    f=Is_favourite.where("userMail = ? AND PoisId = ?",current_user.email,id)
+    if(!f.empty?)
+      true
+    else
+      false
+    end
+  end
+
   private
     def delete_previous_search_data
       session[:search_object] = nil

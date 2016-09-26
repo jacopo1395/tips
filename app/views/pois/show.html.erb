@@ -28,6 +28,13 @@
       <button class="mdl-button mdl-button--icon mdl-button--colored mdl-js-button mdl-js-ripple-effect">
         <i class="material-icons">share</i>
       </button>
+      <% if user_signed_in? %>
+      	<% if check(@poi.id) %>
+      		<%= link_to "remove_favourite", remove_favourite_path %>
+		<% else %>
+			<%= link_to "add_favourite",add_favourite_path%>
+		<% end %>      
+      <% end %>
     </div>
   </div>
 
