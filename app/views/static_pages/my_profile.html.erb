@@ -15,10 +15,11 @@
 			</div>
 		</div>
 	</div>
-	<h3>Suggerimenti Recenti di <%= current_user.username %></h3>
+
+	<h3>Tutti i Suggerimenti di <%= current_user.username %></h3>
 	<div class="home-recent-hints">
-	<% if !@my_pois[:recent].nil? %>
-	  <% (@my_pois[:recent]).each do |poi| %>
+	<% if !@my_pois[:all].nil? %>
+	  <% (@my_pois[:all]).each do |poi| %>
 	    <div class="home-recent-card mdl-card mdl-shadow--2dp">
 	      <% if !poi.image.nil? && !poi.image.empty? %>
 	        <div class="mdl-card__title" style="background: url('<%= poi.image[0] %>') center / cover;">
@@ -94,7 +95,8 @@
 	      </button>
 	    </div>
 	  </div>
-	</div>
+
+
 <% else %>
 	<h1>Esegui il login prima di accedere al tuo profilo</h1>
 <% end %>
