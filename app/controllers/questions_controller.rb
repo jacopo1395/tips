@@ -68,7 +68,7 @@ class QuestionsController < ApplicationController
 				if place["price"].to_f > params[:price].to_f
 					places.delete(place)
 				end
-				if distanza(place["geometry"]["location"]["lat"].to_f,place["geometry"]["location"]["lng"].to_f) > params[:distance].to_f
+				if distanza(place["geometry"]["location"]["lat"].to_f,place["geometry"]["location"]["lng"].to_f) < params[:distance].to_f*10
 					places.delete(place)
 				end
 			end
@@ -122,6 +122,8 @@ class QuestionsController < ApplicationController
 							options={ :PoisId5 => @poi.id , :last => 0}
 						end
 						rec.update_attributes (options)
+						f=Final_result.new(:user_id => current_user.id,:PoisId => @poi.id)
+						f.save
 					end
 
 					redirect_to @poi
@@ -171,6 +173,12 @@ class QuestionsController < ApplicationController
 		poi[:rate]=place["rating"]
 		poi[:address]=place["vicinity"]
 		poi[:apiId]=place["place_id"]
+		if place["formatted_phone_number"]!=nil
+			poi[:phone]=place["formatted_phone_number"]
+		end
+		if place["website"]!=nil
+			place[:website]=place["website"]
+		end
 		if(place["photos"]!=nil)
 			id = place["photos"][0]["photo_reference"]
 			res_string= HTTP.get(query+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s

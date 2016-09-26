@@ -87,6 +87,13 @@ class StaticPagesController < ApplicationController
         end
       end
     end
+
+    f=Final_result.where(:user_id => current_user.id)
+    @my_pois[:all]=Array.new
+    f.each do |i|
+      @my_pois[:all].push(Pois.find(i[:PoisId]))
+    end
+
     @my_pois
   end
 

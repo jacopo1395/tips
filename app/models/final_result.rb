@@ -1,2 +1,2 @@
-class FinalResult < ApplicationRecord
+class Final_result < ApplicationRecord
 end
