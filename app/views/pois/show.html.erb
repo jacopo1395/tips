@@ -77,8 +77,21 @@
     </div>
 
     <div class="mdl-card__supporting-text">
-      <% (1..300).each do %>
+      <!-- <% (1..300).each do %>
         <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
+      <% end %> -->
+      <h4>Sito web</h4>
+      <% if !@poi.website.nil? %>
+        <p><%= @poi.website %></p>
+      <% else %>
+        <p>Nessuno sito web trovato...</p>
+      <% end %>
+
+      <h4>Numero di telefono</h4>
+      <% if !@poi.phone.nil? %>
+        <p><%= @poi.phone %></p>
+      <% else %>
+        <p>Nessuno numero di telefono trovato...</p>
       <% end %>
     </div>
   </div>
