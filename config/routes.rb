@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # Resources
   resources :pois
   resources :searches
+  resources :questions
 
   # Home page
   root 'static_pages#home'
@@ -17,9 +18,10 @@ Rails.application.routes.draw do
   # cercare altri utenti per username o email
   get "/find_users", to: 'static_pages#find_users'
   get "/find_users/results", to: 'static_pages#list_users'
-  
+
   # cercare altri utenti per username o email
   get "/final_quest", to: 'questions#final_quest'
+  get "/retry_final_quest", to: 'questions#retry_final_quest'
   get "/final_filter", to: 'questions#final_filter'
 
   # Start a new search
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
   get '/nuovo', to: 'pois#nuovo'
 
   # Devise stuff
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" , :registrations => "users/registrations"}
   devise_scope :user do get "/sign_in/retry" => "users/sessions#retry" end
   devise_scope :user do get "/sign_up/retry" => "users/registrations#retry" end
   # devise_scope :user do  delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session end

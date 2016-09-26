@@ -1,0 +1,63 @@
+<div class="error-card mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Errore</h2>
+  </div>
+
+  <div class="mdl-card__supporting-text">
+    <p>
+      Username o password errati!
+    </p>
+  </div>
+</div>
+
+<div class="form-card mdl-card mdl-shadow--4dp">
+
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Entra</h2>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="mdl-card__supporting-text">
+      <%= devise_error_messages! %>
+
+      <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :email, class: "mdl-textfield__label", for: "login-email" %>
+        <%= f.email_field :email, autofocus: true, id: "login-email", class: "mdl-textfield__input" %>
+      </div>
+
+      <br>
+
+      <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label :password,
+                    class: "mdl-textfield__label",
+                    for: "login-password" %>
+        <%= f.password_field :password,
+                              autocomplete: "off",
+                              id: "login-password",
+                              class: "mdl-textfield__input" %>
+      </div>
+
+      <br><br>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.label :remember_me, class: "mdl-switch mdl-js-switch mdl-js-ripple-effect", for: "login-remember-me" do %>
+            <%= f.check_box :remember_me, id: "login-remember-me", class: "mdl-switch__input" %>
+            <span class="mdl-switch__label">Ricordami</span>
+          <% end %>
+        </div>
+      <% end -%>
+    </div>
+
+    <div class="mdl-card__actions">
+      <div class="actions">
+        <%= f.submit "Entra", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<br>
+
+<%= render "devise/shared/links" %>
