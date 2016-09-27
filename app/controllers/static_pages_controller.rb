@@ -36,8 +36,8 @@ class StaticPagesController < ApplicationController
 
   def my_profile
     @my_pois={}
-    
-    
+
+
     f=Final_result.where(:user_id => current_user.id)
     @my_pois[:all]=Array.new
     	if f!=nil
@@ -47,10 +47,10 @@ class StaticPagesController < ApplicationController
 	  end
 
 
-    g=Is_favourite.where(:userMail => current_user.id)
+    g=Is_favourite.where(:userMail => current_user.email)
     @my_pois[:PoisId]=Array.new
-    g.each do |i|
-    	if g!=nil
+    if g!=nil
+      g.each do |i|
       		@my_pois[:PoisId].push(Poi.find(i[:PoisId]))
     	end
     end
