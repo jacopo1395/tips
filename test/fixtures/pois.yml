@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  types: MyString
+  address: MyString
+  rate: 1
+  price: 1
+  map: MyString
+  image: MyString
+  review: MyText
+  api: MyString
+  apiId: MyString
+  lat: 1.5
+  long: 1.5
+
+two:
+  name: MyString
+  types: MyString
+  address: MyString
+  rate: 1
+  price: 1
+  map: MyString
+  image: MyString
+  review: MyText
+  api: MyString
+  apiId: MyString
+  lat: 1.5
+  long: 1.5

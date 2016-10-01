@@ -1,0 +1,575 @@
+@import "material";
+
+/* Universal */
+.page-content {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+nav {
+  .mdl-button {
+    color: white;
+    text-transform: capitalize;
+  }
+
+  .mdl-menu__container {
+    margin-right: 4%;
+    margin-top: 8px;
+    width: auto;
+
+    .mdl-menu__item {
+      width: auto;
+      height: auto;
+
+      .material-icons {
+        vertical-align: middle;
+      }
+
+      .mdl-navigation__link {
+        display: inline;
+        color: black;
+        height: 50px;
+        padding-left: 6px;
+      }
+    }
+  }
+}
+
+.mdl-layout__drawer {
+  p.drawer-welcome-message {
+    padding-left: 38px;
+    padding-right: 30px;
+    padding-top: 12px;
+    padding-bottom: 4px;
+    font-size: 1.15em;
+  }
+
+  .drawer-item {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    .material-icons {
+      vertical-align: middle;
+    }
+
+    .mdl-navigation__link {
+      display: inline;
+      padding-left: 6px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* Home page main card */
+.home-main-card {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: image-url('Roma.jpg') center / cover;
+  text-align: center;
+
+  .mdl-card__title {
+    height: 180px;
+  }
+
+  .mdl-card__supporting-text {
+    background-color: rgba(0.0, 0.0, 0.0, 0.4);
+
+    color: white;
+    text-align: center;
+
+    // width: auto;
+    // margin-left: auto;
+    // margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 32px;
+
+    padding: 0px;
+
+    // border-radius: 12px;
+
+    width: 100%;
+
+    h1 {
+      margin-left: 32px;
+      margin-right: 32px;
+      font-size: 3.2em;
+      font-weight: 400;
+      color: white;
+    }
+  }
+
+  .mdl-card__actions {
+    display: table;
+    text-align: center;
+    background-color: rgba(0.0, 0.0, 0.0, 0.4);
+    color: white;
+
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    p {
+      display: inline-block;
+      font-size: 0.75em;
+      margin-bottom: 4px;
+    }
+
+    .mdl-button {
+      padding-left: 32px;
+      padding-right: 32px;
+      text-transform: none;
+      font-size: 1.6em;
+      font-weight: 400;
+    }
+  }
+}
+
+/* Home page recent card */
+.home-recent-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+  margin-right: 10px;
+
+  .mdl-card__title {
+    height: 220px;
+    color: white;
+    // background: image-url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+  }
+}
+
+/* Home page 'More' card for recent hints */
+.home-recent-more-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+
+  .mdl-card__actions {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+
+    .mdl-chip {
+      margin-bottom: 8px;
+    }
+
+    .mdl-button--fab {
+      margin: auto;
+      background-color: white;
+    }
+  }
+}
+
+/* Home page popular card */
+.home-popular-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+  margin-right: 10px;
+
+  .mdl-card__title {
+    height: 220px;
+    color: white;
+    background: image-url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+  }
+}
+
+/* Home page 'More' card for popular hints */
+.home-popular-more-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+
+  .mdl-card__actions {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+
+    .mdl-chip {
+      margin-bottom: 8px;
+    }
+
+    .mdl-button--fab {
+      margin: auto;
+      background-color: white;
+    }
+  }
+}
+
+/* Home page nearby card */
+.home-nearby-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+  margin-right: 10px;
+
+  .mdl-card__title {
+    height: 220px;
+    color: white;
+    background: image-url('Ristorante.jpg') center / cover;
+
+    h2.mdl-card__title-text {
+      font-weight: 400;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mdl-card__actions {
+    width: 100%;
+
+    .mdl-button {
+      float: right;
+    }
+  }
+
+  .mdl-card__menu {
+    color: white;
+  }
+}
+
+/* Home page 'More' card for nearby hints */
+.home-nearby-more-card {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  margin-bottom: 16px;
+  margin-left: 2px;
+
+  .mdl-card__actions {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+
+    .mdl-chip {
+      margin-bottom: 8px;
+    }
+
+    .mdl-button--fab {
+      margin: auto;
+      background-color: white;
+    }
+  }
+}
+
+/* Home page recent hints */
+.home-recent-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Form card (signup, login, ...) */
+.form-card {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .mdl-button {
+    width: 100%;
+  }
+}
+
+/* Error card */
+.error-card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 0;
+  min-height: 0;
+  background-color: rgb(240, 85, 50);
+
+  .mdl-card__title {
+    color: white;
+    padding-bottom: 8px;
+  }
+
+  .mdl-card__supporting-text {
+    color: white;
+    padding-top: 8px;
+
+    p {
+      font-size: 1.05em;
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+/* Question card */
+.question-card {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .mdl-card__supporting-text {
+
+    .mdl-button {
+      display: block;
+      width: 90%;
+      padding-top: 6%;
+      padding-bottom: 6%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    // .row {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   justify-content: space-around;
+    //
+    //   .mdl-button {
+    //     margin-top: 12px;
+    //     margin-bottom: 12px;
+    //     width: 40%;
+    //     padding-top: 15%;
+    //     padding-bottom: 15%;
+    //     padding-left: 0;
+    //     padding-right: 0;
+    //   }
+    // }
+  }
+}
+
+/* General question card */
+.general-question-card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  .item-card {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: white;
+  }
+
+  .mdl-slider {
+    &:active::-webkit-slider-thumb,
+    &::-webkit-slider-thumb {
+        background: white !important;
+    }
+
+    &:active::-moz-range-thumb,
+    &::-moz-range-thumb {
+        background: white !important;
+    }
+
+    &:active::-ms-thumb,
+    &::-ms-thumb {
+        background: white !important;
+    }
+  }
+
+  .mdl-card__supporting-text {
+    .rating-values {
+      margin-left: 10px;
+      margin-right: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      .mdl-button {
+        min-width: 0;
+      }
+    }
+
+    .mdl-button {
+      text-transform: none;
+    }
+  }
+
+  .mdl-card__actions {
+    .mdl-button {
+      float: right;
+    }
+  }
+}
+
+/* Hint header card */
+.hint-header-card {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  min-height: 0;
+
+  .mdl-card__title-text {
+    text-transform: capitalize;
+    font-size: 2.0em;
+  }
+
+  .mdl-card__supporting-text {
+    .material-icons {
+      vertical-align: middle;
+    }
+  }
+}
+
+/* Hint gallery card */
+.hint-gallery-card {
+  .mdl-card__title {
+    margin-top: 16px;
+    margin-right: 16px;
+    overflow:hidden;
+    position: relative;
+    height: 300px;
+
+    .hint-main-image {
+      max-height: 300px;
+    }
+  }
+
+  .hint-thumbnails {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    width: 100%;
+
+    .thumbnail {
+      flex: 0 0 auto;
+      width: auto;
+      margin-right: 8px;
+      border-radius: 4px;
+      background: image-url("Roma.jpg") center / cover; /* 50% 50% centers image in div */
+      min-width: 80px;
+      min-height: 80px;
+      max-width: 80px;
+      max-height: 80px;
+    }
+  }
+}
+
+.hint-reviews-card {
+  min-height: 0;
+}
+
+/* Home page popular hints */
+.home-popular-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Home page nearby hints */
+.home-nearby-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Devise shared links */
+.devise-shared-links {
+  display: table;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 60px;
+  text-align: center;
+
+  .mdl-button {
+    text-transform: none;
+  }
+}

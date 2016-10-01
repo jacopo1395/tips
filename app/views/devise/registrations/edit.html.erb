@@ -1,0 +1,101 @@
+<div class="form-card mdl-card mdl-shadow--4dp">
+
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Aggiorna profilo</h2>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="mdl-card__supporting-text">
+      <%= devise_error_messages! %>
+
+      <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label "Nuovo username (opzionale)", class: "mdl-textfield__label", for: "edit-profile-username" %>
+        <%= f.text_field :username, autofocus: true, id: "edit-profile-username", class: "mdl-textfield__input" %>
+      </div>
+
+      <br>
+
+      <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label "Nuova email (opzionale)", class: "mdl-textfield__label", for: "edit-profile-email" %>
+        <%= f.email_field :email, autofocus: true, id: "edit-profile-email", class: "mdl-textfield__input" %>
+      </div>
+
+      <br>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <br>
+      <% end %>
+
+      <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label "Nuova password (opzionale)",
+                    class: "mdl-textfield__label",
+                    for: "edit-profile-password" %>
+        <%= f.password_field :password,
+                              autocomplete: "off",
+                              id: "edit-profile-password",
+                              class: "mdl-textfield__input" %>
+      </div>
+
+      <br>
+
+      <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label "Conferma nuova password",
+                    class: "mdl-textfield__label",
+                    for: "edit-profile-password-confirmation" %>
+        <%= f.password_field :password_confirmation,
+                              autocomplete: "off",
+                              id: "edit-profile-password-confirmation",
+                              class: "mdl-textfield__input" %>
+      </div>
+
+      <br>
+
+      <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.label "Password attuale (obbligatoria)",
+                    class: "mdl-textfield__label",
+                    for: "edit-profile-current-password" %>
+        <%= f.password_field :current_password,
+                              autocomplete: "off",
+                              id: "edit-profile-current-password",
+                              class: "mdl-textfield__input" %>
+      </div>
+    </div>
+
+    <div class="mdl-card__actions">
+      <div class="actions">
+        <%= f.submit "Aggiorna", class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="form-card mdl-card mdl-shadow--4dp" style="min-height:0;">
+
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Cancella il mio account</h2>
+  </div>
+
+  <div class="mdl-card__supporting-text">
+    Cancellare il proprio account è un'azione definitiva. Se cancelli il tuo account
+    verranno eliminati tutti i dati ad esso associati e questi non potranno essere
+    recuperati in alcuna maniera.
+  </div>
+
+  <div class="mdl-card__actions">
+    <div class="actions">
+      <%= button_to "Cancella definitivamente",
+                    registration_path(resource_name),
+                    data: { confirm: "Sei sicuro? Non potrai tornare indietro!" },
+                    method: :delete,
+                    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color--red" %>
+    </div>
+  </div>
+</div>
+
+<div class="devise-shared-links">
+  <%= link_to "Indietro",
+              :back,
+              class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %>
+</div>

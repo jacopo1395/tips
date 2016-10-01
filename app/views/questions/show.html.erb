@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @question.text %>
+</p>
+
+<p>
+  <strong>Options:</strong>
+  <%= @question.options %>
+</p>
+
+<p>
+  <strong>String:</strong>
+  <%= @question.string_id %>
+</p>
+
+<p>
+  <strong>Time condition:</strong>
+  <%= @question.time_condition %>
+</p>
+
+<p>
+  <strong>Required place types:</strong>
+  <%= @question.required_place_types %>
+</p>
+
+<p>
+  <strong>Additional place types:</strong>
+  <%= @question.additional_place_types %>
+</p>
+
+<p>
+  <strong>Place types to keep:</strong>
+  <%= @question.place_types_to_keep %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

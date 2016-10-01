@@ -1,0 +1,21 @@
+<h2>New Admin</h2>
+
+<%= form_for((:users), url: {action: "create_admin"}) do |f| %>
+
+ 
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Aggiungi Admin", name: "add" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Elimina Admin", name: "rmv" %>
+  </div>
+  
+<% end %>

@@ -1,0 +1,51 @@
+FINITO!
+
+<h1>Pois</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Types</th>
+      <th>Address</th>
+      <th>Rate</th>
+      <th>Price</th>
+      <th>Map</th>
+      <th>Image</th>
+      <th>Review</th>
+      <th>Api</th>
+      <th>Apiid</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% i=0 %>
+    <% @pois.each do |poi| %>
+      <tr>      
+        <td><%= poi.name %></td>
+        <td><%= poi.types %></td>
+        <td><%= poi.address %></td>
+        <td><%= poi.rate %></td>
+        <td><%= poi.price %></td>
+        <td><%= poi.map %></td>
+        <td><%= image_tag poi.image[0], size: "50x20"%></td>
+        <td><%= poi.review %></td>
+        <td><%= poi.api %></td>
+        <td><%= poi.apiId %></td>
+        <td><%= poi.lat %></td>
+        <td><%= poi.long %></td>    
+        <td><%= link_to 'SCEGLI',  final_result_path(:id => i) %></td> 
+        <% i=i+1 %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<% if Rails.env.development? %>
+  <%= debug @search.places_by_type %>
+<% end %>
+

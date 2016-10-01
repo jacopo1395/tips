@@ -1,0 +1,134 @@
+<div class="mdl-grid" style="margin-bottom: 150px;">
+
+  <div class="hint-header-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text"><%= @poi.name %></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">
+          <i class="material-icons">info</i>
+        </span>
+        <span class="mdl-chip__text"><%= @poi.types.capitalize %></span>
+      </span>
+      <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--orange mdl-color-text--white">
+          <i class="material-icons">star</i>
+        </span>
+        <span class="mdl-chip__text"><%= @poi.rate %></span>
+      </span>
+      <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">
+          <i class="material-icons">map</i>
+        </span>
+        <span class="mdl-chip__text"><%= @poi.address %></span>
+      </span>
+    </div>
+    <div class="mdl-card__menu">
+      <button class="mdl-button mdl-button--icon mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <i class="material-icons">share</i>
+      </button>
+    </div>
+  </div>
+
+  <div class="hint-gallery-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <!-- <div class="hint-main-image"></div> -->
+      <% if !@poi.image.nil? && !@poi.image.empty? %>
+        <%= link_to image_tag @poi.image[0], class: "hint-main-image" %>
+      <% else %>
+        <div  class="mdl-card__title-text mdl-text-color--red">
+          Non ci sono immagini per questo suggerimento...
+        </div>
+      <% end %>
+    </div>
+
+    <% if !@poi.image.nil? && !@poi.image.empty? %>
+      <div class="mdl-card__supporting-text">
+        <div class="hint-thumbnails">
+          <% @poi.image.each do |img| %>
+            <%= link_to image_tag img, class: "thumbnail" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="hint-map mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <div id="hint-map" style="width:100%;min-height:400px;">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="hint-description-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Descrizione</h2>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <% (1..300).each do %>
+        <%= (0...rand(8)).map { ('a'..'z').to_a[rand(26)] }.join %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="hint-reviews-card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Recensioni</h2>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <% if !@poi.review.nil? && !@poi.review.empty? %>
+        <ul class="mdl-list" style="margin-top:0;">
+          <% @poi.review.each do |review| %>
+            <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">person</i>
+                <span><%= review[:author] %></span>
+                <span> Voto:<%= review[:rating] %></span>
+                <span class="mdl-list__item-text-body">
+                    <%= review[:text] %>
+                </span>
+              </span>
+            </li>
+            <br>
+          <% end %>
+        </ul>
+      <% else %>
+        Al momento non ci sono recensioni per questo suggerimento...
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  function loadMap() {
+    var mapCanvas = document.getElementById("hint-map");
+    var hintPosition = new google.maps.LatLng(<%= @poi.lat %>, <%= @poi.long %>);
+    var mapOptions = {
+      center: hintPosition,
+      zoom: 16
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var marker = new google.maps.Marker({position: hintPosition});
+    marker.setMap(map);
+
+    var infowindow = new google.maps.InfoWindow({
+      content: "<%= @poi.name.capitalize %>"
+    });
+    infowindow.open(map, marker);
+  }
+
+  // window.onload = function() {
+  //   var mainContent = document.getElementById("main-content");
+  //   mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
+  // }
+
+  var mainContent = document.getElementById("main-content");
+  mainContent.style.backgroundImage = "url('/assets/Roma.jpg')";
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=loadMap"></script>
