@@ -7,7 +7,7 @@ describe "User Sessions" do
 
   before do
     visit root_path
-    within('.navbar') { click_link('Sign in') }
+    within('.navbar') { click_link('Entra') }
   end
 
   context "failure" do
@@ -30,7 +30,7 @@ describe "User Sessions" do
     before do
 		fill_in 'Email', with: email
 		fill_in 'Password', with: password
-		click_button 'Sign in'
+		click_button 'Entra'
     end
 
     it "displays a welcome message" do
