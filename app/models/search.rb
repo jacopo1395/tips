@@ -94,9 +94,15 @@ class Search < ApplicationRecord
 		get_top_types
 	end
 
-	def keep_places_by_type(*types_to_keep)
-		@places_by_type.slice!(*types_to_keep)
-		@place_types_by_number.slice!(*types_to_keep)
+	def keep_places_by_type(types_to_keep)
+		keys = @places_by_type.keys - types_to_keep
+
+		keys.each do |key|
+			if @places_by_type.include? key
+				@places_by_type.delete key
+			end
+		end
+
 		get_place_types_by_number @places_by_type
 		get_top_types
 	end

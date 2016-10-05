@@ -7,6 +7,10 @@
   margin-right: 5%;
 }
 
+.mdl-layout__content {
+  background: image-url("blur.jpg") center / cover;
+}
+
 nav {
   .mdl-button {
     color: white;
@@ -75,15 +79,16 @@ nav {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
-  background: image-url('Roma.jpg') center / cover;
+  // background: image-url('Roma.jpg') center / cover;
+  background-color: rgba(0, 0, 0, 0.25);
   text-align: center;
 
   .mdl-card__title {
-    height: 180px;
+    height: 130px;
   }
 
   .mdl-card__supporting-text {
-    background-color: rgba(0.0, 0.0, 0.0, 0.4);
+    background-color: rgba(0.0, 0.0, 0.0, 0.0);
 
     color: white;
     text-align: center;
@@ -112,7 +117,7 @@ nav {
   .mdl-card__actions {
     display: table;
     text-align: center;
-    background-color: rgba(0.0, 0.0, 0.0, 0.4);
+    background-color: rgba(0.0, 0.0, 0.0, 0.3);
     color: white;
 
     width: auto;
@@ -120,8 +125,10 @@ nav {
     margin-right: auto;
     padding-left: 16px;
     padding-right: 16px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    // border-top-left-radius: 12px;
+    // border-top-right-radius: 12px;
+    border-radius: 12px;
+    margin-bottom: 16px;
 
     p {
       display: inline-block;
@@ -334,17 +341,6 @@ nav {
   }
 }
 
-/* Home page recent hints */
-.home-recent-hints {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
 /* Form card (signup, login, ...) */
 .form-card {
   margin-top: 30px;
@@ -533,8 +529,52 @@ nav {
   }
 }
 
-.hint-reviews-card {
-  min-height: 0;
+/* Profile main card */
+.profile-main-card {
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .profile-pic-card {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+
+    .profile-pic {
+      // zoom: 2;  //increase if you have very small images
+
+      display: block;
+      margin: auto;
+
+      height: auto;
+      min-height: 200px;
+      max-height: 200%;
+
+      width: auto;
+      min-width: 200px;
+      max-width: 200%;
+    }
+  }
+
+  .profile-info-card {
+  }
+}
+
+/* Home page recent hints */
+.home-recent-hints {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  width: 100%;
+  margin-bottom: 30px;
+// =======
+// .hint-reviews-card {
+//   min-height: 0;
+// >>>>>>> dev
 }
 
 /* Home page popular hints */

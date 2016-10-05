@@ -19,7 +19,7 @@ class StaticPagesController < ApplicationController
       @lat=request.location.latitude
       @long=request.location.longitude
     end
-    
+
     cap = HTTP.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+@lat.to_s+","+@long.to_s+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")#attenzione alla key
     cap_parsed = JSON.parse(cap)
     if cap_parsed["status"]=="OK"
@@ -30,67 +30,53 @@ class StaticPagesController < ApplicationController
       end
     end
     @pois[:nearbyPopular] = Poi.where("cap = ?", @var).order(:voltePreferito).first(5)
-    
+
     @pois
   end
 
   def my_profile
     @my_pois={}
-    poi=nil
-    @my_pois[:recent] =Array.new
 
-    is_recent= Is_recent.find_by userMail: current_user.email
-    n=is_recent[:PoisId1].to_i
-    if(n!=nil && n!=0 && n!="")
-      p=Poi.find(n)
-    
-      if (p!=nil)
-        poi =p
-        @my_pois[:recent][0]= poi
-      end
-    end
-    
-    n=is_recent[:PoisId2].to_i
-    if(n!=nil && n!=0 && n!="")
-      p=Poi.find(n)    
-      if (p!=nil)
-        poi =p
-        @my_pois[:recent][1]= poi
-      end
+
+    f=Final_result.where(:user_id => current_user.id)
+    @my_pois[:all]=Array.new
+    	if f!=nil
+   		f.each do |i|
+      		@my_pois[:all].push(Poi.find(i[:PoisId]))
+    	end
+	  end
+
+
+    g=Is_favourite.where(:userMail => current_user.email)
+    @my_pois[:PoisId]=Array.new
+    if g!=nil
+      g.each do |i|
+      		@my_pois[:PoisId].push(Poi.find(i[:PoisId]))
+    	end
     end
 
-    n=is_recent[:PoisId3].to_i
-    if(n!=nil && n!=0 && n!="")
-      p=Poi.find(n)
-      if (p!=nil)
-        poi =p
-        @my_pois[:recent][2]= poi
-      end
-    end
-
-    n=is_recent[:PoisId4].to_i
-    if(n!=nil && n!=0 && n!="")
-      p=Poi.find(n)
-      if (p!=nil)
-        poi =p
-        @my_pois[:recent][3]= poi
-      end
-    end
-
-    n=is_recent[:PoisId5].to_i
-    if(n!=nil && n!=0 && n!="")
-      p=Poi.find(n)
-      if (p!=nil)
-        poi =p
-        @my_pois[:recent][4]= poi
-      end
-    end
 
     @my_pois
   end
 
   def profile
     @user = User.find(params[:id])
+
+    g=Is_favourite.where(:userMail => @user.id)
+    @my_pois[:PoisId]=Array.new
+    g.each do |i|
+      if g!=nil
+          @my_pois[:PoisId].push(Poi.find(i[:PoisId]))
+      end
+    end
+
+    f=Final_result.where(:user_id => @user.id)
+    @my_pois[:all]=Array.new
+    f.each do |i|
+      @my_pois[:all].push(Pois.find(i[:PoisId]))
+    end
+    @my_pois
+
   end
 
   def list_users
@@ -98,6 +84,30 @@ class StaticPagesController < ApplicationController
   end
 
   def find_users
+  end
+
+  def add_favourite
+    if(!check(params[:id]))
+      f=Is_favourite.new(:userMail=>current_user.email,:PoisId=>params[:id])
+      f.save
+    end
+    redirect_to :controller =>'pois', :action => 'show', :id=>params[:id]
+  end
+
+  def remove_favourite
+    if(check(params[:id]))
+      f=Is_favourite.where("userMail = ? AND PoisId = ?",current_user.email,params[:id]).destroy_all
+    end
+    redirect_to :controller =>'pois', :action => 'show', :id=>params[:id]
+  end
+
+  def check(id)
+    f=Is_favourite.where("userMail = ? AND PoisId = ?",current_user.email,id)
+    if(!f.empty?)
+      true
+    else
+      false
+    end
   end
 
   private

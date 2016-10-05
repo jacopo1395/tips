@@ -1,0 +1,72 @@
+<div class="error-card mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Errore</h2>
+  </div>
+
+  <div class="mdl-card__supporting-text">
+    <p>
+      Nussun Risultato soddisfa le tue richieste, provane altre!
+    </p>
+  </div>
+</div>
+
+<div class="general-question-card mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Testo domanda generale</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <div class="item-card mdl-color--orange mdl-shadow--2dp">
+      <h4>Voto</h4>
+      <input id="rating" class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="1" step="1">
+      <div class="rating-values">
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">1</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">2</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">3</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">4</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect">5</span>
+      </div>
+    </div>
+    <div class="item-card mdl-color--green mdl-shadow--2dp">
+      <h4>Prezzo</h4>
+      <input id="price" class="mdl-slider mdl-js-slider" type="range" min="1" max="5" value="3">
+      <div class="rating-values">
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Basso</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Alto</span>
+      </div>
+    </div>
+    <div class="item-card mdl-color--blue mdl-shadow--2dp">
+      <h4>Distanza</h4>
+      <input id="distance" class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="100">
+      <div class="rating-values">
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:left;">Vicino</span>
+        <span class="mdl-button mdl-color-text--white mdl-js-button mdl-js-ripple-effect" style="float:right">Lontano</span>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="sendParams()">
+      Avanti
+    </button>
+  </div>
+</div>
+
+<script>
+  function sendParams() {
+    var rating = document.getElementById("rating").value;
+    var price = document.getElementById("price").value;
+    var distance = document.getElementById("distance").value;
+
+    var query = "/final_filter?";
+    query += "&rating=" + rating;
+    query += "&price=" + price;
+    query += "&distance=" + distance;
+
+    // alert(query);
+
+    window.location.replace(query);
+  }
+</script>
+
+<% if Rails.env.development? %>
+  <%= debug @search.places_by_type %>
+<% end %>

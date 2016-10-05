@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   # cercare altri utenti per username o email
   get "/find_users", to: 'static_pages#find_users'
   get "/find_users/results", to: 'static_pages#list_users'
-  
+
   # cercare altri utenti per username o email
   get "/final_quest", to: 'questions#final_quest'
+  get "/retry_final_quest", to: 'questions#retry_final_quest'
   get "/final_filter", to: 'questions#final_filter'
 
   # Start a new search
@@ -33,6 +34,10 @@ Rails.application.routes.draw do
   # Admin-related pages
   get '/new_admin', to: 'admins#new_admin'
   post '/create_admin', to: 'admins#create_admin'
+
+  #Add-Favorite
+  get '/add_favourite/:id',to:'static_pages#add_favourite', as: 'add_favourite'
+  get '/remove_favourite/:id',to:'static_pages#remove_favourite', as: 'remove_favourite'
 
   # Points of interest related pages
   get '/nuovo', to: 'pois#nuovo'
