@@ -43,8 +43,13 @@ gem 'activerecord-session_store'
 # Geokit
 gem 'geokit-rails'
 
-gem 'rspec'
+group :development, :test do
+  gem 'rspec-rails'
+end
 gem 'capybara'
+group :development, :test do
+  gem 'factory_girl_rails'
+end
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
