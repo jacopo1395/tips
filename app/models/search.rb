@@ -66,8 +66,8 @@ class Search < ApplicationRecord
 		# Provide default coordinates to use for development
 		if Rails.env.development?
 			# Colosseum (Rome) coordinates
-			@latitude = 41.89015
-			@longitude = 12.49244
+			@latitude = latitude
+			@longitude = longitude
 		else
 			# Geocoder (gem) gets user's coordinates from his IP address
 			@latitude = latitude

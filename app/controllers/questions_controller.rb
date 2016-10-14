@@ -142,6 +142,11 @@ class QuestionsController < ApplicationController
 
 	#GET /final_result/:id
 	def final_result
+		if @pois.empty?
+			@search=precedent
+			save_data
+			redirect_to retry_final_quest_path
+		end
 		place=@pois[0]
 		if Poi.exists?(apiId: @pois[0][:apiId] )
 			@poi=Poi.find_by apiId: @pois[0][:apiId]

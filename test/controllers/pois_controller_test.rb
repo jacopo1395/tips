@@ -3,6 +3,8 @@ require 'test_helper'
 class PoisControllerTest < ActionDispatch::IntegrationTest
   setup do
     @poi = pois(:one)
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
   end
 
   test "should get index" do
