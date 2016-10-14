@@ -2,10 +2,8 @@
 
 one:
   text: MyText
-  option: MyText
-  answer: 1
+  options: MyText
 
 two:
   text: MyText
-  option: MyText
-  answer: 1
+  options: MyText

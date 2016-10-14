@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   require "http"
 
-  before_filter :delete_previous_search_data
+  before_action :delete_previous_search_data
   after_action :save_location, only: [:home]
 
   def home
