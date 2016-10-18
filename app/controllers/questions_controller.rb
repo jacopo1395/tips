@@ -251,6 +251,13 @@ class QuestionsController < ApplicationController
     	query="https://maps.googleapis.com/maps/api/place/details/json?language=it"
     	http_response= HTTP.get(query+"&placeid="+placeid+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U")
     	http_response_parsed=JSON.parse(http_response)
+    	if http_response_parsed["result"]["address_components"]!= nil
+			http_response_parsed["result"]["address_components"].each do |x|
+        		if x["types"][0] == "postal_code"
+					@poi[:cap]=x["long_name"].to_i
+        		end
+      		end
+      	end
     	# render html: http_response_parsed
     	# return
     	i=0
