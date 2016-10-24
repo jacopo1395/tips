@@ -41,6 +41,19 @@
   </div>
 </div>
 
+<script>
+  if( window.history && window.history.pushState ){
+
+    history.pushState( "nohb", null, "" );
+    $(window).on( "popstate", function(event){
+      if( !event.originalEvent.state ){
+        history.pushState( "nohb", null, "" );
+        return;
+      }
+    });
+  }
+</script>
+
 <% if Rails.env.development? %>
   <%= debug params %>
   <%= debug @lat %>
