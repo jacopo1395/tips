@@ -1,0 +1,9 @@
+require 'test_helper'
+
+class FindUsersControllerTest < ActionDispatch::IntegrationTest
+  visit '/home'
+  click_on 'search'
+  fill_in('seach', :with => 'Jhon\n')
+
+  page.assert_text('Utenti Trovati')
+end
