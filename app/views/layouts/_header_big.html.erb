@@ -136,22 +136,31 @@
     </div>
     <div class="mdl-layout__header-row" style="height:auto; width:100%; padding-left:0; padding-right:0;">
       <div class="mdl-grid" style="width:94%; margin-left:0; margin-right:0; padding-left:3%; padding-right:3%;">
-        <div class="mdl-card mdl-shadow--4dp mdl-color--indigo mdl-cell mdl-cell--8-col">
+        <div class="mdl-card mdl-shadow--4dp mdl-color--indigo mdl-cell mdl-cell--12-col">
           <div class="mdl-card__supporting-text" style="color:white; text-align:center; width:auto; margin-left:auto; margin-right:auto;">
             <h1 style="margin-bottom:0;">TIPs!</h1>
           </div>
-          <div class="mdl-card__actions" style="font-size:larger; text-align:center;">
+          <div class="mdl-card__actions" style="font-size:larger; text-align:center; margin-bottom:60px;">
             Suggerimenti intelligenti su ciò che ti circonda
           </div>
         </div>
-        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col">
+        <!-- <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col">
           <%= link_to '<i class="material-icons" style="color:white; font-size:1.8em; left:41px;">search</i>'.html_safe,
               new_tip_path,
               class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--indigo",
               style: "margin:auto; height:100px; width:100px;" %>
-        </div>
+        </div> -->
       </div>
     </div>
+    <!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent"
+    style="position:relative; bottom:55px; z-index:99; width:80px; height:80px;">
+      <i class="material-icons" role="presentation">add</i>
+      <span class="visuallyhidden">Add</span>
+    </button> -->
+    <%= link_to '<i class="material-icons mdl-color-text--indigo" style="font-size:1.6em; left:35px;">search</i>'.html_safe,
+        new_tip_path,
+        class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--4dp mdl-color--white",
+        style: "position:relative; bottom:58px; z-index:99; width:80px; height:80px;" %>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Menu</span>
