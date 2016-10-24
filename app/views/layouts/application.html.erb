@@ -15,6 +15,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% if current_page?(:controller => 'static_pages', :action => 'home') %>
+      <%= render 'layouts/header_big' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
   </body>
 </html>

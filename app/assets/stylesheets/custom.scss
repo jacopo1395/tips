@@ -7,8 +7,12 @@
   margin-right: 5%;
 }
 
-.mdl-layout__content {
+.mdl-layout {
   background: image-url("blur.jpg") center / cover;
+
+  .mdl-layout__drawer-button {
+    background-color: rgba(0, 0, 0, 0);
+  }
 }
 
 nav {
