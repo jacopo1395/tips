@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <% if current_page?(:controller => 'static_pages', :action => 'home') %>
+    <% if current_page?(root_path) %>
       <%= render 'layouts/header_big' %>
     <% else %>
       <%= render 'layouts/header' %>
