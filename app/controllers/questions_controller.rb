@@ -234,9 +234,10 @@ class QuestionsController < ApplicationController
 			end
 			if(place["photos"]!=nil)
 				id = place["photos"][0]["photo_reference"]
-				res_string= HTTP.get(query+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s
-				res_string=res_string.split("HREF=\"")[1]
-				res_string=res_string.split("\">here")[0]
+				res_string= query+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U"
+				# res_string= HTTP.get(query+"&photoreference="+id+"&key=AIzaSyBHJpb9fD5eBeN-wd0Xq0vYkTUtRSEgr0U").to_s
+				# res_string=res_string.split("HREF=\"")[1]
+				# res_string=res_string.split("\">here")[0]
 				poi[:image][0]=res_string
 			else
 				poi[:image][0]="http://portfoliotheme.org/enigmatic/wp-content/uploads/sites/9/2012/07/placeholder1.jpg"
