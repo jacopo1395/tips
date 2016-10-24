@@ -7,19 +7,27 @@
     <% color_number = 0 %>
     <% option_colors_len = Question::OPTION_COLORS.length %>
 
-    <% @question.valid_options.each do |valid_option| %>
-      <% if valid_option["next_question_id"] == "domanda_generale" %>
-        <%= link_to valid_option["text"],
-                    "/final_quest",
-                    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect #{Question::OPTION_COLORS[color_number]} mdl-color-text--white" %>
-      <% else %>
-        <%= link_to valid_option["text"],
-                    "/search?next_question_id=#{valid_option["next_question_id"]}",
-                    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect #{Question::OPTION_COLORS[color_number]} mdl-color-text--white" %>
+    <div id="questions-div">
+      <% @question.valid_options.each do |valid_option| %>
+        <% if valid_option["next_question_id"] == "domanda_generale" %>
+          <%= link_to valid_option["text"],
+                      "/final_quest",
+                      onclick: "document.getElementById('questions-div').style.display = 'none'; document.getElementById('loading-div').style.display = 'block';",
+                      class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect #{Question::OPTION_COLORS[color_number]} mdl-color-text--white" %>
+        <% else %>
+          <%= link_to valid_option["text"],
+                      "/search?next_question_id=#{valid_option["next_question_id"]}",
+                      onclick: "document.getElementById('questions-div').style.display = 'none'; document.getElementById('loading-div').style.display = 'block';",
+                      class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect #{Question::OPTION_COLORS[color_number]} mdl-color-text--white" %>
+        <% end %>
+        <% color_number += 1 %>
+        <% color_number %= option_colors_len %>
       <% end %>
-      <% color_number += 1 %>
-      <% color_number %= option_colors_len %>
-    <% end %>
+    </div>
+
+    <div id="loading-div" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display:none;">
+
+    </div>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
