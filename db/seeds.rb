@@ -115,9 +115,9 @@ question.required_place_types = %w[
   bar
   cafe
 ]
-
 question.additional_place_types =  %w[
   pasticceria
+  bakery
 ]
 question.place_types_to_keep = nil
 question.save
@@ -147,15 +147,16 @@ question.save
   question.text = "Dove preferisci fare colazione?"
   question.options = {
     "Bar" => "colazione_bar",
-    "Caffetteria" => "colazione_caffetteria"
+    "Caffetteria" => "colazione_caffetteria",
+    "Forno" => "colazione_forno"
   }
-
   question.time_condition = nil
   question.required_place_types = nil
   question.additional_place_types = nil
   question.place_types_to_keep = question.place_types_to_keep = %w[
     bar
     cafe
+    bakery
   ]
   question.save
 
@@ -204,6 +205,21 @@ question.save
     ]
     question.save
 
+    ######colazione forno
+    question = Question.new
+    question.string_id = "colazione_forno"
+    question.text = nil
+    question.options = nil
+    question.time_condition = nil
+    question.required_place_types = %w[
+      bakery
+    ]
+    question.additional_place_types = nil
+    question.place_types_to_keep = %w[
+      bakery
+    ]
+    question.save
+
 #########################################################
 ######PRANZO
 #########################################################
@@ -244,7 +260,7 @@ question.save
     pizzeria
     paninoteca
     kebab
-    fast+food
+    meal_takeaway
   ]
   question.place_types_to_keep = nil
   question.save
@@ -256,7 +272,7 @@ question.save
   question.options = {
     "Italiano" => "pasto_italiano",
     "Orientale" => "pasto_orientale",
-    "Fast food" => "pasto_fast_food"
+    "Fast food o take away" => "pasto_fast_food"
   }
   question.time_condition = nil
   question.required_place_types = nil
@@ -264,7 +280,7 @@ question.save
     ristorante+giapponese
     ristorante+italiano
     ristorante+cinese
-    fast+food
+    meal_takeaway
   ]
   question.place_types_to_keep = nil
   question.save
@@ -277,11 +293,11 @@ question.save
     question.options = nil
     question.time_condition = nil
     question.required_place_types = %w[
-    	fast+food
+    	meal_takeaway
     ]
     question.additional_place_types = nil
     question.place_types_to_keep = %w[
-      fast+food
+      meal_takeaway
     ]
     question.save
 
@@ -530,7 +546,7 @@ question.additional_place_types = %w[
   ristorante+giapponese
   ristorante+italiano
   ristorante+cinese
-  fast+food
+  meal_takeaway
 ]
 question.place_types_to_keep = nil
 question.save
@@ -652,9 +668,15 @@ question.save
     "Pub" => "pub"
   }
   question.time_condition = nil
-  question.required_place_types = nil
+  question.required_place_types = %w[
+    birreria
+    pub
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.place_types_to_keep = %[
+    birreria
+    pub
+  ]
   question.save
 
     ######birreria
@@ -682,11 +704,14 @@ question.save
   }
   question.time_condition = nil
   question.required_place_types = %w[
-      night_club
-      pub
-    ]
+    night_club
+    pub
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.place_types_to_keep = %w[
+    night_club
+    pub
+  ]
   question.save
 
     ######discoteca
@@ -765,8 +790,8 @@ question.save
   question.options = nil
   question.time_condition = nil
   question.required_place_types = %w[
-      bar
-    ]
+    bar
+  ]
   question.additional_place_types = nil
   question.place_types_to_keep = %w[
     bar
@@ -781,13 +806,13 @@ question = Question.new
 question.string_id = "divertimento"
 question.text = "Cosa preferisci fare?"
 question.options = {
-  "Ballare" => "discoteca",
-  "Parco" => "parco",
-  "Cinema" => "cinema",
-  "Teatro" => "teatro",
-  "Concerto" => "concerto",
+  "Vorrei andare a ballare" => "discoteca",
+  "Divertirmi in un parco" => "parco",
+  "Vedere un film" => "cinema",
+  "Andare a teatro" => "teatro",
+  "Andare a un concerto" => "concerto",
   "Sala giochi" => "sala_giochi",
-  "Bowling" => "bowling"
+  "Giocare a bowling" => "bowling"
 }
 question.time_condition = {
   :from => "08:00:00",
@@ -798,9 +823,17 @@ question.required_place_types = %w[
   park
   movie_theater
   teatro
+]
+question.additional_place_types = %w[
   concerto
   sala_giochi
-  bowling
+  bowling_alley
+]
+question.place_types_to_keep = %w[
+  night_club
+  park
+  movie_theater
+  teatro
 ]
 question.save
 
@@ -903,8 +936,8 @@ question.string_id = "scoprire"
 question.text = "Dove preferisci andare?"
 question.options = {
   "Parco" => "parco",
-  "Luoghi di religione" => "luogo_religioso",
-##  "Altri punti di interesse" => "punto_interesse"
+  "Chiese, sinagoghe e moschee" => "luogo_religioso",
+  "Altri punti di interesse" => "punto_interesse"
 }
 question.time_condition = {
   :from => "08:00:00",
@@ -914,6 +947,10 @@ question.required_place_types = %w[
   park
   church
   point_of_interest
+]
+question.additional_place_types = %w[
+  mosque
+  synagogue
 ]
 question.save
 
@@ -925,10 +962,14 @@ question.save
   question.time_condition = nil
   question.required_place_types = %w[
     church
+    mosque
+    synagogue
   ]
   question.additional_place_types = nil
   question.place_types_to_keep = %w[
     church
+    mosque
+    synagogue
   ]
   question.save
 
@@ -936,12 +977,15 @@ question.save
   question = Question.new
   question.string_id = "punto_interesse"
   question.text = "Domanda?"
-  question.options = {
-  }
+  question.options = nil
   question.time_condition = nil
-  question.required_place_types = nil
+  question.required_place_types = %w[
+    point_of_interest
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.place_types_to_keep = %w[
+    point_of_interest
+  ]
   question.save
 
 #########################################################
@@ -962,8 +1006,10 @@ question.time_condition = {
 question.required_place_types = %w[
   library
   movie_theater
-  teatro
   park
+]
+question.additional_place_types = %w[
+  teatro
 ]
 question.save
 
@@ -975,9 +1021,15 @@ question.save
     "Biblioteca" => "biblioteca"
   }
   question.time_condition = nil
-  question.required_place_types = nil
+  question.required_place_types = %w[
+    park
+    library
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.place_types_to_keep = %w[
+    park
+    library
+  ]
   question.save
 
     ######biblioteca
@@ -990,7 +1042,9 @@ question.save
     	library
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "library"
+    question.place_types_to_keep = %[
+      library
+    ]
     question.save
 
   question = Question.new
@@ -1002,9 +1056,17 @@ question.save
     "Teatro" => "teatro"
   }
   question.time_condition = nil
-  question.required_place_types = nil
+  question.required_place_types = %w[
+    park
+    movie_theater
+    teatro
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.place_types_to_keep = %w[
+    park
+    movie_theater
+    teatro
+  ]
   question.save
 
 #########################################################
@@ -1015,9 +1077,10 @@ question = Question.new
 question.string_id = "shopping"
 question.text = "A cosa sei interessato?"
 question.options = {
-  "Libri" => "libreria",
-  "Vestiti" => "vestiti",
-  "Scarpe" => "scarpe"
+  "Un libro da leggere" => "libreria",
+  "Dei nuovi vestiti" => "vestiti",
+  "Un paio di scarpe" => "scarpe",
+  "Un po' di tutto" => "tutto"
 }
 question.time_condition = {
   :from => "10:00:00",
@@ -1025,6 +1088,8 @@ question.time_condition = {
 }
 question.required_place_types = %w[
   store
+]
+question.additional_place_types = %w[
   book_store
   clothing_store
   shopping_mall
@@ -1038,9 +1103,13 @@ question.save
     question.text = nil
     question.options = nil
     question.time_condition = nil
-    question.required_place_types = %w[book_store]
+    question.required_place_types = %w[
+      book_store
+    ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "book_store"
+    question.place_types_to_keep = %w[
+      book_store
+    ]
     question.save
 
 	######vestiti
@@ -1050,11 +1119,12 @@ question.save
     question.options = nil
     question.time_condition = nil
     question.required_place_types = %w[
-    	shopping_mall
     	clothing_store
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "shopping_mall"
+    question.place_types_to_keep = %w[
+    	clothing_store
+    ]
     question.save
 
     ######scarpe
@@ -1063,9 +1133,28 @@ question.save
     question.text = nil
     question.options = nil
     question.time_condition = nil
-    question.required_place_types = %w[shoe_store]
+    question.required_place_types = %w[
+      shoe_store
+    ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "shoe_store"
+    question.place_types_to_keep = %w[
+      shoe_store
+    ]
+    question.save
+
+    ###### Tutto
+    question = Question.new
+    question.string_id = "tutto"
+    question.text = nil
+    question.options = nil
+    question.time_condition = nil
+    question.required_place_types = %w[
+      shopping_mall
+    ]
+    question.additional_place_types = nil
+    question.place_types_to_keep = %w[
+      shopping_mall
+    ]
     question.save
 
 #########################################################
@@ -1076,9 +1165,9 @@ question = Question.new
 question.string_id = "imparare"
 question.text = "Cosa ti piacerebbe imparare?"
 question.options = {
-  "Visita di arte e cultura" => "imparare_arte",
-  "Scienza e natura" => "imparare_natura",
-  "Letteratura" => "imparare_letteratura"
+  "Sono interessato ad arte e cultura" => "imparare_arte",
+  "Mi piacciono scienza e natura" => "imparare_natura",
+  "Amo leggere" => "imparare_letteratura"
 }
 question.time_condition = {
   :from => "10:00:00",
@@ -1088,12 +1177,16 @@ question.required_place_types = %w[
   library
   book_store
   park
-  aquarium
-  zoo
-  monument
   museum
-  art_gallery
   church
+]
+question.additional_place_types = %w[
+  mosque
+  synagogue
+  art_gallery
+  zoo
+  aquarium
+  monument
 ]
 question.save
 
@@ -1103,12 +1196,17 @@ question.save
   question.options = {
     "Biblioteca" => "biblioteca",
     "Libreria" => "libreria"
-
   }
   question.time_condition = nil
-  question.required_place_types = nil
+  question.required_place_types = %w[
+    library
+    book_store
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.place_types_to_keep = %[
+    library
+    book_store
+  ]
   question.save
 
 
@@ -1121,9 +1219,17 @@ question.save
     "Acquario" => "acquario"
   }
   question.time_condition = nil
-  question.required_place_types = nil
+  question.required_place_types = %w[
+    park
+    zoo
+    aquarium
+  ]
   question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.place_types_to_keep = %w[
+    park
+    zoo
+    aquarium
+  ]
   question.save
 
     ######zoo
@@ -1132,9 +1238,13 @@ question.save
     question.text = nil
     question.options = nil
     question.time_condition = nil
-    question.required_place_types = %w[zoo]
+    question.required_place_types = %w[
+      zoo
+    ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "zoo"
+    question.place_types_to_keep = %w[
+      zoo
+    ]
     question.save
 
     ######acquario
@@ -1143,24 +1253,43 @@ question.save
     question.text = nil
     question.options = nil
     question.time_condition = nil
-    question.required_place_types = %w[aquarium]
+    question.required_place_types = %w[
+      aquarium
+    ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "aquarium"
+    question.place_types_to_keep = %w[
+      aquarium
+    ]
     question.save
 
   question = Question.new
   question.string_id = "imparare_arte"
   question.text = "Dove ti piacerebbe andare?"
   question.options = {
-##    "Monumenti" => "monumento",
+    "Monumenti" => "monumento",
     "Museo" => "museo",
-    "Chiese" => "luogo_religioso",
+    "Chiese, sinagoghe o moschee" => "luogo_religioso",
     "Galleria d' arte" => "galleria_arte"
   }
   question.time_condition = nil
-  question.required_place_types = nil
-  question.additional_place_types = nil
-  question.place_types_to_keep = nil
+  question.required_place_types = %w[
+    monument
+    museum
+    art_gallery
+    church
+    mosque
+    synagogue
+  ]
+  question.additional_place_types = %[
+    monument
+  ]
+  question.place_types_to_keep = %w[
+    museum
+    art_gallery
+    church
+    mosque
+    synagogue
+  ]
   question.save
 
 
@@ -1170,9 +1299,13 @@ question.save
     question.text = nil
     question.options = nil
     question.time_condition = nil
-    question.required_place_types = %w[monumento]
+    question.required_place_types = %w[
+      monument
+    ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "monumento"
+    question.place_types_to_keep = %w[
+      monument
+    ]
     question.save
 
 
@@ -1182,10 +1315,13 @@ question.save
     question.text = nil
     question.options = nil
     question.time_condition = nil
-    question.required_place_types = %w[museum
+    question.required_place_types = %w[
+      museum
     ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "museum"
+    question.place_types_to_keep = %[
+      museum
+    ]
     question.save
 
 
@@ -1195,7 +1331,11 @@ question.save
     question.text = nil
     question.options = nil
     question.time_condition = nil
-    question.required_place_types = %w[art_gallery]
+    question.required_place_types = %w[
+      art_gallery
+    ]
     question.additional_place_types = nil
-    question.place_types_to_keep = "art_gallery"
+    question.place_types_to_keep = %w[
+      art_gallery
+    ]
     question.save

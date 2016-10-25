@@ -17,9 +17,7 @@ class Search < ApplicationRecord
 		cafe
 		church
 		clothing_store
-		convenience_store
 		department_store
-		electronics_store
 		establishment
 		library
 		meal_takeaway
