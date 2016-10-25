@@ -41,6 +41,11 @@ class Search < ApplicationRecord
 		museum
 		park
 		restaurant
+		store
+	  book_store
+	  shopping_mall
+	  shoe_store
+	  clothing_store
 	]
 
 	# Place types not supported by Google Places APIs
