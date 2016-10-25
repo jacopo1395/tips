@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   def home
   	@pois={}
   	@pois[:recent]  = Poi.order(updated_at: :desc).limit(5)
-  	@pois[:popular] = Poi.order(:voltePreferito).first(5)
+  	@pois[:popular] = Poi.order(:voltePreferito).reject{ |poi| poi.voltePreferito.nil? }.first(5)
 
     ##chiamata api
     res= HTTP.get("https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium&sensor=true")
