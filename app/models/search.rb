@@ -186,8 +186,8 @@ class Search < ApplicationRecord
 				place_types = PLACE_TYPES_TEST
 				place_additional_types = PLACE_ADDITIONAL_TYPES_TEST
 			else
-				place_types = PLACE_TYPES
-				place_additional_types = PLACE_ADDITIONAL_TYPES
+				place_types = PLACE_TYPES_TEST
+				place_additional_types = PLACE_ADDITIONAL_TYPES_TEST
 			end
 
 			place_types.each do |place_type|
