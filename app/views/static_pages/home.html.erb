@@ -156,11 +156,14 @@
                 Maggiori info
               </a>
             </div>
-            <div class="mdl-card__menu">
-              <%= link_to "<i class='material-icons'>share</i>".html_safe,
-                          "mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/#{poi.id}",
-                          class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--icon" %>
-            </div>
+            <% if user_signed_in? %>
+              <div class="mdl-card__menu">
+                <%= link_to "<i class='material-icons'>share</i>".html_safe,
+                            "mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/#{poi.id}",
+                            class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--icon" %>
+                  <!-- <a href="mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/<%= poi.id %>" class="material-icons">share</a> -->
+              </div>
+            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -236,11 +239,14 @@
               Maggiori info
             </a>
           </div>
-          <div class="mdl-card__menu">
-            <%= link_to "<i class='material-icons'>share</i>".html_safe,
-                        "mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/#{poi.id}",
-                        class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--icon" %>
-          </div>
+          <% if user_signed_in? %>
+            <div class="mdl-card__menu">
+              <%= link_to "<i class='material-icons'>share</i>".html_safe,
+                          "mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/#{poi.id}",
+                          class: "mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--icon" %>
+                <!-- <a href="mailto:?subject=Scopri%20anche%20tu%20TIP&body=TIP:%20http:localhost:3000/pois/<%= poi.id %>" class="material-icons">share</a> -->
+            </div>
+          <% end %>
         </div>
       <% end %>
       <div class="home-popular-more-card mdl-card mdl-shadow--2dp">
